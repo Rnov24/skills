@@ -79,6 +79,9 @@ written in `docs/ARTIFACTS.md`.
   changes in the suite or the workspace.
 
 **Suite maintenance**
+- `adapt` — the adaptation loop (the wheel). Turns escapes, repeated
+  findings, finder misses, and repeated corrections from real runs into
+  evidence-backed changes to the suite, logged in `docs/ADAPTATIONS.md`.
 - `gluttony` — slash command, `/gluttony <skill-repo-url>`. Absorbs an
   external skill repository into the suite: full audit, per-skill verdicts,
   adaptation into suite conventions, human gate before anything lands.

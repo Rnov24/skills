@@ -30,6 +30,12 @@ retro is short, evidence-based, and ends with filings, not feelings.
    stated, or they get closed honestly as accepted risks with a name
    attached.
 
+4. **Harvest adaptation candidates.** Escapes, repeated finding classes,
+   and corrections the human had to give twice are filed as candidates in
+   `docs/ADAPTATIONS.md` (see the `adapt` skill) before the retro closes.
+   A retro that notices a suite-level lesson and files it only in its own
+   page has done half its job.
+
 ## Rules
 
 - Numbers over impressions: rounds, findings per axis, escapes (defects

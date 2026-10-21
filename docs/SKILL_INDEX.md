@@ -6,6 +6,7 @@ Do not edit by hand. Agents: search this table (or run
 
 | Skill | Phase | Use when | Keywords |
 |---|---|---|---|
+| `adapt` | meta | The suite's adaptation loop — turn observed failures and repeated friction from real runs into permanent, evidence-backed changes to the suite itself. Use after retros, when review findings escape a gate, when the finder misses, or when absorbed skills need promotion. | adapt, adaptation, adaptasi, evolve, self-improvement, improve suite, belajar dari run, routing miss, wheel, mahoraga |
 | `brief` | discover | Turn a raw request into an approved problem brief. Use when a request is bigger than a one-line fix or its real problem is unstated — before research, PRD, or any design work. | brief, problem, masalah, kebutuhan, request, idea, ide, mau bikin, unclear requirement |
 | `debug` | build | Diagnose bugs and performance regressions with a red-capable feedback loop before any theory. Use when something fails, breaks, or regresses — and when fixes have already failed once. | bug, error, debugging, gagal, broken, rusak, regression, regresi, slow, lambat, not working |
 | `define-product` | define | Define the product layer — PRD, personas, and user stories with checkable acceptance criteria. Use when a brief is approved and a new product or user-facing feature needs its requirements fixed before design and engineering begin. | prd, persona, user story, acceptance criteria, requirements, product, produk, mvp, fitur |
@@ -25,4 +26,4 @@ Do not edit by hand. Agents: search this table (or run
 | `using-rnov-skills` | meta | The router for the rnov24 suite. Use at the start of any product, design, or engineering task to decide which flow applies, which artifacts the task needs, and which skill runs next. | router, routing, start, mulai, which skill, cari skill, find skill, bingung |
 | `verify` | assure | Evidence before claims — run the checks fresh and read the output before anything is called done, fixed, or passing. Use at the end of every implement phase and before any completion claim to the human. | verify, verifikasi, evidence, bukti, tests pass, done check, cek hasil |
 
-18 skills indexed.
+19 skills indexed.

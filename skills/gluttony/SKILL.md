@@ -115,6 +115,15 @@ rejected, each with its one-line reason) and the diff. Commit and push only
 after the human approves. Gluttony prepares everything up to that gate and
 stops there, like every other irreversible action in this suite.
 
+## Absorption staging
+
+An absorbed unit enters the suite at **EXPOSED** in the adaptation log
+(`docs/ADAPTATIONS.md`): audited, rewritten, present, but not yet proven in
+this suite's own work. The `adapt` skill promotes it to **ADAPTED** after a
+real run uses the mechanism and the retro records that it held, or the human
+promotes it by written ruling. Absorption is exposure; the wheel decides
+what the suite actually becomes.
+
 ## Report back
 
 Close with the counts and the names: what was absorbed as new, what was

@@ -36,7 +36,7 @@ def score(query, q_tokens, s):
             sc += 10; hits.append(f'name:{t}')
     for kw in s['keywords']:
         kwl = kw.lower()
-        if kwl in query:
+        if re.search(r'(?<![a-z0-9])' + re.escape(kwl) + r'(?![a-z0-9])', query):
             sc += 8; hits.append(f'keyword:"{kw}"')
         else:
             for t in q_tokens:
@@ -67,6 +67,14 @@ def main():
     results.sort(key=lambda r: -r[0])
     if not results or results[0][0] < THRESHOLD:
         print('NO_CONFIDENT_MATCH')
+        try:
+            import time
+            log = ROOT / '.work' / 'routing-misses.log'
+            log.parent.mkdir(exist_ok=True)
+            with log.open('a') as f:
+                f.write(f"{int(time.time())}\t{a.query}\n")
+        except OSError:
+            pass
         return 2
     for sc, s, hits in results[:a.top]:
         slash = ' [slash-only]' if s['slash_only'] else ''

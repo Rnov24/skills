@@ -1,5 +1,24 @@
 [
  {
+  "name": "adapt",
+  "phase": "meta",
+  "description": "The suite's adaptation loop — turn observed failures and repeated friction from real runs into permanent, evidence-backed changes to the suite itself. Use after retros, when review findings escape a gate, when the finder misses, or when absorbed skills need promotion.",
+  "keywords": [
+   "adapt",
+   "adaptation",
+   "adaptasi",
+   "evolve",
+   "self-improvement",
+   "improve suite",
+   "belajar dari run",
+   "routing miss",
+   "wheel",
+   "mahoraga"
+  ],
+  "slash_only": false,
+  "path": "skills/adapt/SKILL.md"
+ },
+ {
   "name": "brief",
   "phase": "discover",
   "description": "Turn a raw request into an approved problem brief. Use when a request is bigger than a one-line fix or its real problem is unstated — before research, PRD, or any design work.",

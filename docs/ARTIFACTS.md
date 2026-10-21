@@ -159,3 +159,12 @@ and the gate that accepts it.
   Location: `docs/audit/absorbed/<date>-<repo>.md`.
 - Gate: human approves the verdict summary and the diff before any absorbed
   unit is committed.
+
+### ADAPTATIONS.md (the wheel)
+- Trigger: a signal the `adapt` skill recognises — an escape, a rework hot
+  spot, a finder miss, a repeated human correction, a recurring ruling, or
+  a gluttony absorption awaiting promotion.
+- Owner: `adapt`. Template: `templates/adaptation.md`.
+  Location: `docs/ADAPTATIONS.md` of the suite itself.
+- Gate: human approves each candidate before it is applied; rejected and
+  reverted entries stay in the log with their reasons.
