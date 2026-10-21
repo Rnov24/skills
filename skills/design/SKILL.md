@@ -63,6 +63,26 @@ two, unresolved disagreements go to the human with both positions in one
 paragraph each. A council that cannot stop is a meeting, and meetings are
 what this suite exists to replace.
 
+## References (load on demand)
+
+This skill ships a reference shelf. Load a file when the work touches it;
+never load all four to feel prepared.
+
+- `references/taste-core.md` — the single anti-slop rulebook, every rule a
+  checkbox a reviewer can judge. Load when writing or amending DESIGN.md,
+  producing keyframes, or judging the craft axis of a review.
+- `references/ux-heuristics.md` — checkable UX rules for navigation, forms,
+  system states, lists, touch, and the accessibility floor. Load when
+  writing user flows or reviewing built screens for usability findings.
+- `references/style-directions.md` — condensed direction data: choosing a
+  direction by product type and persona, palette construction, font
+  pairings, and motion patterns. Load when a direction is being chosen or
+  DESIGN.md tokens are being fixed. The full searchable upstream databases
+  stay in the ui-ux-pro-max skill; this file says when to go there.
+- `references/review-rubric.md` — the council's rubric: axes, per-axis
+  checks, severity vocabulary, and the deterministic checks that outrank
+  taste arguments. Load before any design review.
+
 ## Anti-patterns
 
 - Starting implementation and "designing in code" for a new direction.

@@ -77,3 +77,12 @@ Writing-craft skills, teaching skills, exercise scaffolding, marketing and
 social content production, competition-specific tooling, and tool-locked
 setup skills (one vendor's hooks, one framework's test migrator) were dropped
 or left as standalone tools. A suite that routes everything routes nothing.
+
+## v1.4.0 note — design references
+
+The design skill now carries a distilled reference shelf
+(`skills/design/references/`): a checkable taste core and review rubric from
+the impeccable lineage, and UX heuristics plus condensed direction, palette,
+typography, and motion data from ui-ux-pro-max (MIT). The full upstream
+databases were deliberately not vendored; the reference file records when to
+consult them upstream instead.
