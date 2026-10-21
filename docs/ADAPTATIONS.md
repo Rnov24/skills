@@ -9,6 +9,7 @@ adaptations stay in the log. The wheel remembers.
 |---|---|---|---|---|
 | A-001 | 2026-10-21 | Suite was static after shipping; learning lived only in retros of other projects | Added the adaptation loop itself (`adapt` skill, this log, staged absorption in gluttony, finder-miss logging) | ADAPTED (v1.3.0) |
 | A-002 | 2026-10-21 | Gluttony run on Nutlope/hallmark: suite design layer lacked a pattern library, a copy reference, mechanical slop gates, and any design-extraction verb | Absorbed hallmark's macrostructure + pruned component libraries, slop gates, state/motion canon, OKLCH/responsive foundations, token exports, copy reference, and the study skill (audit: docs/audit/absorbed/2026-10-21-hallmark.md) | EXPOSED (v1.5.0, pending promotion by adapt after a proving run) |
+| A-003 | 2026-10-21 | Gluttony run on NTCoding/claude-skillz (data-visualization): the suite had no chart discipline at all while the owner's work is full of dashboards and research figures | Absorbed as new `data-viz` skill, fully rewritten (source repo has no licence, so mechanisms only, no text) with DESIGN.md token rule and accessibility gate added (audit: docs/audit/absorbed/2026-10-21-claude-skillz-dataviz.md) | EXPOSED (v1.6.0, pending promotion by adapt after a proving run) |
 
 Full candidate records are appended below the table as they are filed.
 

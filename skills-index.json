@@ -37,6 +37,26 @@
   "path": "skills/brief/SKILL.md"
  },
  {
+  "name": "data-viz",
+  "phase": "design",
+  "description": "Design and build data visualizations that tell the truth — chart selection by question and perceptual accuracy, rendering technology by scale, established layout algorithms, and chart accessibility. Use for charts, graphs, dashboards, plots, and any data presentation surface.",
+  "keywords": [
+   "data-viz",
+   "chart",
+   "grafik",
+   "dashboard",
+   "visualisasi data",
+   "plot",
+   "diagram",
+   "sankey",
+   "heatmap",
+   "graph",
+   "statistik"
+  ],
+  "slash_only": false,
+  "path": "skills/data-viz/SKILL.md"
+ },
+ {
   "name": "debug",
   "phase": "build",
   "description": "Diagnose bugs and performance regressions with a red-capable feedback loop before any theory. Use when something fails, breaks, or regresses — and when fixes have already failed once.",
