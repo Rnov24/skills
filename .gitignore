@@ -1,0 +1,4 @@
+# working state of runs, not suite content
+.work/
+*.log
+.DS_Store
