@@ -27,3 +27,22 @@
 
 ## Accessibility floor
 < Contrast, target sizes, keyboard, reduced motion. >
+
+## Exports
+The tokens above are the single source of truth. Tooling consumes
+translations of them, never parallel definitions: keep one tokens file
+(CSS custom properties on `:root`, with dark variants redefined under a
+`.dark` or `[data-theme="dark"]` block), and generate from it a Tailwind
+v4 `@theme` block, a DTCG `tokens.json`, and shadcn CSS variables.
+< Which translations this project actually ships, and where each lives. >
+When an export is generated into the project, it merges into the
+existing entry stylesheet rather than overwriting it. If a generated
+translation and this file disagree, this file wins and the translation
+is regenerated. A design refresh updates this section and nothing else.
+
+## Variants
+< A page or component whose treatment should differ from the system
+  above is recorded here as an amendment, naming the variant, where it
+  applies, and which tokens or treatments change — never as per-page
+  token overrides inside the component itself. A variant that becomes
+  the default is promoted into the sections above and closed here. >

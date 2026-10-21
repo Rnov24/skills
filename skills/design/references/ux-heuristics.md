@@ -129,3 +129,130 @@ skipped.
 - [ ] The page works at 400% zoom and with text spacing increased, without
   loss of content or function (reflow, no two-dimensional scrolling for
   reading content).
+
+## The eight-state contract
+
+Every interactive element has eight states. Styling two of them (default
+and hover) is where generated interfaces break, and in component-scope
+work this contract is mandatory rather than advisory. An element missing
+any state is unfinished.
+
+| State | When | Treatment |
+|---|---|---|
+| Default | At rest | Base styling |
+| Hover | Pointer over, inside `@media (hover: hover)` only | One small shift: colour, 1px translate, or border |
+| Focus | Keyboard or programmatic focus | Visible ring via `:focus-visible`, never animated in |
+| Active | During the press | Pressed in: darker, or `translateY(1px)` |
+| Disabled | Not interactive | Three channels at once (below) |
+| Loading | Processing | Inline spinner or progress; the label stays readable |
+| Error | Failed validation or action | Colour plus glyph plus message, `aria-invalid="true"` |
+| Success | Completed | Quiet confirmation; auto-clears when the user edits again |
+
+- [ ] Disabled is signalled on three channels, never opacity alone:
+  reduced opacity (~0.55), `cursor: not-allowed`, and the native
+  `disabled` attribute or `aria-disabled="true"`.
+- [ ] State is never carried by colour alone; error and success pair
+  their colour with a glyph, a label, or a pattern.
+- [ ] Hover styles live inside `@media (hover: hover)` so touch users
+  never inherit stuck hover states.
+
+## Input geometry
+
+Inputs are where almost-right interfaces lose. These rules are
+mechanical: each one either holds in the CSS or it does not.
+
+- [ ] **Border width is constant across every state.** Default, hover,
+  focus, error, and disabled all keep the same `border-width`. State
+  changes go to `border-color`, `background-color`, `outline`, or
+  `box-shadow` — never to width, because a width change shifts layout on
+  focus and the eye reads it as the page being untuned.
+- [ ] **The focus outline slot is reserved at rest.** Inputs carry
+  `outline: 2px solid transparent` with `outline-offset: 1px` from the
+  start, so the focus ring appears inside geometry that already exists.
+  The ring itself is built from `outline`, never from `border`.
+- [ ] **The right-edge glyph slot is reserved.** Every input holds ~24px
+  at its right edge for a clear button, an error or success glyph, or a
+  loading spinner. An unused slot sits empty; content never reflows when
+  a glyph appears.
+- [ ] **Input height equals button height** on the same form. One base
+  height, with 44px as the floor. A 38px input beside a 44px button is
+  the most common form-tuning failure there is.
+- [ ] **The helper-text slot has a stable height** (`min-height: 1lh`)
+  even when empty, and the error message replaces the helper text in the
+  same slot at the same size. An error appearing must not push the page
+  down, and helper and error never show at once.
+- [ ] Vertical padding is derived, not magic: `(height − line-height) / 2`
+  for the input's base height.
+- [ ] Never transition `border-width`, `padding`, or `height` between
+  states, and never fade or scale the focus ring in.
+- [ ] Textarea keeps the same geometry, plus `resize: vertical` and a
+  `min-height` around 6rem. A custom select is built only when native
+  keyboard and screen-reader behaviour can be fully replicated;
+  otherwise the native control is styled at the wrapper.
+- [ ] During async validation the field stays editable with its spinner
+  in the glyph slot; the submit control carries the disabled state, not
+  the field.
+
+## Timing and easing canon
+
+Microinteraction timing is a token decision, not a per-screen invention.
+Pick durations from these buckets and do not invent new ones.
+
+| Bucket | Use for |
+|---|---|
+| 80–120ms | Instant feedback: press ticks, checkbox state, keystroke echo |
+| 150–200ms | Hover transitions, single-property fades, tooltip appearance after its delay |
+| 250–300ms | Modal, dropdown, and sheet opening; tab content crossfade; validation glyph |
+| 400–500ms | Toast entry, page-load reveal, accordion, multi-property transitions |
+| 0ms | Focus appearance, keyboard navigation, error appearance — many things should not animate at all |
+
+- Exit durations run at 60–75% of the matching entrance (a 300ms enter
+  pairs with a ~200ms exit), never the reverse.
+- Three easing tokens cover nearly all UI motion: `--ease-out`
+  `cubic-bezier(0.16, 1, 0.3, 1)` for entering elements, `--ease-in`
+  `cubic-bezier(0.7, 0, 0.84, 0)` for exiting elements, `--ease-in-out`
+  `cubic-bezier(0.65, 0, 0.35, 1)` for state toggles. A standard
+  alternative, `cubic-bezier(0.4, 0, 0.2, 1)`, may replace the set where
+  a platform's own motion language already uses it.
+- Banned curves: the browser-default `ease` (flat, uncrafted), `linear`
+  except for progress bars and continuous loaders, and any overshoot
+  above ~110% on UI state changes. Spring physics and overshoot belong
+  to physical interactions only: drag release, swipe dismiss, picker
+  snap.
+- At most three distinct animation primitives run on one page. When in
+  doubt, cut: ask what breaks if the animation were instant, and keep
+  only the ones where the answer is information.
+
+## Named microinteraction tells
+
+Review vocabulary for the motion failures generated code repeats. Any one
+of these in a judged screen is a finding; name it in the review rather
+than describing it vaguely.
+
+- **transition-all** — every property animates, including ones that must
+  be instant; properties are never specified.
+- **Universal hover scale** — every card lifts the same way on hover,
+  with no shadow change, no easing, and no purpose.
+- **Bouncy overshoot on UI** — springy easings on buttons, modals, and
+  tooltips; a 2018 throwback reserved for physical drag release only.
+- **Stacked hover effects** — one element translating, scaling,
+  shadowing, colour-shifting, and rotating in the same hover.
+- **Animated hover gradients** — the background slides through colour
+  space on hover; expensive and communicates nothing.
+- **Cursor-follower dots** — a trailing dot lagging behind the pointer.
+- **Parallax on scroll** — layers drifting at different speeds; a
+  vestibular trigger that rarely serves the content.
+- **Layout-property transitions** — `width`, `height`, `margin`, or
+  `padding` animated frame by frame through reflow.
+- **Celebratory success toasts** — "Done!" announced for an effect the
+  user is already looking at; success should be silent.
+- **Confirmation dialogs for reversible actions** — a modal asking
+  permission to do what an Undo toast would cover better.
+- **Spinner flash** — a spinner shown for under a frame's notice; delay
+  showing it ~150ms, or keep it visible at least ~300ms once shown.
+- **Equal tooltip delays** — hover and focus sharing one delay; hover
+  waits 800–1000ms, focus is instant, because the intents differ.
+- **Toasts that shift layout** — a new toast pushing content down and
+  the dismissed one letting it spring back; toasts stack at a corner.
+- **Universal scroll fade-up** — every section fading in on intersection
+  until the page never settles; one orchestrated entrance is the limit.

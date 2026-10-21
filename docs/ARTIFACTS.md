@@ -84,6 +84,16 @@ and the gate that accepts it.
 - Gate: human approves the keyframe before implementation starts. Aesthetic
   bets are never committed unapproved.
 
+### DESIGN-STUDY.md
+- Trigger: a brief points at an existing design ("like this site", a
+  screenshot, a reference URL) and its system needs extracting before
+  design work starts.
+- Owner: `study`. Template: `templates/design-study.md`.
+  Location: `docs/design/studies/`.
+- Consumers: design (read alongside the brief; the brief wins conflicts).
+- Gate: URL-mode studies pass the fetch guards and, before emission, the
+  attestation gate in the study skill; refused sources produce no artifact.
+
 ## Technical artifacts
 
 ### DOMAIN.md

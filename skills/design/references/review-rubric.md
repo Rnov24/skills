@@ -128,3 +128,32 @@ opinion.
   not jump when images, badges, or data arrive).
 - [ ] Placeholder scan: no lorem ipsum, no grey-box imagery, no invented
   numbers presented as real anywhere in the judged artifact.
+- [ ] Stamp-lies check: every claim the output makes about itself — header
+  stamps naming the macrostructure, theme, or gate scores; metadata;
+  stated token usage; a preview block's declared sections — is compared
+  against the artifact itself. A claim that disagrees with what was
+  actually built is a Critical finding, because every later reader trusts
+  the stamp instead of re-checking the work.
+- [ ] DESIGN.md drift check: the artifact's rendered tokens and treatments
+  are diffed against DESIGN.md as it currently stands, value by value.
+  Drift is listed explicitly; unrecorded drift is a Required finding, and
+  deliberate drift without a Variants amendment is treated as drift, not
+  initiative.
+
+## Named-tell findings
+
+Craft findings name the tell, not the reviewer's mood. The named tells
+live in taste-core.md (the pre-ship gates) and ux-heuristics.md (the
+microinteraction tells); a finding cites the tell by its name so the
+author can find the rule, the fix, and the reason without a second
+conversation. The format is one line per finding:
+
+```
+[severity] Tell name — file:line or screen region. Why it fails here. → The fix.
+```
+
+Example: `[Required] transition-all — styles.css:142. The card's focus
+ring animates in with everything else. → Name the two properties that
+change on hover; focus stays instant.` A finding that cannot name its
+tell, point at its evidence, and state its fix is an opinion, and it is
+recorded as FYI at most.

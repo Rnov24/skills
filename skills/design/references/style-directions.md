@@ -154,6 +154,126 @@ pattern ships without its cleanup (listeners removed, looping tweens
 killed on unmount, off-screen animation paused), because leaked motion is
 a defect that only appears in long sessions.
 
+## Colour construction in OKLCH
+
+Build the palette in OKLCH, where lightness is perceptually honest and
+tints behave. Start from one anchor hue; every role takes its range from
+the anchor, and neutrals lean toward it.
+
+- **Paper.** Light surfaces sit at lightness 96–98% with chroma
+  0.005–0.015 toward the anchor. Dark surfaces sit at 12–16% with the
+  same low chroma. Never a pure extreme at either end.
+- **Ink.** Primary text at 16–22% lightness on light grounds, 92–96% on
+  dark grounds, chroma 0.005–0.015 toward the anchor.
+- **Neutrals.** Five to nine steps between paper and ink, each carrying
+  the anchor's chroma tint at 0.005–0.015. Zero-chroma grey is flat and
+  synthetic; the only exception is a direction that declares itself
+  strictly monochrome.
+- **Accent.** One saturated colour, chroma clamped to 0.12–0.20 (0.22 is
+  the ceiling for deliberately loud directions), occupying roughly 3% or
+  less of any viewport. It marks links, active states, highlights, and
+  focus rings; it is not a fill. Alpha transparency modifies overlays
+  and shadows; it never defines a palette entry.
+- **Dark mode adjustments.** Paper rises through lightness steps for
+  elevation (~3 points per level) rather than shadows; body weight drops
+  ~50 units to compensate for light text on dark; the accent loses
+  0.02–0.04 chroma and gains 5–10 points of lightness. The anchor hue
+  never changes between modes — only lightness and chroma move.
+
+## The responsive hard floor
+
+A direction is not finished until it survives small screens. The floor
+is flawless rendering at 320, 375, 414, and 768 CSS-pixel widths — the
+mechanical checks behind it (horizontal clipping, grid tracks, sticky
+collisions) run as gates in taste-core.md.
+
+- Base styles are written for the smallest viewport; `min-width` queries
+  add as the layout grows. Desktop-first `max-width` structure fails.
+- Breakpoints are content-driven and expressed in rem so they respect the
+  user's font size. When defaults are needed before content exists,
+  40rem, 60rem, and 90rem are the starting set, replaced by content
+  breakpoints as soon as the layout shows where it breaks.
+- Full-height layouts use `dvh` (or `svh`/`lvh` where the distinction
+  matters), never `vh`, so mobile browser chrome cannot clip content
+  designed against a taller viewport. `width: 100vw` is banned for the
+  same reason; use 100% inside container padding.
+- Notched devices are respected with `viewport-fit=cover` and safe-area
+  insets in the padding. Capability is detected with `pointer` and
+  `hover` media queries, never width or user-agent sniffing.
+- Layouts reserve 30–40% extra horizontal room for text expansion in
+  translation, and use logical properties (`margin-inline-start`,
+  `padding-block`) so right-to-left comes free.
+
+## Font catalogue discipline
+
+The pairing table above gives characters; this is the discipline for
+choosing faces inside a character without falling back to the
+distribution defaults.
+
+- **The 2+1 rule.** At most three families on a page: one display, one
+  body, and at most one outlier for a single typographic register
+  (wordmark, hero stat, pull quote). Two families is the canonical
+  answer; the outlier appears in at most two slots, and a mono used
+  anywhere outside code blocks counts as a family.
+- **Banned defaults.** The faces every generator reaches for — Inter,
+  Roboto, Open Sans, Lato, Poppins, Montserrat as display; Georgia or
+  Playfair as an unexamined body serif; the bare system stack as the
+  only stack — are not forbidden, but they are never a default. Using
+  one requires a deliberate reason recorded in DESIGN.md; reaching for
+  one because it came to mind first is the failure.
+- **Source order.** Free faces first, and they are first-rate rather
+  than consolation: Google Fonts, then Fontshare. Foundry-licensed faces
+  (the paid upgrade tier) are named only when the user has confirmed the
+  licence or explicitly asked for a named foundry voice; an unlicensed
+  paid face in code falls back to a system default and ships broken.
+- **The method.** Fix the tone first (from the genre, below), take the
+  free baseline pairing for that tone, and treat the paid row as a cited
+  alternative rather than a target. Commit to weight contrast: heading and
+  body weights differ by at least 300 units, because 400 against 600
+  reads as a settings default, not a decision.
+- **Hero sizing follows the copy.** Count the headline's characters:
+  up to ~20 may take the full display size (a single word of twelve
+  characters or fewer may grow further); 21–50 is the working range;
+  51–90 steps down one size; past 90, rewrite the headline shorter
+  instead of shrinking it. The display cap is 5.5rem, 6rem absolute even
+  for poster-like directions.
+- Never synthesise a weight or an italic; load the file the design uses.
+  Set `font-display: swap` and match fallback metrics so the swap does
+  not shift the layout.
+
+## Genre routing
+
+Product type picks a direction in the tables above, but genre is the
+layer between the brief and the direction, and it is settled first.
+Genre scopes which directions are in play, which slop gates bite
+hardest, and which voice the copy takes.
+
+- **Editorial** is the silent default: content-led pages, portfolios,
+  manifestos, considered marketing. Nothing needs to signal it.
+- **Modern-minimal** fires on SaaS, enterprise, API, platform, developer
+  tool, B2B signals: restrained surfaces, one accent, conviction through
+  whitespace rather than absence of choice.
+- **Atmospheric** fires on AI-creative, generative, music, video,
+  voice, and dark-mode signals: dark canvas, warm highlights, expressive
+  display.
+- **Playful** fires on consumer, family, community, onboarding, and
+  friendly signals: softer surfaces, friendlier motion, a warmer voice.
+
+When two non-default genres both fire, ask once which is closer; when
+none fires, proceed as editorial without mentioning the layer. Each
+project's DESIGN.md records its genre with two short lists: what the
+genre allows here, and what it disallows here. Those lists are how the
+genre-scoped gates in taste-core.md (the italic-display decision, bloom
+footprints, monochrome exceptions) get judged for that project instead
+of argued per screen.
+
+One escape hatch exists. When a brief carries a specific brand colour, a
+multi-attribute aesthetic no known direction carries, or an explicit
+request for custom treatment, the fork fires: construct a bespoke palette
+and pairing under the construction rules above instead of picking a
+catalogue direction. The fork is asked about once, silence defaults to
+the catalogue, and bespoke never relaxes the gates.
+
 ## Sources and the upstream databases
 
 This file distils the design data carried by the ui-ux-pro-max skill

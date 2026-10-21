@@ -148,3 +148,124 @@ rules are these.
 - [ ] The undrawn surfaces still carry the design: text selection colour,
   caret, scrollbars, focus rings, and link underlines are themed from the
   palette. Browser defaults left untouched on a branded page fail.
+
+## Pre-ship slop gates
+
+The sections above state the craft rules. This section is the mechanical
+sweep that runs after them, before any design output ships: checks a
+reviewer can settle from the code and the rendered page without arguing
+taste. Several are stricter restatements of failures named upstream in
+Hallmark's slop test; where a rule above already covers a failure, the
+gate is not repeated here. Run the six-axis self-critique first (the
+review rubric carries it): any axis under 3 sends the output back for a
+revision pass before the gate sweep begins.
+
+### Motion mechanics
+
+- [ ] No `transition-all` or `transition: all` anywhere; every transition
+  names its properties.
+- [ ] No uniform hover scale (`hover:scale-105` and kin) applied across
+  unrelated elements, and no element carries more than one hover effect
+  at a time (translate, scale, shadow, colour, rotate — pick one).
+- [ ] No animation runs on layout properties (`width`, `height`, `top`,
+  `left`, `margin`, `padding`); movement uses transform, opacity, or a
+  `grid-template-rows` fraction.
+- [ ] The focus ring never transitions into existence. It appears
+  instantly, in full, the moment focus lands.
+- [ ] No celebratory success toast for an action whose effect the user
+  can already see. Toasts are for failures and invisible effects.
+- [ ] Tooltip timing separates intent: hover delay 800–1000ms, focus
+  delay 0ms. Equal delays fail.
+- [ ] Auto-rotating content pauses on hover and on focus, without
+  exception.
+
+### Colour mechanics
+
+- [ ] No neutral is zero-chroma (`oklch(... 0 ...)`). Neutrals are tinted
+  toward the anchor hue at 0.005 chroma or more. A direction whose
+  DESIGN.md declares a strict monochrome system is the one exception.
+- [ ] The accent covers at most ~5% of any single viewport by area.
+  A declared atmospheric direction may run accent-tinted blooms to ~20%.
+- [ ] No pure `#000` or `#fff` serves as a base surface. A modern-minimal
+  direction may declare a pure-white paper explicitly in DESIGN.md.
+- [ ] Contrast is computed per rendered pair, not assumed: where the
+  OKLCH lightness gap between text and background is under 50 points,
+  the pair is flagged and confirmed with a full APCA or WCAG
+  calculation before shipping.
+- [ ] Every accent fill that carries text has its paired on-accent token
+  defined and applied. Text within ~5 lightness points and ~0.05 chroma
+  of its own fill fails outright — that is the black-on-black bug.
+
+### Layout safety
+
+- [ ] `overflow-x: clip` is set on both `html` and `body` — `clip`, not
+  `hidden`, because `clip` preserves sticky and fixed descendants.
+- [ ] Image-bearing grid tracks use `minmax(0, 1fr)`, never a bare `1fr`;
+  a bare track sizes to the image's intrinsic width and pushes the page
+  past the viewport.
+- [ ] Display headings carry `overflow-wrap: anywhere` and `min-width: 0`,
+  so a long compound word wraps inside the word instead of off screen.
+- [ ] All-caps display type keeps `line-height` at 1.0 or above
+  (1.02–1.08 reads best); below 1.0 the cap-tops of one line collide
+  with the baseline of the line above when the heading wraps.
+- [ ] Any rule that sets a dark background sets the text colour in the
+  same rule. A flipped surface whose children inherit the old ink fails.
+- [ ] A decorative band on text (highlighter, underline, stroke) is
+  positioned on purpose: a highlighter sits behind the x-height, an
+  underline is 1–2px and offset 1–2px from the baseline, never a 5px bar.
+- [ ] Flex bars mixing elements of different intrinsic heights (nav,
+  toolbar, CTA row) declare `align-items: center` and `line-height: 1`
+  on the sized items; inherited stretch makes siblings uneven.
+- [ ] Only one element sticks at `top: 0`. A second sticky element
+  offsets by the banner-height token and carries a lower z-index than
+  the page nav, or the two collide on scroll.
+- [ ] Decorative SVG, canvas, and CSS art carry `aria-hidden="true"` or
+  an accessible name. Unlabelled decoration is an accessibility finding.
+- [ ] The hero fits the fold: bottom padding is at least 1.3× the top
+  padding, and at 1280×800 the eyebrow, headline, lede, and primary CTA
+  are all visible without scrolling.
+
+### Structure and chrome
+
+- [ ] The eyebrow-and-heading wrapper resolves to a single column,
+  always. A label sitting in a side column beside its heading (the
+  tag-left, header-right head) is banned at every width, including when
+  a reference build being matched ships it; the rules win over parity.
+- [ ] The nav is a routed pick, not the default bar (wordmark left, four
+  or five inline links, button right, hairline under, full width). The
+  default bar ships only when the page genuinely has two destinations.
+- [ ] The footer is a routed pick, not the default index (four link
+  columns, social-icon row, small copyright line). The default index is
+  reserved for a genuine docs root or hub.
+- [ ] No decoration without a semantic anchor: every ornament in the
+  hero names something (an edition, a year, a command the user would
+  type, a state that responds to interaction). A floating cursor, a
+  stray numeral, a chip with no rationale fails.
+- [ ] No re-drawn UI chrome: no hand-built browser bars, phone frames,
+  code-window frames, or IDE chrome in HTML, CSS, or SVG. Show a real
+  screenshot in a figure, or let the content stand without a frame.
+- [ ] The same component archetype never repeats in a project with the
+  same variation-knob values. A repeat records at least one knob delta.
+- [ ] Hero media discipline holds: no sound-on autoplay, a poster on
+  every hero video, no lazy loading on the largest-contentful element,
+  and no Lottie where hand-built SVG or CSS reaches the same motion.
+
+### Type and token discipline
+
+- [ ] Italic display type (headings, wordmarks, stat figures, an italic
+  emphasis word inside an upright headline) is absent by default. The
+  one exception is a direction whose genre is editorial and whose
+  DESIGN.md explicitly chooses italic display as the project's voice;
+  there it is a recorded decision, not a drift. Body-copy emphasis in
+  running paragraphs is always allowed.
+- [ ] An outlier face (the third family, where one exists) appears in at
+  most two slots on the page — wordmark plus hero stat is the canonical
+  pair. A third slot means the outlier has become a body face; collapse
+  it back.
+- [ ] No colour or font value appears in a component that does not come
+  from the token block. A value the design needs is lifted into the
+  tokens as a named variable first, then referenced; inline values are
+  mid-render improvisation and fail.
+- [ ] Placeholder names and product clichés (Jane Doe, John Smith, Acme,
+  Nexus, Seamless, Unleash) appear nowhere in judged output; use names
+  plausible for the product's actual audience.

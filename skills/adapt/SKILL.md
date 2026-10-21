@@ -89,6 +89,29 @@ ruling. A mechanism that sits at EXPOSED through five runs without being
 used is a candidate for removal — the suite absorbed it for a need that
 turned out not to exist, and carrying it is not free.
 
+## Proving runs for design mechanisms
+
+Design mechanisms are hard to promote on testimony: a run "felt" better
+proves nothing. A design adaptation, and any EXPOSED design absorption
+seeking promotion, is proven by a **brief-to-output pair** filed with the
+candidate in `docs/ADAPTATIONS.md`:
+
+- **The brief, verbatim**, with the reasoning trace preserved beside it —
+  pre-flight findings, the rotation pick and its stated reason, the
+  preview block — so a reviewer can see what the mechanism was responding
+  to, not just what it produced.
+- **The output**: the artifact itself or a durable link to it, not a
+  description of it.
+- **The findings writeback**: what failed, which rule the failure became
+  (or which existing rule it confirmed), and the review verdict the pair
+  received. A pair with no findings is suspicious, not clean.
+
+Choose the proving briefs as a contrast set: they should stress the
+mechanism's failure modes, not flatter it. And pairs rot — a brief-to-
+output pair proves the mechanism as the suite stood when it ran; after
+the relevant skill changes materially, the pair is retired and a fresh
+run proves the mechanism again, or the promotion lapses back to EXPOSED.
+
 ## Anti-patterns
 
 - Adapting to a single loud incident with no second exposure.
