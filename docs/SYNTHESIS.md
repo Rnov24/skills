@@ -9,10 +9,10 @@ the design record of what the audit produced.
 
 ## Verdict totals
 
-Across the five batches, 114 distinct skills were audited: 30 adopted in
-substance, 51 adapted, 13 merged into a stronger neighbour, 14 dropped, and a
-few marked out of scope for a development, design, and product suite
-(marketing video and social content skills among them).
+Across the five batches, 124 distinct skills were audited: 36 adopted in
+substance, 55 adapted, 13 merged into a stronger neighbour, 17 dropped, and 3
+marked out of scope for a development, design, and product suite (marketing
+video and social content skills among them).
 
 ## What each predecessor did best — and where it stopped
 
