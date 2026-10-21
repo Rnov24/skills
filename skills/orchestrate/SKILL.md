@@ -1,4 +1,6 @@
 ---
+phase: control
+keywords: delegate, delegasi, subagent, worker, parallel, packet, dispatch, orkestrasi, agy, assign task
 name: orchestrate
 description: The orchestrator protocol for the main agent. Use whenever work is delegated to subagents or external worker agents, run in parallel, or accepted from a worker — packets, report schema, dual review, rework loop, escalation.
 ---

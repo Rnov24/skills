@@ -1,4 +1,6 @@
 ---
+phase: design
+keywords: erd, database, schema, skema, api, endpoint, domain model, table, tabel, relasi, data model
 name: model
 description: Model the domain, data, and interfaces — DOMAIN.md, ERD.md, and API.md as first-class artifacts. Use when a project has entities with lifecycles, persisted data, schema changes, or a boundary other systems consume.
 ---

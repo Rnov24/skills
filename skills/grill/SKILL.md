@@ -1,4 +1,6 @@
 ---
+phase: discover
+keywords: grill, decisions, keputusan, stress test, uji rencana, assumptions, asumsi, trade-off, interview
 name: grill
 description: Stress-test a plan, design, or decision tree one question at a time until every branch resolves. Use when a plan has unexplored decisions, hidden assumptions, or trade-offs nobody has named — before spec or PRD work hardens it.
 ---

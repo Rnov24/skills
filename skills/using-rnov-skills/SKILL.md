@@ -1,4 +1,6 @@
 ---
+phase: meta
+keywords: router, routing, start, mulai, which skill, cari skill, find skill, bingung
 name: using-rnov-skills
 description: The router for the rnov24 suite. Use at the start of any product, design, or engineering task to decide which flow applies, which artifacts the task needs, and which skill runs next.
 ---
@@ -56,3 +58,48 @@ Answer four questions:
 - Letting the size of the request set the process instead of its risk.
 - Treating this router as paperwork: the classification is three lines, the
   cost of skipping it is a wrong workflow for a week.
+
+## Finding the right skill, at any suite size
+
+This router must keep working when the suite holds hundreds of skills, so it
+never works from memory or from this file's flow lists alone. The lookup
+protocol is:
+
+1. **Index first.** The index is generated, not remembered: read
+   `docs/SKILL_INDEX.md` for a human-scale scan, or run
+   `python3 scripts/find_skill.py "<the task in a few words>"` and take its
+   ranked candidates. The script matches skill names, then keyword phrases,
+   then keyword tokens, then descriptions, and prints the terms that matched
+   so the choice can be defended.
+2. **Open one skill.** Load only the chosen skill's SKILL.md (progressive
+   disclosure). Opening five skills "to be safe" burns the context the work
+   itself needs and blurs which contract governs.
+3. **Check the phase.** If the candidate's phase is later than the work the
+   artifacts support (a `tickets` hit with no spec), the real answer is the
+   earlier phase. Route to the earliest phase whose inputs exist.
+4. **Regenerate on drift.** If the index disagrees with the `skills/`
+   folders, trust the folders, run `scripts/generate_index.py`, and note the
+   drift in the ledger. A stale index is a bug, not a source.
+
+### Disambiguation for the pairs everyone confuses
+
+- `brief` vs `grill`: the problem itself is unclear → brief. The problem is
+  clear but decisions inside the plan are open → grill.
+- `define-product` vs `spec`: behaviour owed to users (stories, acceptance)
+  → define-product. The technical contract for building it → spec.
+- `review` vs `verify`: judging work against its contract → review. Running
+  the commands that prove a claim → verify. Most finishes need both, review
+  first.
+- `implement` vs `orchestrate`: doing one bounded unit → implement. Splitting,
+  dispatching, accepting → orchestrate.
+- `design` vs `model`: what the user sees and does → design. What the system
+  remembers and exposes → model.
+
+### The no-match rule
+
+If the finder returns NO_CONFIDENT_MATCH, or the best candidate's phase and
+triggers plainly do not fit, say so and stop. A task with no fitting skill is
+handled carefully by the main agent directly, or becomes a proposal: a new
+skill through the suite's own process, or an absorption candidate for
+`/gluttony`. Forcing the nearest skill onto a task it does not govern is how
+workflows earn their reputation for bureaucracy.

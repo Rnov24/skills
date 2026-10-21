@@ -1,4 +1,6 @@
 ---
+phase: discover
+keywords: brief, problem, masalah, kebutuhan, request, idea, ide, mau bikin, unclear requirement
 name: brief
 description: Turn a raw request into an approved problem brief. Use when a request is bigger than a one-line fix or its real problem is unstated — before research, PRD, or any design work.
 ---

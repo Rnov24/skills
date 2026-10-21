@@ -1,4 +1,6 @@
 ---
+phase: discover
+keywords: research, riset, cari tahu, documentation, dokumentasi, sources, fakta, compare, bandingkan, prior art
 name: research
 description: Investigate a question against primary sources and capture the findings as a durable file. Use when a decision depends on facts the team does not hold — library capabilities, API behaviour, standards, prior art.
 ---

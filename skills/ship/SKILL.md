@@ -1,4 +1,6 @@
 ---
+phase: assure
+keywords: ship, deploy, release, rilis, merge, pull request, production, launch
 name: ship
 description: Ship finished work — launch readiness, git discipline, pull requests, and the human grant for irreversible actions. Use when verified work is ready to merge, release, or deploy.
 ---

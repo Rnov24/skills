@@ -1,4 +1,6 @@
 ---
+phase: assure
+keywords: verify, verifikasi, evidence, bukti, tests pass, done check, cek hasil
 name: verify
 description: Evidence before claims — run the checks fresh and read the output before anything is called done, fixed, or passing. Use at the end of every implement phase and before any completion claim to the human.
 ---

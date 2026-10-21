@@ -1,4 +1,6 @@
 ---
+phase: control
+keywords: setup, repo setup, initialize, inisialisasi, constraints, tracker, scaffold, first time, repo baru
 name: setup-workspace
 description: One-time setup of a repository for the rnov24 workflow. Use when a repo will be worked on with this suite for the first time — artifact layout, tracker conventions, glossary, and the CONSTRAINTS.md quality floor.
 ---

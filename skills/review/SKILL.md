@@ -1,4 +1,6 @@
 ---
+phase: assure
+keywords: review, code review, periksa, audit, quality check, standar, findings
 name: review
 description: Review work against its contract — two-axis review for code and artifacts, blind doubt review for risky decisions, verdicts recorded per acceptance criterion. Use before accepting delegated work, merging, or standing behind a non-trivial decision.
 ---

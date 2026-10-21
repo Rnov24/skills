@@ -83,10 +83,19 @@ written in `docs/ARTIFACTS.md`.
   external skill repository into the suite: full audit, per-skill verdicts,
   adaptation into suite conventions, human gate before anything lands.
 
+## Install
+
+Global installs for Claude Code, Codex, and Antigravity (as an agy plugin)
+via one installer: `python3 scripts/install.py --all`. Details, the safety
+model, and uninstall live in `docs/INSTALL.md`.
+
 ## Repository layout
 
 ```
 skills/<name>/SKILL.md     the skills themselves
+docs/SKILL_INDEX.md        generated index of every skill (name, phase, keywords)
+skills-index.json          the same index, machine-readable, for scripts/find_skill.py
+scripts/                   generate_index.py, find_skill.py, install.py
 templates/                 one template per artifact
 docs/WORKFLOW.md           the phase map, gates, and traceability rules
 docs/ARTIFACTS.md          the artifact registry: triggers, owners, consumers

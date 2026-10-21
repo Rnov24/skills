@@ -1,4 +1,6 @@
 ---
+phase: assure
+keywords: retro, retrospective, evaluasi, postmortem, lessons, pelajaran
 name: retro
 description: Close the loop after a ship, a failure, or a capped loop — record what the artifacts say happened and file each lesson where the next run will read it. Use at the end of every significant run.
 ---

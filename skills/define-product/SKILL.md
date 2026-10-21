@@ -1,4 +1,6 @@
 ---
+phase: define
+keywords: prd, persona, user story, acceptance criteria, requirements, product, produk, mvp, fitur
 name: define-product
 description: Define the product layer — PRD, personas, and user stories with checkable acceptance criteria. Use when a brief is approved and a new product or user-facing feature needs its requirements fixed before design and engineering begin.
 ---

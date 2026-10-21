@@ -1,4 +1,6 @@
 ---
+phase: build
+keywords: bug, error, debugging, gagal, broken, rusak, regression, regresi, slow, lambat, not working
 name: debug
 description: Diagnose bugs and performance regressions with a red-capable feedback loop before any theory. Use when something fails, breaks, or regresses — and when fixes have already failed once.
 ---

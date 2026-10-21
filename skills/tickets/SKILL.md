@@ -1,4 +1,6 @@
 ---
+phase: plan
+keywords: tickets, tiket, task breakdown, pecah tugas, backlog, dependencies, blocking, sprint
 name: tickets
 description: Break a spec into tracer-bullet tickets with blocking edges. Use when a spec is approved and work must be scheduled across sessions or workers — each ticket independently verifiable, the graph computable into a parallel frontier.
 ---

@@ -1,4 +1,6 @@
 ---
+phase: plan
+keywords: spec, specification, spesifikasi, technical plan, rencana teknis
 name: spec
 description: Synthesise the conversation and the upstream artifacts into one executable spec. Use when a feature or change is understood well enough to hand to implementers and needs a single document that settles what will be built.
 ---

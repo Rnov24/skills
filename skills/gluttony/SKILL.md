@@ -1,4 +1,6 @@
 ---
+phase: meta
+keywords: gluttony, absorb, serap skill, add skill, tambah skill, import skill repo, merge skills
 name: gluttony
 description: Absorb an external skill repository into this suite — audit every skill in it, verdict each one, and adapt what survives into suite conventions. Slash-command only; the argument is the repository URL.
 disable-model-invocation: true

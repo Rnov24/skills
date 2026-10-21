@@ -1,4 +1,6 @@
 ---
+phase: build
+keywords: implement, implementasi, coding, build feature, kerjakan, execute ticket, prototype, prototyping
 name: implement
 description: Execute tickets as bounded, test-first, verifiable slices. Use when implementing from a spec and ticket graph, whether as the orchestrator's worker or directly — including prototype work and receiving-review fixes.
 ---

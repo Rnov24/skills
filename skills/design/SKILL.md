@@ -1,4 +1,6 @@
 ---
+phase: design
+keywords: design, desain, ui, ux, userflow, wireframe, keyframe, design system, typography, tampilan, layout
 name: design
 description: The design phase — DESIGN.md constitution, user flows, keyframe approval, component discovery, and bounded council review. Use for any user-facing surface being built, redesigned, or given a new visual direction.
 ---
