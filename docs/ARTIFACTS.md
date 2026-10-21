@@ -152,3 +152,10 @@ and the gate that accepts it.
 - Trigger: a feature ships, a run fails, or a loop hits its cap.
 - Owner: `retro`. Template: `templates/retro.md`.
 - Gate: each lesson names where it is filed so the next run reads it.
+
+### Absorb report
+- Trigger: a `/gluttony` run against an external skill repository.
+- Owner: `gluttony`. Template: `templates/absorb-report.md`.
+  Location: `docs/audit/absorbed/<date>-<repo>.md`.
+- Gate: human approves the verdict summary and the diff before any absorbed
+  unit is committed.

@@ -78,6 +78,11 @@ written in `docs/ARTIFACTS.md`.
 - `retro` — close the loop: what the artifacts say actually happened, and what
   changes in the suite or the workspace.
 
+**Suite maintenance**
+- `gluttony` — slash command, `/gluttony <skill-repo-url>`. Absorbs an
+  external skill repository into the suite: full audit, per-skill verdicts,
+  adaptation into suite conventions, human gate before anything lands.
+
 ## Repository layout
 
 ```
