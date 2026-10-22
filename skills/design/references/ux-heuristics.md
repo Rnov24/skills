@@ -8,6 +8,48 @@ Rules are grouped by the surface they govern; an item that does not apply
 to the screen under review is marked n/a with the reason, never silently
 skipped.
 
+## Choice, grouping, and convention
+
+The point of every screen is the user's goal: design the shortest clear
+path to it, make the next action obvious, and remove anything that does
+not serve that path.
+
+- [ ] **One purpose per screen (Hick).** Each screen has one clear
+  purpose and one dominant decision. Options that are irrelevant or
+  low-priority are removed, deferred, or grouped behind it — the choice
+  count on screen is a design decision, not an accident of the data.
+- [ ] **Recommend, don't dump (Hick).** Where a user may struggle to
+  choose, the interface recommends an option (a default, a "most common"
+  marker, a sensible ordering) instead of presenting an undifferentiated
+  list and leaving the work to them.
+- [ ] **Familiar before novel (Jakob).** Navigation, search, settings,
+  and account controls sit where comparable products put them, and icons
+  and gestures mean what they mean elsewhere. A novel pattern is used
+  only when its advantage over the familiar one can be named in a
+  sentence; novelty without a named advantage fails.
+- [ ] **Spacing signals grouping (Proximity).** Related labels,
+  controls, and information sit closer to each other than to anything
+  unrelated. Relationships are established by spacing first; a border or
+  box is added only when spacing alone cannot carry the grouping.
+- [ ] **Chunk, and carry it forward (Miller).** Long content and long
+  tasks are divided into small, meaningful groups with headings. The
+  user never has to remember information from an earlier screen to
+  complete a later one — the system carries it, prefills it, or repeats
+  it where it is needed.
+- [ ] **Same look, same purpose (Similarity).** Elements with the same
+  appearance do the same kind of thing, everywhere: colour, label, icon,
+  spacing, and state behaviour are consistent per component. The same
+  visual treatment is never reused for a different action, and an
+  established component is reused before a new one is created.
+- [ ] **Connect what belongs together (Uniform Connectedness).**
+  A control is visually connected to the content it affects — shared
+  container, background, line, or state — and unrelated elements are
+  kept visually separate. Connection is deliberate, never decoration.
+- [ ] **Essentials first and last (Serial Position).** In any sequence
+  — navigation, a list, a screen, a flow — the most important item comes
+  first and the final action or takeaway comes last. Low-priority items
+  sit in the middle, never in the two positions people remember.
+
 ## Navigation and wayfinding
 
 - [ ] The user can always tell where they are: the current location is
@@ -47,6 +89,22 @@ skipped.
   attributes let the browser fill what it already knows.
 - [ ] The user never re-enters information the system already holds; prior
   values are prefilled or offered for selection.
+- [ ] **Defaults are safe (Hick).** A preselected value is the safest and
+  most common option, derived from context where context exists. A
+  default never creates a commitment the user did not intend (a paid
+  tier, a public post, a recurring charge), and every default is easy
+  to change at the point where it is shown.
+- [ ] **Input is tolerated (Postel).** Fields accept the reasonable
+  formats a person would type — spaces and dashes in numbers, either
+  date order the locale allows, case-insensitive codes — and normalise
+  them instead of rejecting them. Format requirements that cannot be
+  tolerated are stated before submission, not discovered from an error.
+- [ ] **Impossible actions are unavailable, risky ones are warned
+  (Postel).** An action that cannot succeed in the current state is
+  disabled with its reason reachable, not left clickable to fail.
+  Before a destructive or irreversible action, the interface names what
+  will be lost and requires a deliberate confirmation; reversible
+  actions never get that dialog (see the confirmation-dialog tell).
 - [ ] Password fields offer a show/hide toggle, and long forms disclose
   progressively: the full field list of a complex task is never the first
   screen.
@@ -72,6 +130,27 @@ skipped.
   the user cannot afford to miss.
 - [ ] Multi-step work shows its progress (step indicator or bar) and lets
   the user move back without losing entered data.
+- [ ] **Feedback lands within ~400ms (Doherty).** Every action is
+  acknowledged immediately (state change on the control itself), and a
+  result or a visible progress state follows within roughly 400ms.
+  Where the outcome is predictable and reversible, an optimistic update
+  is applied at once and rolled back on failure. A user left wondering
+  whether an action registered fails, whatever the backend's excuse.
+- [ ] **Errors preserve the work (Postel).** After any error the user's
+  entered data, selections, and scroll position are still there. The
+  message names what went wrong in plain words and exactly how to fix
+  it, and offers retry, undo, restore, or cancel where the action
+  allows one. Making the user re-enter work because the system failed
+  is itself a failure.
+- [ ] **Flows end memorably (Peak-End).** A completed flow ends on a
+  designed completion state: what was accomplished, in the user's
+  terms, and what happens next. No flow ends on an empty screen, a
+  bare spinner that stops, or a state the user must interpret.
+- [ ] **Progress feels like progress (Goal-Gradient, Zeigarnik).**
+  Multi-step work is divided into named milestones, progress already
+  made is emphasised over the total, and remaining work is stated
+  specifically ("2 steps left: address, confirm") rather than as a
+  bare percentage. Interrupted work can be resumed where it stopped.
 - [ ] Status is never carried by a bare live count alone; where counts
   update dynamically, one atomic, readable status message serves assistive
   technology.
@@ -82,6 +161,21 @@ skipped.
   search, with the active state of each visible.
 - [ ] Rows keep one primary action obvious; secondary actions are grouped,
   not sprayed across the row as competing buttons.
+- [ ] **One dominant action per section (Von Restorff).** Every section
+  and screen has at most one visually dominant call to action; secondary
+  actions are visibly quieter. When everything is emphasised, nothing
+  is — a screen where three buttons compete at the same weight fails.
+- [ ] **Actions sit beside their content (Fitts).** A control is placed
+  next to the content it affects, a form's submit sits near its final
+  input, and frequent actions sit within easy reach of where the user's
+  attention already is. Sending the eye or the pointer across the screen
+  to act on what it is looking at fails.
+- [ ] **The path stays short (Parkinson).** The number of steps, screens,
+  and confirmations between intent and completion is counted in the
+  flow and justified step by step; a step that only confirms a
+  reversible action, or asks again for information already given, is
+  removed. Frequent and repeat actions offer a shortcut (a default, a
+  repeat-last, a saved choice) instead of the full path every time.
 - [ ] Tables align text left, numbers right with tabular figures, and keep
   the header identifiable when the table scrolls.
 - [ ] Dense data earns its density: every column answers a question a
