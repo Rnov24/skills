@@ -1,0 +1,348 @@
+/* Form Pendaftaran Kelas Seduh — component-scope proving deliverable.
+   All colours live in the :root token block below, in OKLCH.
+   The accent (--accent, hue 40) is the page run's accent; --accent-deep
+   is its hover/active step at the same hue. Danger and success are
+   functional state roles, not additional accents.
+   Input geometry contract: border width never changes, the outline
+   slot is reserved at rest, input height equals button height. */
+
+:root {
+  --paper: oklch(97% 0.008 70);
+  --paper-2: oklch(93.5% 0.01 70);
+  --ink: oklch(20% 0.014 70);
+  --ink-2: oklch(40% 0.012 70);
+  --rule: oklch(84% 0.01 70);
+  /* --rule-2 darkened from the page run's 66% in the orchestrator's
+     review pass (2026-10-22): it is the resting border of the form
+     controls, and at 66% it measured 2.85:1 on paper, just under the
+     3:1 UI-component floor. At 60% it measures ~3.6:1. */
+  --rule-2: oklch(60% 0.014 70);
+  --accent: oklch(44% 0.13 40);
+  --accent-deep: oklch(37% 0.12 40);
+  --on-accent: oklch(97% 0.008 40);
+  --danger: oklch(45% 0.16 25);
+  --success: oklch(42% 0.11 150);
+
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Consolas, monospace;
+
+  --text-sm: 0.9375rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  --control-h: 2.75rem; /* 44px floor; one height for input, select, button */
+  --radius: 0.5rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-short: 150ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.55;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* --- Preview harness (labels only; not page design) ------------------- */
+
+.preview-head {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md) 0;
+}
+
+.preview-head h1 {
+  margin: 0 0 var(--space-sm);
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.preview-head p {
+  margin: 0;
+  color: var(--ink-2);
+  max-width: 70ch;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md) var(--space-xl);
+}
+
+.instance {
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+  padding: var(--space-lg);
+  min-width: 0;
+}
+
+.instance h2 {
+  margin: 0 0 var(--space-sm);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+}
+
+.state-name {
+  color: var(--accent);
+}
+
+.instance-note {
+  margin: 0 0 var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  max-width: 65ch;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+@media (min-width: 60rem) {
+  .preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --- The component ------------------------------------------------------ */
+
+.reg-form {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 26rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.control-wrap {
+  position: relative;
+}
+
+/* Base geometry — holds in EVERY state below:
+   - border is always 1px; states change colour, never width
+   - outline slot reserved at rest: 2px solid transparent, offset 1px
+   - padding-inline-end reserves the ~24px right-edge glyph slot
+   - vertical padding is derived: (height - line-height) / 2 */
+.reg-form input,
+.reg-form select {
+  width: 100%;
+  height: var(--control-h);
+  padding-block: calc((var(--control-h) - 1lh) / 2);
+  padding-inline: var(--space-sm) 2.25rem;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--radius);
+  background-color: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.5;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+}
+
+/* Helper/error slot: stable height even when empty; the error
+   message replaces the helper in the same slot at the same size. */
+.field-note {
+  margin: 0;
+  min-height: 1.5rem;
+  min-height: 1lh;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* Glyph slot occupant: sits in the reserved right-edge space. */
+.glyph {
+  position: absolute;
+  inset-inline-end: var(--space-sm);
+  top: 50%;
+  translate: 0 -50%;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.glyph-error {
+  color: var(--danger);
+}
+
+.glyph-success {
+  color: var(--success);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  height: var(--control-h);
+  padding-block: calc((var(--control-h) - 1lh) / 2);
+  padding-inline: var(--space-lg);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+}
+
+/* --- The eight states --------------------------------------------------- */
+
+/* Hover: one small shift (border colour on fields, background step on
+   the button), only where hover exists; the forced class mirrors the
+   same declarations for the preview. */
+@media (hover: hover) {
+  .reg-form input,
+  .reg-form select,
+  .reg-form .btn {
+    transition:
+      border-color var(--dur-short) var(--ease-out),
+      background-color var(--dur-short) var(--ease-out);
+  }
+
+  .reg-form input:hover,
+  .reg-form select:hover {
+    border-color: var(--ink-2);
+  }
+
+  .reg-form .btn:hover {
+    background-color: var(--accent-deep);
+    border-color: var(--accent-deep);
+  }
+}
+
+.force-hover input,
+.force-hover select {
+  border-color: var(--ink-2);
+}
+
+.force-hover .btn {
+  background-color: var(--accent-deep);
+  border-color: var(--accent-deep);
+}
+
+/* Focus: the ring appears instantly (no transition on outline) by
+   colouring the reserved slot. Never animated in. */
+.reg-form input:focus-visible,
+.reg-form select:focus-visible,
+.reg-form .btn:focus-visible,
+.reg-form .is-focused {
+  outline-color: var(--accent);
+}
+
+/* Active: pressed in — darker step plus a 1px settle. */
+.reg-form .btn:active,
+.reg-form .btn.is-active {
+  background-color: var(--accent-deep);
+  border-color: var(--accent-deep);
+  translate: 0 1px;
+}
+
+/* Disabled: three channels — reduced opacity, not-allowed cursor,
+   and the native disabled attribute in the markup. */
+.reg-form input:disabled,
+.reg-form select:disabled,
+.reg-form .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Loading: spinner beside a readable label; fields stay editable. */
+.spinner {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--on-accent);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Error: colour plus glyph plus message; border width unchanged. */
+.reg-form .is-error {
+  border-color: var(--danger);
+}
+
+.note-error {
+  color: var(--danger);
+}
+
+/* Success: colour plus glyph plus a quiet in-place confirmation. */
+.reg-form .is-success {
+  border-color: var(--success);
+}
+
+.form-status {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: baseline;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+}
+
+.status-glyph {
+  color: var(--success);
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
+  .reg-form input,
+  .reg-form select,
+  .reg-form .btn {
+    transition: none;
+  }
+}

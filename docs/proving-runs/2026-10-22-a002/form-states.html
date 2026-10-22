@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pratinjau Paksa — Form Pendaftaran Kelas Seduh Kopi Pesisir</title>
+<meta name="description" content="Pratinjau paksa delapan keadaan form pendaftaran kelas seduh Kopi Pesisir: default, hover, focus, active, disabled, loading, error, success.">
+<link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+<header class="preview-head">
+  <h1>Form Pendaftaran Kelas Seduh</h1>
+  <p>Pratinjau paksa untuk komponen tunggal. Delapan keadaan dalam kontrak delapan keadaan ditampilkan sebagai delapan contoh terpisah dan berlabel, masing-masing memakai form yang sama: nama, email, pilihan kelas, tombol daftar. Nilai yang terisi pada beberapa contoh adalah contoh pratinjau, bukan data peserta asli.</p>
+</header>
+
+<main class="preview-grid">
+
+  <!-- 1 · Default -->
+  <section class="instance" aria-labelledby="h-default">
+    <h2 id="h-default"><span class="state-name">Default</span> — saat diam, belum disentuh</h2>
+    <form class="reg-form">
+      <div class="field">
+        <label for="d-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="d-nama" name="nama" type="text" autocomplete="name">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note">Nama sesuai yang akan ditulis di daftar hadir.</p>
+      </div>
+      <div class="field">
+        <label for="d-email">Email</label>
+        <div class="control-wrap">
+          <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note">Konfirmasi jadwal kami kirim ke alamat ini.</p>
+      </div>
+      <div class="field">
+        <label for="d-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="d-kelas" name="kelas">
+            <option value="" selected>Pilih kelas</option>
+            <option value="v60">Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso">Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note">Satu kelas per pendaftaran.</p>
+      </div>
+      <button class="btn" type="submit">Daftar kelas</button>
+    </form>
+  </section>
+
+  <!-- 2 · Hover -->
+  <section class="instance" aria-labelledby="h-hover">
+    <h2 id="h-hover"><span class="state-name">Hover</span> — penunjuk berada di atas kontrol</h2>
+    <p class="instance-note">Keadaan dipaksa dengan kelas peniru deklarasi <span class="mono">:hover</span> yang sama, agar terlihat tanpa penunjuk. Pada perangkat sentuh keadaan ini tidak berlaku.</p>
+    <form class="reg-form force-hover">
+      <div class="field">
+        <label for="hv-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="hv-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="hv-email">Email</label>
+        <div class="control-wrap">
+          <input id="hv-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail.id">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="hv-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="hv-kelas" name="kelas">
+            <option value="">Pilih kelas</option>
+            <option value="v60" selected>Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso">Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn" type="submit">Daftar kelas</button>
+    </form>
+  </section>
+
+  <!-- 3 · Focus -->
+  <section class="instance" aria-labelledby="h-focus">
+    <h2 id="h-focus"><span class="state-name">Focus</span> — fokus keyboard pada kolom email</h2>
+    <p class="instance-note">Cincin fokus muncul seketika dari slot outline yang sudah disediakan sejak keadaan diam, jadi tata letak tidak bergeser.</p>
+    <form class="reg-form">
+      <div class="field">
+        <label for="fc-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="fc-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="fc-email">Email</label>
+        <div class="control-wrap">
+          <input class="is-focused" id="fc-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail.id">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="fc-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="fc-kelas" name="kelas">
+            <option value="">Pilih kelas</option>
+            <option value="v60">Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji" selected>Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso">Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn" type="submit">Daftar kelas</button>
+    </form>
+  </section>
+
+  <!-- 4 · Active -->
+  <section class="instance" aria-labelledby="h-active">
+    <h2 id="h-active"><span class="state-name">Active</span> — tombol sedang ditekan</h2>
+    <p class="instance-note">Tombol tampak tertekan selama penekanan berlangsung: latar lebih gelap dan bergeser turun satu piksel.</p>
+    <form class="reg-form">
+      <div class="field">
+        <label for="ac-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="ac-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ac-email">Email</label>
+        <div class="control-wrap">
+          <input id="ac-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail.id">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ac-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="ac-kelas" name="kelas">
+            <option value="">Pilih kelas</option>
+            <option value="v60">Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso" selected>Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn is-active" type="submit">Daftar kelas</button>
+    </form>
+  </section>
+
+  <!-- 5 · Disabled -->
+  <section class="instance" aria-labelledby="h-disabled">
+    <h2 id="h-disabled"><span class="state-name">Disabled</span> — tidak dapat dipakai</h2>
+    <p class="instance-note">Tiga penanda sekaligus: opasitas berkurang, kursor larangan, dan atribut <span class="mono">disabled</span> asli pada setiap kontrol.</p>
+    <form class="reg-form">
+      <div class="field">
+        <label for="ds-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="ds-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari" disabled>
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note">Pendaftaran untuk kelas pilihanmu sedang ditutup.</p>
+      </div>
+      <div class="field">
+        <label for="ds-email">Email</label>
+        <div class="control-wrap">
+          <input id="ds-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail.id" disabled>
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ds-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="ds-kelas" name="kelas" disabled>
+            <option value="">Pilih kelas</option>
+            <option value="v60" selected>Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso">Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn" type="submit" disabled>Daftar kelas</button>
+    </form>
+  </section>
+
+  <!-- 6 · Loading -->
+  <section class="instance" aria-labelledby="h-loading">
+    <h2 id="h-loading"><span class="state-name">Loading</span> — pendaftaran sedang dikirim</h2>
+    <p class="instance-note">Label tombol tetap terbaca di samping penanda putar, dan kolom tetap dapat disunting selama pengiriman berjalan.</p>
+    <form class="reg-form" aria-busy="true">
+      <div class="field">
+        <label for="ld-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="ld-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ld-email">Email</label>
+        <div class="control-wrap">
+          <input id="ld-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail.id">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ld-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="ld-kelas" name="kelas">
+            <option value="">Pilih kelas</option>
+            <option value="v60">Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso" selected>Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn is-loading" type="submit" aria-disabled="true"><span class="spinner" aria-hidden="true"></span>Mendaftar…</button>
+    </form>
+  </section>
+
+  <!-- 7 · Error -->
+  <section class="instance" aria-labelledby="h-error">
+    <h2 id="h-error"><span class="state-name">Error</span> — alamat email belum lengkap</h2>
+    <p class="instance-note">Warna tidak bekerja sendirian: ada glif di slot tepi kanan kolom dan pesan di slot teks bantuan yang sama, tanpa menggeser tata letak.</p>
+    <form class="reg-form">
+      <div class="field">
+        <label for="er-nama">Nama</label>
+        <div class="control-wrap">
+          <input id="er-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari">
+          <span class="glyph" aria-hidden="true"></span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="er-email">Email</label>
+        <div class="control-wrap">
+          <input class="is-error" id="er-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail" aria-invalid="true" aria-describedby="er-email-note">
+          <span class="glyph glyph-error" aria-hidden="true">!</span>
+        </div>
+        <p class="field-note note-error" id="er-email-note">Alamat email belum lengkap karena bagian setelah @ belum memuat domain. Periksa alamatnya, lengkapi domainnya, lalu kirim lagi.</p>
+      </div>
+      <div class="field">
+        <label for="er-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="er-kelas" name="kelas">
+            <option value="">Pilih kelas</option>
+            <option value="v60" selected>Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso">Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn" type="submit">Daftar kelas</button>
+    </form>
+  </section>
+
+  <!-- 8 · Success -->
+  <section class="instance" aria-labelledby="h-success">
+    <h2 id="h-success"><span class="state-name">Success</span> — pendaftaran terkirim</h2>
+    <p class="instance-note">Konfirmasi tampil pelan di tempatnya, dan keadaan sukses hilang begitu pengguna menyunting kolom lagi.</p>
+    <form class="reg-form">
+      <p class="form-status" role="status"><span class="status-glyph" aria-hidden="true">✓</span> Pendaftaran terkirim. Kami membalas lewat email untuk mengonfirmasi tempatmu di kelas Seduh Manual V60.</p>
+      <div class="field">
+        <label for="ok-nama">Nama</label>
+        <div class="control-wrap">
+          <input class="is-success" id="ok-nama" name="nama" type="text" autocomplete="name" value="Sari Wulandari">
+          <span class="glyph glyph-success" aria-hidden="true">✓</span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ok-email">Email</label>
+        <div class="control-wrap">
+          <input class="is-success" id="ok-email" name="email" type="email" autocomplete="email" inputmode="email" value="sari@mail.id">
+          <span class="glyph glyph-success" aria-hidden="true">✓</span>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <div class="field">
+        <label for="ok-kelas">Pilihan kelas</label>
+        <div class="control-wrap">
+          <select id="ok-kelas" name="kelas">
+            <option value="">Pilih kelas</option>
+            <option value="v60" selected>Seduh Manual V60 — Sabtu, 09.00–11.00 WIB</option>
+            <option value="biji">Mengenal Biji dan Sangrai — Minggu, 09.00–11.00 WIB</option>
+            <option value="espresso">Espresso di Rumah — Sabtu, 13.00–15.00 WIB</option>
+          </select>
+        </div>
+        <p class="field-note" aria-hidden="true"></p>
+      </div>
+      <button class="btn" type="submit">Daftar kelas</button>
+    </form>
+  </section>
+
+</main>
+
+</body>
+</html>

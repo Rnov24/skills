@@ -161,4 +161,5 @@ a review finding, not a style preference.
 the data-visualization skill in NTCoding/claude-skillz (no licence file in
 that repository, so no upstream text was copied), absorbed 2026-10-21.
 Perceptual foundations after Cleveland & McGill (1984) and Shneiderman
-(1996). Status: EXPOSED (A-003) until a proving run promotes it.*
+(1996). Status: ADAPTED (A-003) — promoted 2026-10-22 by the Iris
+figure proving run in docs/proving-runs/2026-10-22-a003/.*
