@@ -10,7 +10,7 @@ adaptations stay in the log. The wheel remembers.
 | A-001 | 2026-10-21 | Suite was static after shipping; learning lived only in retros of other projects | Added the adaptation loop itself (`adapt` skill, this log, staged absorption in gluttony, finder-miss logging) | ADAPTED (v1.3.0) |
 | A-002 | 2026-10-21 | Gluttony run on Nutlope/hallmark: suite design layer lacked a pattern library, a copy reference, mechanical slop gates, and any design-extraction verb | Absorbed hallmark's macrostructure + pruned component libraries, slop gates, state/motion canon, OKLCH/responsive foundations, token exports, copy reference, and the study skill (audit: docs/audit/absorbed/2026-10-21-hallmark.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Kopi Pesisir proving run, docs/proving-runs/2026-10-22-a002/) |
 | A-003 | 2026-10-21 | Gluttony run on NTCoding/claude-skillz (data-visualization): the suite had no chart discipline at all while the owner's work is full of dashboards and research figures | Absorbed as new `data-viz` skill, fully rewritten (source repo has no licence, so mechanisms only, no text) with DESIGN.md token rule and accessibility gate added (audit: docs/audit/absorbed/2026-10-21-claude-skillz-dataviz.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Iris figure proving run, docs/proving-runs/2026-10-22-a003/) |
-| A-004 | 2026-10-22 | Gluttony run on a pasted 20-law UX instruction set: ux-heuristics.md specified mechanics (targets, states, input geometry) but never the decision laws behind them — no choice budget, convention, grouping, default-safety, or completion-state rules | 16 of 20 laws merged into ux-heuristics.md as checkable rules (new "Choice, grouping, and convention" section plus additions to Forms, Feedback, and Lists); 4 rejected as already covered (Fitts size, Zeigarnik, Prägnanz, Tesler) (audit: docs/audit/absorbed/2026-10-22-ux-laws.md) | EXPOSED (v1.7.0, pending promotion by adapt after a proving run) |
+| A-004 | 2026-10-22 | Gluttony run on a pasted 20-law UX instruction set: ux-heuristics.md specified mechanics (targets, states, input geometry) but never the decision laws behind them — no choice budget, convention, grouping, default-safety, or completion-state rules | 16 of 20 laws merged into ux-heuristics.md as checkable rules (new "Choice, grouping, and convention" section plus additions to Forms, Feedback, and Lists); 4 rejected as already covered (Fitts size, Zeigarnik, Prägnanz, Tesler) (audit: docs/audit/absorbed/2026-10-22-ux-laws.md) | ADAPTED (v1.9.0, promoted 2026-10-22 by the two-target audit proving run, docs/proving-runs/2026-10-22-a004/) |
 
 Full candidate records are appended below the table as they are filed.
 
@@ -165,3 +165,76 @@ Proving run ordered by the owner on 2026-10-22 (same order as A-002).
 Orchestrator review verdicts: spec PASS, quality PASS after one rework
 round. Promoted to ADAPTED by the orchestrator under that order,
 v1.8.0.
+
+## A-004: UX-law rules — proving run and promotion
+
+- Status: ADAPTED · Filed: 2026-10-22 · Promoted: 2026-10-22 (v1.9.0)
+- Source signal: absorption (gluttony run 3, pasted 20-law UX
+  instruction set) held at EXPOSED since v1.7.0 pending a proving run.
+
+### Phenomenon
+The 18 decision-law checkboxes merged into ux-heuristics.md had never
+been applied to a real interface. Rules that cannot be applied
+consistently, or that catch nothing real, are decoration in checklist
+form.
+
+### Counter
+No suite text changed. The proving run in
+`docs/proving-runs/2026-10-22-a004/` is the counter-evidence: an audit
+of the 18 rules against two of the owner's real products, chosen as a
+contrast pair — the NetAcad AI Assistant extension popup (a dense
+settings-and-actions surface) and the EXAMIND login/register screens
+(a focused auth flow, served from the owner's local build).
+
+### Proving pair
+- Brief: `brief.md` in the run folder — exactly the 18 rules in scope,
+  one PASS/FAIL/NA verdict per rule per target, evidence labelled
+  RENDER, DOM/HTML, or SOURCE with file:line, FAILs quoting the rule
+  and naming the element, and an explicit warning that an
+  unreproducible FAIL would be overturned as a false positive.
+- Reasoning trace: the auditor's method and its six disclosed wording
+  ambiguities are in `report.md` in the run folder; the renders it
+  judged from are filed beside it (target-a-*.png, target-b-*.png).
+- Output: `audit.md` in the run folder — 36 verdicts. Target A: 14
+  PASS, 4 FAIL. Target B: 17 PASS, 1 FAIL. No NA on either target,
+  with the two nearest NA candidates examined in writing.
+
+### Findings writeback
+Full review in `review.md` in the run folder. The orchestrator
+re-derived all five FAILs from primary source evidence and all five
+reproduce; three PASSes were spot-checked in source and also
+reproduce; false positives: zero. The five FAILs are not scattered:
+four sit in state communication over time (idle Pause/Stop that can
+be pressed and manufacture state, a completion answered with a
+present-tense "running" message that auto-clears, progress counters
+the backend already returns and the popup never renders), and
+Goal-Gradient failed on both products independently for the same
+underlying reason. The auditor's six wording ambiguities (Serial
+Position's scope, Doherty's "on the control itself", when a default
+becomes a commitment, Peak-End's flow scope, Goal-Gradient on
+conditional steps, Miller's screen-to-session mapping) are recorded
+in the review as watched items: one exposure does not earn a rule
+rewrite, and a second run tripping on the same wording is the signal
+for a clarification candidate.
+
+### Expected effect (as filed at absorption, now checked)
+A reviewer judging a screen against ux-heuristics.md can reach
+verdicts another reviewer reproduces, and the decision laws catch
+real defects the mechanics-only checklist could not name. In this
+run every FAIL survived independent re-verification and the tally
+separated a dense, state-heavy surface (4 FAILs) from a disciplined
+flow (1 FAIL).
+
+### Blast radius
+Promotion changes no rule text. The proof covers two surface genres
+(extension settings popup, web auth flow); dashboard and in-exam
+surfaces — where several of these laws bite harder — are unproven
+ground for the ruleset, and a run there that produces false
+positives re-opens this entry.
+
+### Decision
+Proving run ordered by the owner on 2026-10-22. Orchestrator review
+verdicts: spec PASS, quality PASS, zero false positives. Promoted to
+ADAPTED by the orchestrator under that order, v1.9.0. With this
+promotion every gluttony absorption in the suite stands at ADAPTED;
+the wheel's EXPOSED queue is empty.
