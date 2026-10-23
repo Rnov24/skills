@@ -317,3 +317,30 @@ the wheel's EXPOSED queue is empty.
   absorb report; promotion requires a proving run that uses the
   fragments on real work — a design review run with the click-through
   check, or a copy pass audited against the new copy.md sections.
+
+## A-007: Anthropic frontend-design absorption — principles and calibration merged into design
+
+- Status: EXPOSED · Filed: 2026-10-23
+- Source signal: absorption (gluttony run 6, anthropics/skills target
+  `skills/frontend-design`, Apache-2.0, commit dbd4588f9e1033efb41dad4bef2f7947c8993d44).
+- Phenomenon: Anthropic's `frontend-design` provides a concise calibration
+  cataloguing 5 concrete AI design default clusters (cream+terracotta,
+  near-black+acid, broadsheet hairline, SaaS card kit, template chrome with
+  middle dots and '→' buttons), a two-pass uniqueness check before code, and
+  the Chanel single-boldness restraint principle. As a standalone skill it is a
+  pure guidance prompt that would violate the suite's "one taste core" law; as
+  extracted mechanisms it directly strengthens the design preview block and
+  taste-core rulebook.
+- Counter: merged mechanisms into `skills/design/SKILL.md` (two-pass uniqueness
+  review in preview block; Chanel restraint in build discipline),
+  `skills/design/references/taste-core.md` (checkable rules for template chrome,
+  default AI clustering, and single-word headline accents), and
+  `templates/design.md` (default bans list). Standalone skill rejected to
+  preserve one workflow.
+- Expected effect: preview blocks catch generic prompt defaults before code is
+  written; review gates flag unmotivated template chrome and signature AI
+  aesthetic tells mechanically.
+- Blast radius: strictly additive checks on design artifacts and preview
+  gates. No existing valid designs broken.
+- Decision: staged at EXPOSED pending human gate on absorb report.
+

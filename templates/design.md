@@ -105,7 +105,13 @@ components:
 < Sources, style, treatment. >
 
 ## Bans
-< The explicit never list for this project. Each ban is checkable. >
+< The explicit never list for this project. Each ban is checkable.
+  Default anti-slop bans to enforce unless consciously overridden:
+  - No default AI aesthetic clusters (cream+terracotta, near-black+acid, unprompted broadsheet, generic SaaS card kit)
+  - No template chrome: middle dots ('A · B · C'), spaced em-dash labels, button '→'
+  - No single-word colored/styled accents in headlines
+  - No gradient text or unmotivated background gradients
+  - No decorative numbered markers (01/02/03) on non-sequential content >
 
 ## Accessibility floor
 < Contrast, target sizes, keyboard, reduced motion. >

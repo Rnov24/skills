@@ -121,3 +121,18 @@ credit in its header; its selftest recomputes the table in
 ux-heuristics.md). The upstream em-dash ban contradicts copy.md and
 was rejected. Full audit:
 `docs/audit/absorbed/2026-10-23-anti-slop.md`.
+
+## v1.12.0 note — Anthropic frontend-design calibration (A-007, EXPOSED)
+
+Gluttony run 6 audited anthropics/skills target `skills/frontend-design`
+(Apache-2.0 © Anthropic, commit dbd4588f9e1033efb41dad4bef2f7947c8993d44):
+guidance for intentional visual design and non-templated UI. As a standalone
+skill it is a guidance prompt that duplicates the suite's design phase and would
+violate the "one taste core" rule. Its concrete mechanisms were extracted and
+merged into `design`: the 5 AI design default cluster calibrations and the
+single-word headline accent ban into `taste-core.md`, the two-pass default-ness
+review gate into `skills/design/SKILL.md`'s preview block, the Chanel restraint
+law (spend boldness in one place, keep the rest quiet) into build discipline, and
+default anti-slop bans into `templates/design.md`. Full audit:
+`docs/audit/absorbed/2026-10-23-anthropic-frontend-design.md`.
+

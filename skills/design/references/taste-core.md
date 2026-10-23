@@ -255,6 +255,15 @@ revision pass before the gate sweep begins.
 - [ ] Hero media discipline holds: no sound-on autoplay, a poster on
   every hero video, no lazy loading on the largest-contentful element,
   and no Lottie where hand-built SVG or CSS reaches the same motion.
+- [ ] No unmotivated template chrome: middle dots ('A · B · C') separating meta
+  items, spaced em dashes ('WORD — fragment') in section labels, and bare arrows
+  ('→') appended to buttons are absent unless the brief or DESIGN.md explicitly
+  dictates that syntax.
+- [ ] No unprompted AI aesthetic clustering: warm cream (#F4F1EA) + serif +
+  terracotta (#D97757); near-black with a lone acid-green/vermilion accent;
+  broadsheet hairline rules with zero radius; or identical SaaS-card kits
+  (same border-radius on every box, soft 0.1 shadow, gradient wash) fail
+  unless explicitly contracted by the brief and recorded in DESIGN.md.
 
 ### Type and token discipline
 
@@ -264,6 +273,9 @@ revision pass before the gate sweep begins.
   DESIGN.md explicitly chooses italic display as the project's voice;
   there it is a recorded decision, not a drift. Body-copy emphasis in
   running paragraphs is always allowed.
+- [ ] No single-word typographic accenting in headlines (putting a single
+  word in a contrasting hue, weight, or style inside an upright heading).
+  The headline carries its weight as a composed unit.
 - [ ] An outlier face (the third family, where one exists) appears in at
   most two slots on the page — wordmark plus hero stat is the canonical
   pair. A third slot means the outlier has become a body face; collapse
