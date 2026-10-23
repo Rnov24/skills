@@ -86,3 +86,19 @@ the impeccable lineage, and UX heuristics plus condensed direction, palette,
 typography, and motion data from ui-ux-pro-max (MIT). The full upstream
 databases were deliberately not vendored; the reference file records when to
 consult them upstream instead.
+
+## v1.10.0 note — awesome-design-md as reference shelf (A-005, EXPOSED)
+
+Gluttony run 4 audited VoltAgent/awesome-design-md (MIT © VoltAgent,
+commit 3b605329240ce735b510037cca322f1831fdd7f8): 84 DESIGN.md
+extractions of real brand sites, 46,710 lines. At the human gate the
+owner ruled the corpus be taken as a DESIGN.md reference rather than
+digested into suite rules. It is therefore vendored verbatim at
+`skills/design/references/brand-systems/` (with its licence, an index,
+and recorded quality caveats), and `templates/design.md` adopts the
+corpus's format — frontmatter token registry as the single source,
+the `design.md lint` gate, Known Gaps and font-substitute honesty
+sections, and a Responsive section. The rule and archetype merges
+prepared during the audit were withdrawn under the ruling and remain
+recorded, not in force, in the full audit:
+`docs/audit/absorbed/2026-10-23-awesome-design-md.md`.

@@ -19,10 +19,17 @@ taste written as rules survives it.
    fine elsewhere.
 2. **DESIGN.md** from `templates/design.md`: product character in one
    paragraph, then tokens (colour, type scale, spacing, radius, elevation),
-   layout rules, component rules, motion rules, and the bans list. Every rule
-   is written so a reviewer can point at a screen and say whether it holds.
-   "Clean and modern" is not a rule. "No gradient backgrounds; elevation only
-   via the three named shadows" is.
+   layout rules, responsive rules, component rules, motion rules, the bans
+   list, and — for any system derived from a study or an extraction — a
+   known-gaps section recording what the source never showed. The tokens
+   live once, in the machine-readable frontmatter registry; prose states
+   roles and rules and never restates values, and component states are
+   separate registry entries so coverage can be counted. After any edit,
+   the file is linted (`npx @google/design.md lint DESIGN.md`): broken
+   references, contrast failures, and orphaned tokens are gate failures,
+   not warnings. Every rule is written so a reviewer can point at a screen
+   and say whether it holds. "Clean and modern" is not a rule. "No gradient
+   backgrounds; elevation only via the three named shadows" is.
 3. **USERFLOW.md** from `templates/userflow.md`, per persona: entry, happy
    path, failure paths, exit states. A screen that no flow reaches is scope
    nobody approved.
@@ -148,6 +155,13 @@ never load the shelf to feel prepared.
 - `references/components/` — 48 section archetypes, vendored. Pick names
   from its INDEX.md; a page needs five to seven files, never the library.
   Load when composing sections inside a chosen macrostructure.
+- `references/brand-systems/` — 84 worked DESIGN.md files extracted from
+  real brand sites, vendored as a reference shelf (A-005). Pick from its
+  INDEX.md and read at most one or two files, when a brief names a brand
+  direction or a draft DESIGN.md needs a full-depth example of the
+  format to react against. References, not rules: a brand's tokens and
+  signature moves never enter a project wholesale — the study skill's
+  attestation discipline governs what a project may take from one.
 - `references/copy.md` — voice fixtures and microcopy mechanics: banned
   openings, specific verbs, three-part errors. Load when writing or judging
   headlines, page copy, or interface text.

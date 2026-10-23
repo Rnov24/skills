@@ -68,7 +68,11 @@ and the gate that accepts it.
 - Owner: `design`. Template: `templates/design.md`. Location: repo root.
 - Consumers: implement (every UI worker reads it), review (design axis).
 - Gate: tokens, typography, layout rules, component rules, motion rules, and
-  explicit bans are written as checkable rules, not adjectives.
+  explicit bans are written as checkable rules, not adjectives. The token
+  registry (frontmatter) parses, every component binding reference
+  resolves, and `npx @google/design.md lint DESIGN.md` reports no
+  broken-ref, contrast, or orphaned-token findings. A system derived from
+  a study or extraction carries a Known Gaps section.
 
 ### USERFLOW.md
 - Trigger: a feature spans more than one screen or state, or a persona's path

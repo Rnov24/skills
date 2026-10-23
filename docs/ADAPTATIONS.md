@@ -11,6 +11,7 @@ adaptations stay in the log. The wheel remembers.
 | A-002 | 2026-10-21 | Gluttony run on Nutlope/hallmark: suite design layer lacked a pattern library, a copy reference, mechanical slop gates, and any design-extraction verb | Absorbed hallmark's macrostructure + pruned component libraries, slop gates, state/motion canon, OKLCH/responsive foundations, token exports, copy reference, and the study skill (audit: docs/audit/absorbed/2026-10-21-hallmark.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Kopi Pesisir proving run, docs/proving-runs/2026-10-22-a002/) |
 | A-003 | 2026-10-21 | Gluttony run on NTCoding/claude-skillz (data-visualization): the suite had no chart discipline at all while the owner's work is full of dashboards and research figures | Absorbed as new `data-viz` skill, fully rewritten (source repo has no licence, so mechanisms only, no text) with DESIGN.md token rule and accessibility gate added (audit: docs/audit/absorbed/2026-10-21-claude-skillz-dataviz.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Iris figure proving run, docs/proving-runs/2026-10-22-a003/) |
 | A-004 | 2026-10-22 | Gluttony run on a pasted 20-law UX instruction set: ux-heuristics.md specified mechanics (targets, states, input geometry) but never the decision laws behind them — no choice budget, convention, grouping, default-safety, or completion-state rules | 16 of 20 laws merged into ux-heuristics.md as checkable rules (new "Choice, grouping, and convention" section plus additions to Forms, Feedback, and Lists); 4 rejected as already covered (Fitts size, Zeigarnik, Prägnanz, Tesler) (audit: docs/audit/absorbed/2026-10-22-ux-laws.md) | ADAPTED (v1.9.0, promoted 2026-10-22 by the two-target audit proving run, docs/proving-runs/2026-10-22-a004/) |
+| A-005 | 2026-10-23 | Gluttony run on VoltAgent/awesome-design-md (84 brand DESIGN.md extractions): design work had no full-depth DESIGN.md examples to consult, and the suite's own DESIGN.md format was prose-only where the reference corpus is machine-readable | Owner's gate ruling: taken as a DESIGN.md reference, not digested — all 84 files vendored verbatim as the `references/brand-systems/` shelf (INDEX + provenance + quality caveats), and templates/design.md adopts the corpus format (frontmatter token registry, lint gate, Known Gaps, Responsive, font substitutes); the prepared rule/archetype merges were withdrawn and stay recorded in the audit for future adapt cycles (audit: docs/audit/absorbed/2026-10-23-awesome-design-md.md) | EXPOSED (v1.10.0) |
 
 Full candidate records are appended below the table as they are filed.
 
@@ -238,3 +239,39 @@ verdicts: spec PASS, quality PASS, zero false positives. Promoted to
 ADAPTED by the orchestrator under that order, v1.9.0. With this
 promotion every gluttony absorption in the suite stands at ADAPTED;
 the wheel's EXPOSED queue is empty.
+
+## A-005: awesome-design-md as the DESIGN.md reference shelf
+
+- Status: EXPOSED · Filed: 2026-10-23
+- Source signal: absorption (gluttony run 4, VoltAgent/awesome-design-md,
+  MIT, commit 3b605329240ce735b510037cca322f1831fdd7f8).
+- Phenomenon: the suite's design phase writes DESIGN.md constitutions but
+  carried no worked examples of the artifact at full depth, while an
+  84-file corpus of exactly that artifact existed upstream in a
+  machine-readable format the suite's prose-only template did not speak.
+- Counter (as ruled by the owner at the human gate, 2026-10-23: "ambil
+  aja sebagai referensi design md"): the corpus is taken as a reference,
+  not digested into rules. All 84 DESIGN.md files are vendored verbatim
+  at `skills/design/references/brand-systems/` with an INDEX carrying
+  load discipline, provenance, and quality caveats (3 files with broken
+  YAML frontmatter, 10 legacy-format files, `ex-*` generator filler to
+  skip, signature-copy cautions). The suite's own template adopts the
+  corpus's format so references and constitutions speak the same
+  language: frontmatter token registry as the single source (prose
+  states roles, never restates values), the lint gate, Known Gaps,
+  Responsive, and font-substitute lines. The mechanism merges prepared
+  during the audit (taste-core and style-directions rules, the X1–X7
+  component annex) were withdrawn under the same ruling; they remain
+  fully recorded in the absorb report as candidates for future adapt
+  cycles, and none of them is in force.
+- Expected effect: when a brief names a brand direction, or a draft
+  DESIGN.md needs a full-depth example, the design phase consults one or
+  two named reference files instead of improvising from memory; new
+  constitutions are written in the lintable registry format from the
+  start.
+- Blast radius: the shelf is reference data behind an index, loaded on
+  demand; it changes no rule in force. The template change is
+  prospective — existing projects' DESIGN.md files are not migrated.
+- Decision: owner's ruling at the gate, 2026-10-23. Promotion from
+  EXPOSED requires a proving run: a real project's DESIGN.md drafted
+  with the shelf consulted and written in the new format, linted clean.
