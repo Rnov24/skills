@@ -95,6 +95,11 @@ chosen for this product, and can the choice be pointed at".
 - [ ] Every interactive element exists in all its states on the judged
   screen or in the component's own review: default, hover, focus,
   active, disabled, loading, and where relevant error and empty.
+- [ ] Every interactive element on a judged screen does something real
+  when used, or is removed, or carries a visible coming-soon label.
+  Dead buttons, dead links, and navigation entries that lead nowhere
+  fail — a control that performs nothing teaches the user that every
+  control might perform nothing.
 - [ ] A modal is used only for a task that needs interruption or protected
   focus. A modal holding ordinary content that could live on the page
   fails.
@@ -191,7 +196,8 @@ revision pass before the gate sweep begins.
 - [ ] Contrast is computed per rendered pair, not assumed: where the
   OKLCH lightness gap between text and background is under 50 points,
   the pair is flagged and confirmed with a full APCA or WCAG
-  calculation before shipping.
+  calculation before shipping. `scripts/contrast-check.py` computes a
+  WCAG pair from two hex values; verdicts read the unrounded ratio.
 - [ ] Every accent fill that carries text has its paired on-accent token
   defined and applied. Text within ~5 lightness points and ~0.05 chroma
   of its own fill fails outright — that is the black-on-black bug.

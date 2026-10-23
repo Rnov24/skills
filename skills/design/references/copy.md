@@ -78,6 +78,64 @@ review rubric).
 - Typography is part of copy: curly quotes, real apostrophes, en dashes
   for ranges, em dashes for breaks, an ellipsis character rather than
   three periods, and a non-breaking space before units (5 kg, 100 ms).
+- No FAQ section without real user questions behind it. A page that
+  invents the questions it answers is writing both sides of a
+  conversation nobody had; if genuine questions exist, the FAQ earns
+  its place, and if they do not, the section does not ship.
+- Before copy ships, one self-audit question: does any line state a
+  fact that is not in the source material — a number, a capability, a
+  customer, a date? A line that does is cut or re-grounded, however
+  well it reads. Plausible invention is the failure this file exists
+  to prevent.
+
+## Tells in the body of the copy
+
+The banned openings govern the first line. These govern the rest, and
+they are tests, not vibes — each can be pointed at in a sentence.
+
+- **Actor tests.** A sentence whose actor vanishes fails: the actorless
+  passive that hides who acts ("mistakes were made", "your data will
+  be processed"), and the inanimate subject given a human verb to
+  borrow agency ("the platform empowers", "the dashboard tells you").
+  Name the actor, or rewrite until the actor is the subject.
+- **Forced rule of three.** Benefits, adjectives, and features arriving
+  in threes by rhythm rather than by count. If the product has two
+  strengths, the copy has two; a third invented to complete the triad
+  is a fabrication with good cadence.
+- **Negative parallelism.** "Not just X, it's Y" and its tailing
+  variants ("no setup, no config, no hassle"). The construction
+  performs insight while adding none; state Y directly.
+- **Synonym cycling.** The same referent renamed sentence by sentence
+  (users, customers, teams, operators) to avoid repetition. Repetition
+  of the right word is clarity; cycling is the model dodging it. The
+  one-word-per-action rule above is this tell at button scale.
+- **False ranges and aphorism formulas.** "From startups to
+  enterprises" that names no actual span, and proverb-shaped lines
+  ("simplicity is the ultimate sophistication" and kin) borrowed
+  instead of earned. Both fill the space a specific claim should occupy.
+- **Weasel attributions.** "Experts say", "studies show", "industry
+  leaders trust" — authority with no name attached. Name the source or
+  cut the claim; the honest-copy rule applies to authority too.
+- **Speculative gap-filling.** A guess about the reader's situation or
+  the product's effect dressed as a statement of fact ("teams like
+  yours save hours every week"). Mark speculation as speculation or
+  replace it with the measured thing.
+
+## What not to flag
+
+A tell counts inside a cluster, not alone. One triad in a long page,
+one passive in an error message whose actor is genuinely the system,
+one em dash doing its job — these are writing, not slop, and flagging
+them trains the author to sand off everything with an edge. Preserve
+on sight: specific numbers with a source, an admission against
+interest, an irregular sentence that carries real emphasis, a plain
+line where a flourish was available and declined. Human writing is
+uneven in ways that carry information; the audit removes the
+distribution average, not the unevenness. When the user supplies a
+sample of their own writing for the product, the sample outranks every
+rule in this file: calibrate to its rhythm and diction first, and
+where a rule and the sample conflict, follow the sample and note the
+conflict rather than correcting the user's voice toward the average.
 
 ## Re-grounding fixtures per product language
 
@@ -89,3 +147,13 @@ set from real products writing natively in that language, in the target
 tone, and imitate their specificity the same way. The mechanics in this
 file (specific verbs, three-part errors, one word per action) are
 language-independent; the fixtures never are.
+
+---
+
+Absorption note (A-006, 2026-10-23): the body tells, the what-not-to-flag
+discipline, and the sample-calibration protocol in this file were
+extracted from miqdadbadjuber/anti-slop (MIT, commit c93d08c7) — its
+copywriting and core units — and rewritten in this file's terms. Its
+absolute em-dash ban was rejected: this file prescribes em dashes for
+breaks, and the contradiction was resolved in the suite's favour. Full
+audit: `docs/audit/absorbed/2026-10-23-anti-slop.md`.

@@ -51,6 +51,24 @@ A prototype's deliverable is the answer, recorded in the ticket or an ADR —
 never the code, which is deleted or quarantined so it cannot be mistaken
 for a foundation.
 
+## Comments
+
+A comment earns its place only with information the code does not
+already show: why a choice was made, a constraint the code must not
+break, a workaround and what would retire it, an edge case the lines
+below are defending against, a contract with a caller. Comments that
+restate the code, narrate the workflow ("now we loop through the
+items"), decorate with banners or separators, label the obvious, or
+sign and date the work are slop and are removed on sight.
+
+Length is part of the test, not an exception to it: a true, valuable
+comment padded into a paragraph — reasoning chains, issue numbers,
+version history — is still slop. One line; two at most, when the second
+carries a new fact. The long reasoning belongs in the packet, the
+report, or an ADR, where the suite already routes it. A cleanup pass
+over comments touches comment lines only — never code, identifiers, or
+formatting in the same pass, so its diff can be verified at a glance.
+
 ## Receiving review
 
 When findings come back: verify each against the code before acting, fix

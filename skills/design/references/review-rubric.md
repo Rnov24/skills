@@ -120,6 +120,10 @@ opinion.
   scale step (computed styles sampled, unexplained values listed).
 - [ ] All states captured as screenshots: default, hover, focus, disabled,
   loading, empty, error for each interactive region.
+- [ ] Click-through recorded: every interactive element on the judged
+  screens was used once and its outcome written down — what it did, or
+  that it did nothing. A dead control found here is a finding with the
+  element named, not a surprise saved for the user.
 - [ ] Keyboard walk recorded: tab order through the screen, focus visible
   in every stop, no trap, modal focus contained.
 - [ ] Reduced-motion pass: animations resolve to final states, no content

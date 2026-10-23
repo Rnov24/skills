@@ -12,6 +12,7 @@ adaptations stay in the log. The wheel remembers.
 | A-003 | 2026-10-21 | Gluttony run on NTCoding/claude-skillz (data-visualization): the suite had no chart discipline at all while the owner's work is full of dashboards and research figures | Absorbed as new `data-viz` skill, fully rewritten (source repo has no licence, so mechanisms only, no text) with DESIGN.md token rule and accessibility gate added (audit: docs/audit/absorbed/2026-10-21-claude-skillz-dataviz.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Iris figure proving run, docs/proving-runs/2026-10-22-a003/) |
 | A-004 | 2026-10-22 | Gluttony run on a pasted 20-law UX instruction set: ux-heuristics.md specified mechanics (targets, states, input geometry) but never the decision laws behind them — no choice budget, convention, grouping, default-safety, or completion-state rules | 16 of 20 laws merged into ux-heuristics.md as checkable rules (new "Choice, grouping, and convention" section plus additions to Forms, Feedback, and Lists); 4 rejected as already covered (Fitts size, Zeigarnik, Prägnanz, Tesler) (audit: docs/audit/absorbed/2026-10-22-ux-laws.md) | ADAPTED (v1.9.0, promoted 2026-10-22 by the two-target audit proving run, docs/proving-runs/2026-10-22-a004/) |
 | A-005 | 2026-10-23 | Gluttony run on VoltAgent/awesome-design-md (84 brand DESIGN.md extractions): design work had no full-depth DESIGN.md examples to consult, and the suite's own DESIGN.md format was prose-only where the reference corpus is machine-readable | Owner's gate ruling: taken as a DESIGN.md reference, not digested — all 84 files vendored verbatim as the `references/brand-systems/` shelf (INDEX + provenance + quality caveats), and templates/design.md adopts the corpus format (frontmatter token registry, lint gate, Known Gaps, Responsive, font substitutes); the prepared rule/archetype merges were withdrawn and stay recorded in the audit for future adapt cycles (audit: docs/audit/absorbed/2026-10-23-awesome-design-md.md) | EXPOSED (v1.10.0) |
+| A-006 | 2026-10-23 | Gluttony run on miqdadbadjuber/anti-slop: a second anti-slop system whose core duplicates the suite's taste core almost entirely, but whose satellites held six mechanisms the suite lacked — dead-control discipline beyond form submits, a recorded click-through as review evidence, a body-of-copy tell set with false-positive discipline, three accessibility specifics (non-text contrast, keyboard occlusion, Escape), a comment-value test for the build phase, and a working contrast calculator for arbitrary pairs | Merged as fragments only: 1 checkbox into taste-core.md + 1 into review-rubric.md + the FAQ/self-audit/body-tells/what-not-to-flag set into copy.md, 3 rules + reference table into ux-heuristics.md, a Comments section into implement, and the contrast checker adapted to scripts/contrast-check.py (selftest repointed at the ux-heuristics table); core, ui, layoutmobile units, the mode/install machinery, the tier taxonomy, the Liveliness dials, and the MCP wrapper rejected (audit: docs/audit/absorbed/2026-10-23-anti-slop.md) | EXPOSED (v1.11.0) |
 
 Full candidate records are appended below the table as they are filed.
 
@@ -275,3 +276,44 @@ the wheel's EXPOSED queue is empty.
 - Decision: owner's ruling at the gate, 2026-10-23. Promotion from
   EXPOSED requires a proving run: a real project's DESIGN.md drafted
   with the shelf consulted and written in the new format, linted clean.
+
+## A-006: anti-slop absorption — fragments, not the system
+
+- Status: EXPOSED · Filed: 2026-10-23
+- Source signal: absorption (gluttony run 5, miqdadbadjuber/anti-slop,
+  MIT, commit c93d08c7c94ab6f4db9ccc2e0f4f6e6121006d3e).
+- Phenomenon: the upstream core is a rival anti-slop constitution
+  (C-1..C-5, R-01..R-38, a delivery gate) written to sit on top of a
+  project's DESIGN.md — the exact seat the suite's taste core occupies
+  since A-002. Audited rule by rule, 35 of its 38 rules duplicate suite
+  coverage, usually in a weaker or prose form, and two conflict
+  outright (its absolute em-dash ban against copy.md's prescribed
+  em-dash use; its dark-mode toggle clause against the design skill's
+  no-unasked-themes anti-pattern). The yield was in the satellites and
+  the seams: six mechanisms the suite genuinely lacked.
+- Counter: fragments, each landed where the suite already keeps that
+  kind of rule — dead-control checkbox (taste-core), click-through
+  evidence (review-rubric), copy tells + false-positive discipline
+  (copy.md), non-text contrast / keyboard occlusion / Escape +
+  unrounded-threshold discipline and the reference table
+  (ux-heuristics), the comment-value test (implement), and the contrast
+  calculator (scripts/contrast-check.py, adapted; its selftest now
+  recomputes the table in ux-heuristics.md, so doc and tool cannot
+  drift). The core, both remaining design satellites, the
+  mode-resolution and install-wizard machinery, the three-tier rule
+  taxonomy, the Liveliness dials, and the hand-rolled MCP wrapper were
+  rejected with reasons in the audit.
+- Expected effect: reviews catch dead controls with a recorded
+  click-through instead of discovering them in use; copy audits flag
+  clusters of tells without sanding off the user's voice; contrast
+  claims about built UI are computed by a chainable script instead of
+  estimated; comment slop is judged in the build phase by a named test.
+- Blast radius: every merge is additive — one checkbox, one section, or
+  one script at a time — and no rule in force changed meaning. The one
+  contradiction found (em dashes) was resolved in the suite's favour
+  and recorded. If a fragment proves noisy in real reviews (the
+  what-not-to-flag discipline is the guard), the adapt loop revises it.
+- Decision: staged at EXPOSED pending the owner's human gate on the
+  absorb report; promotion requires a proving run that uses the
+  fragments on real work — a design review run with the click-through
+  check, or a copy pass audited against the new copy.md sections.

@@ -102,3 +102,22 @@ sections, and a Responsive section. The rule and archetype merges
 prepared during the audit were withdrawn under the ruling and remain
 recorded, not in force, in the full audit:
 `docs/audit/absorbed/2026-10-23-awesome-design-md.md`.
+
+## v1.11.0 note — anti-slop fragments (A-006, EXPOSED)
+
+Gluttony run 5 audited miqdadbadjuber/anti-slop (MIT © Miqdad
+Badjuber, commit c93d08c7c94ab6f4db9ccc2e0f4f6e6121006d3e): a core
+anti-slop rulebook (C-1..C-5, R-01..R-38) plus five satellite skills
+and a contrast checker. The core is a second taste manifesto and was
+rejected as a unit — the suite's taste core already holds that seat —
+along with its UI and mobile satellites, its session-mode and install
+machinery, its tier taxonomy, and its MCP wrapper. Six mechanisms the
+suite lacked were merged as fragments, each credited where it landed:
+dead-control and click-through evidence rules, the copy tell set with
+its false-positive discipline, three accessibility specifics and the
+contrast reference table, the comment-value test in `implement`, and
+the contrast calculator at `scripts/contrast-check.py` (adapted, MIT,
+credit in its header; its selftest recomputes the table in
+ux-heuristics.md). The upstream em-dash ban contradicts copy.md and
+was rejected. Full audit:
+`docs/audit/absorbed/2026-10-23-anti-slop.md`.

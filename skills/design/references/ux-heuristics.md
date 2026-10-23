@@ -200,14 +200,28 @@ not serve that path.
   width, and layouts survive 200% text scaling without clipped content.
 - [ ] Tap feedback is immediate (state change within the frame budget);
   the 300ms-feeling lag of unmanaged tap handling fails.
+- [ ] A focused input scrolls into view above the on-screen keyboard;
+  a form field the keyboard covers while it is being filled fails, at
+  whichever height the keyboard takes on that device.
 
 ## Accessibility floor
 
 - [ ] Contrast passes the numbers in taste-core.md, including placeholder
   text, disabled states that still carry information, and text over
-  imagery (measured against the image, not the average of it).
+  imagery (measured against the image, not the average of it). Verdicts
+  read the unrounded ratio: 4.498:1 displays as 4.50 and still fails.
+  Compute a pair with `scripts/contrast-check.py <hex1> <hex2>` rather
+  than estimating it; `--selftest` recomputes the reference table below
+  so the table and the formula cannot drift apart.
+- [ ] Non-text contrast holds at 3:1 for the parts of a component a user
+  must perceive to use it: control boundaries, status indicators, input
+  borders against their field, chart segments against their neighbours.
+  A button identifiable only by its label text, on a boundary that
+  vanishes against the surface, fails.
 - [ ] Every interactive element is reachable and operable by keyboard
   alone, in an order that matches the visual order, with no traps.
+  Escape closes dialogs, menus, and popovers; a layer that only a
+  pointer can dismiss fails.
 - [ ] Focus is visible on every control, including inside modals: an
   indicator of at least 2 CSS px perimeter at 3:1 contrast against
   adjacent colours, never removed without a replacement, and never hidden
@@ -223,6 +237,27 @@ not serve that path.
 - [ ] The page works at 400% zoom and with text spacing increased, without
   loss of content or function (reflow, no two-dimensional scrolling for
   reading content).
+
+Contrast reference pairs, recomputed by `scripts/contrast-check.py
+--selftest` — this table is the script's source of truth, so edit the
+table and the script's verdicts follow:
+
+| Pairing (text on background) | Ratio | Normal text (4.5) | Large text (3.0) |
+|------------------------------|-------|-------------------|------------------|
+| Black on white | 21.00 | Pass | Pass |
+| White on black | 21.00 | Pass | Pass |
+| White on #333333 | 12.63 | Pass | Pass |
+| White on #666666 | 5.74 | Pass | Pass |
+| #777777 on white | 4.48 | Fail | Pass |
+| #777777 on #070707 | 4.50 | Fail | Pass |
+| White on #888888 | 3.54 | Fail | Pass |
+| White on #999999 | 2.85 | Fail | Fail |
+| #555555 on black | 2.82 | Fail | Fail |
+
+The `#777777 on #070707` row is the near-threshold case: 4.4983:1 rounds
+to 4.50 for display and still fails 4.5:1. Read the table as a sanity
+check, not a substitute; any pairing not listed, or near a threshold,
+goes through the script.
 
 ## The eight-state contract
 
@@ -350,3 +385,12 @@ than describing it vaguely.
   the dismissed one letting it spring back; toasts stack at a corner.
 - **Universal scroll fade-up** — every section fading in on intersection
   until the page never settles; one orchestrated entrance is the limit.
+
+---
+
+Absorption note (A-006, 2026-10-23): the non-text contrast rule, the
+keyboard-occlusion rule, the Escape rule, the unrounded-threshold
+discipline, and the contrast reference table were extracted from
+miqdadbadjuber/anti-slop (MIT, commit c93d08c7), its human unit; the
+checker script is adapted at `scripts/contrast-check.py` with credit in
+its header. Full audit: `docs/audit/absorbed/2026-10-23-anti-slop.md`.
