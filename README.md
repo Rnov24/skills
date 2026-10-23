@@ -69,6 +69,9 @@ written in `docs/ARTIFACTS.md`.
 - `implement` — execute tickets: worker protocol, test-first at agreed seams,
   thin verifiable slices.
 - `debug` — diagnosis loop gated on a feedback command that already goes red.
+- `mcp-builder` — design, implement, and evaluate Model Context Protocol
+  servers in TypeScript or Python with strict tool naming and schemas.
+
 
 **Assure and ship**
 - `review` — two-axis review (standards and spec) plus blind doubt review for

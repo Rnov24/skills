@@ -344,3 +344,25 @@ the wheel's EXPOSED queue is empty.
   gates. No existing valid designs broken.
 - Decision: staged at EXPOSED pending human gate on absorb report.
 
+## A-008: Anthropic mcp-builder and with-server absorption (v1.13.0)
+
+- Status: EXPOSED · Filed: 2026-10-23
+- Source signal: absorption (gluttony run 7, anthropics/skills targets
+  `skills/mcp-builder` and `skills/webapp-testing`, Apache-2.0, commit dbd4588f9e1033efb41dad4bef2f7947c8993d44).
+- Phenomenon: the suite lacked specialized discipline for building and
+  evaluating Model Context Protocol (MCP) servers, tool discovery conventions,
+  and behavioral annotations. In parallel, running test commands against local web
+  servers lacked a clean lifecycle runner.
+- Counter: `mcp-builder` absorbed as new skill in `phase: build` (4-phase protocol,
+  naming conventions, Zod/Pydantic schemas, tool annotations, MCP Inspector
+  verification, and 10-question evaluation harness) with vendored language references.
+  `webapp-testing` rejected as standalone skill to prevent boilerplate bloat, but its
+  underlying `with_server.py` helper merged into `scripts/with-server.py` for
+  deterministic local test lifecycle execution.
+- Expected effect: agents can author, lint, inspect, and evaluate MCP tool servers
+  systematically; testing workflows can spin up background servers reliably.
+- Blast radius: `mcp-builder` is an independent build-discipline skill; `scripts/with-server.py`
+  is a standalone utility. Zero regression on existing skills.
+- Decision: staged at EXPOSED pending human gate on absorb report.
+
+

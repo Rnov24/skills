@@ -136,3 +136,18 @@ law (spend boldness in one place, keep the rest quiet) into build discipline, an
 default anti-slop bans into `templates/design.md`. Full audit:
 `docs/audit/absorbed/2026-10-23-anthropic-frontend-design.md`.
 
+## v1.13.0 note — MCP builder & test runner tooling (A-008, EXPOSED)
+
+Gluttony run 7 audited anthropics/skills targets `skills/mcp-builder` and
+`skills/webapp-testing` (Apache-2.0 © Anthropic, commit dbd4588f9e1033efb41dad4bef2f7947c8993d44).
+`mcp-builder` was absorbed as the 22nd suite skill (`skills/mcp-builder/`, phase: build),
+supplying the 4-phase protocol for authoring and evaluating Model Context Protocol
+servers: tool naming standards (`{service}_{action}_{resource}`), input/output
+schemas (Zod/Pydantic), tool annotations (`readOnlyHint`, `destructiveHint`,
+`idempotentHint`, `openWorldHint`), context pagination, and an objective 10-question
+XML evaluation harness. `webapp-testing` was rejected as standalone prose (Playwright
+boilerplate), but its `with_server.py` lifecycle tool was adapted into
+`scripts/with-server.py` for deterministic local test execution. Full audit:
+`docs/audit/absorbed/2026-10-23-anthropic-mcp-and-testing.md`.
+
+

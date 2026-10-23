@@ -166,6 +166,24 @@
   "path": "skills/implement/SKILL.md"
  },
  {
+  "name": "mcp-builder",
+  "phase": "build",
+  "description": "Design, implement, and evaluate Model Context Protocol (MCP) servers in TypeScript or Python with strict tool naming, schemas, and test harnesses. Use when building or testing MCP integrations.",
+  "keywords": [
+   "mcp",
+   "model context protocol",
+   "mcp server",
+   "fastmcp",
+   "tool definition",
+   "mcp tool",
+   "json-rpc",
+   "mcp inspector",
+   "agent tools"
+  ],
+  "slash_only": false,
+  "path": "skills/mcp-builder/SKILL.md"
+ },
+ {
   "name": "model",
   "phase": "design",
   "description": "Model the domain, data, and interfaces — DOMAIN.md, ERD.md, and API.md as first-class artifacts. Use when a project has entities with lifecycles, persisted data, schema changes, or a boundary other systems consume.",
