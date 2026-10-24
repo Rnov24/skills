@@ -223,6 +223,23 @@
   "path": "skills/orchestrate/SKILL.md"
  },
  {
+  "name": "recon",
+  "phase": "discover",
+  "description": "Reverse-engineer an existing product into a buildable map — screen and flow inventory, inferred data model with evidence, and a weighted feature matrix. Use when the work starts from a product that already exists: a competitor to rebuild, a reference app to match, or a legacy system nobody documented.",
+  "keywords": [
+   "recon",
+   "reverse engineer",
+   "clone",
+   "kompetitor",
+   "competitor teardown",
+   "feature matrix",
+   "tiru aplikasi",
+   "rebuild app"
+  ],
+  "slash_only": false,
+  "path": "skills/recon/SKILL.md"
+ },
+ {
   "name": "research",
   "phase": "discover",
   "description": "Investigate a question against primary sources and capture the findings as a durable file. Use when a decision depends on facts the team does not hold — library capabilities, API behaviour, standards, prior art.",

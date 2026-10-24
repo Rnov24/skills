@@ -40,6 +40,17 @@ stated once, not rediscovered per endpoint. An interface designed here is a
 deep module on purpose: a small surface that hides real complexity, with the
 hidden part named so implementers know what they are allowed to assume.
 
+## From a recon map
+
+When a RECON.md feeds this phase, its inferred model arrives with
+evidence and a confidence per entity. Carry both into ERD.md: a
+high-confidence entity becomes schema; a guess becomes schema plus an
+open question, never silent fact. The hard invariants the recon
+observed (the double-booking that must never happen, the balance that
+must never go negative) are database problems, not UI problems: they
+land as unique or exclusion constraints or check constraints in the
+schema, with the enforcement point named in DOMAIN.md.
+
 ## Consistency gate
 
 Before this phase exits, the three artifacts are checked against each other

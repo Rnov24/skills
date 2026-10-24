@@ -14,6 +14,8 @@ adaptations stay in the log. The wheel remembers.
 | A-005 | 2026-10-23 | Gluttony run on VoltAgent/awesome-design-md (84 brand DESIGN.md extractions): design work had no full-depth DESIGN.md examples to consult, and the suite's own DESIGN.md format was prose-only where the reference corpus is machine-readable | Owner's gate ruling: taken as a DESIGN.md reference, not digested — all 84 files vendored verbatim as the `references/brand-systems/` shelf (INDEX + provenance + quality caveats), and templates/design.md adopts the corpus format (frontmatter token registry, lint gate, Known Gaps, Responsive, font substitutes); the prepared rule/archetype merges were withdrawn and stay recorded in the audit for future adapt cycles (audit: docs/audit/absorbed/2026-10-23-awesome-design-md.md) | EXPOSED (v1.10.0) |
 | A-006 | 2026-10-23 | Gluttony run on miqdadbadjuber/anti-slop: a second anti-slop system whose core duplicates the suite's taste core almost entirely, but whose satellites held six mechanisms the suite lacked — dead-control discipline beyond form submits, a recorded click-through as review evidence, a body-of-copy tell set with false-positive discipline, three accessibility specifics (non-text contrast, keyboard occlusion, Escape), a comment-value test for the build phase, and a working contrast calculator for arbitrary pairs | Merged as fragments only: 1 checkbox into taste-core.md + 1 into review-rubric.md + the FAQ/self-audit/body-tells/what-not-to-flag set into copy.md, 3 rules + reference table into ux-heuristics.md, a Comments section into implement, and the contrast checker adapted to scripts/contrast-check.py (selftest repointed at the ux-heuristics table); core, ui, layoutmobile units, the mode/install machinery, the tier taxonomy, the Liveliness dials, and the MCP wrapper rejected (audit: docs/audit/absorbed/2026-10-23-anti-slop.md) | EXPOSED (v1.11.0) |
 
+| A-009 | 2026-10-24 | Gluttony run on Jakeschincariol/replica-skill (11 clone-building skills): the suite had no product-teardown verb (research answers questions, study extracts design DNA, neither maps an existing product into screens/flows/inferred model/feature matrix), no parity instrument for match-an-existing-product claims, no review-mining protocol, and no leftover-identity check before shipping a rebuild | `replica-recon` absorbed as new `recon` skill (phase: discover) with RECON.md + FEATURES.csv artifacts registered; merges: replica-architect → `model` (confidence carryover, invariant-as-DB-constraint), replica-diff → `verify` (parity section + vendored parity.py/imgdiff.py), replica-entrepreneur → `research` (review-mining section + vendored reviews.py/themes), replica-brand → `ship` (sweep gate + vendored sweep.py); 6 units rejected as duplicates of design/study, implement, verify/debug, ship (audit: docs/audit/absorbed/2026-10-24-replica-skill.md) | EXPOSED (v1.14.0) |
+
 Full candidate records are appended below the table as they are filed.
 
 ## A-001: the adaptation loop
@@ -366,3 +368,33 @@ the wheel's EXPOSED queue is empty.
 - Decision: staged at EXPOSED pending human gate on absorb report.
 
 
+
+## A-009: replica-skill absorption — recon skill, parity and review-mining instruments (v1.14.0)
+
+- Status: EXPOSED · Filed: 2026-10-24
+- Source signal: absorption (gluttony run 8, Jakeschincariol/replica-skill,
+  MIT, commit 77c9436fb3d18c3d58169efb8caf4fe906b0dc51).
+- Phenomenon: an 11-skill pack for cloning apps end to end. Its pipeline
+  mostly re-implements suite phases under clone names (architect ≈ model,
+  build ≈ implement, test ≈ verify/debug, deploy ≈ ship, design ≈ design +
+  study), but four mechanisms cover ground the suite lacked: product-level
+  reverse engineering into a buildable map with a feature-matrix parity
+  contract, weighted parity + colour-blind layout-diff instruments,
+  verbatim-and-linked review mining with thin-theme discipline, and a
+  mechanical leftover-identity sweep before shipping a rebuild.
+- Counter: ABSORB-NEW ×1 (`recon`, phase: discover, with RECON.md and
+  FEATURES.csv registered as artifacts with trigger, owner, and human
+  gate); MERGE ×4 (architect → model, diff → verify, entrepreneur →
+  research, brand → ship, with parity.py, imgdiff.py, reviews.py +
+  themes, and sweep.py vendored into `scripts/`); REJECT ×6.
+- Expected effect: "build something like X" work starts from evidence
+  (a map and a matrix) instead of model memory; parity claims carry a
+  printed number; competitor-review claims carry verbatim, linked
+  quotes and a stated sample size.
+- Blast radius: one new discover-phase skill, four additive sections in
+  existing skills, five vendored stdlib scripts. No rule in force
+  changed meaning; contrast.py and listing.py deliberately not taken
+  (duplicate of scripts/contrast-check.py; niche store lint).
+- Decision: staged at EXPOSED pending the owner's human gate on the
+  absorb report; promotion requires a proving run — a real recon of an
+  existing product carried through to a parity score.

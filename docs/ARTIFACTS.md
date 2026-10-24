@@ -21,6 +21,27 @@ and the gate that accepts it.
 - Gate: every load-bearing claim cites a primary source; unknowns are listed
   as unknowns, not smoothed over.
 
+### RECON.md
+- Trigger: the work starts from a product that already exists — a
+  competitor to rebuild, a reference app to match, a legacy system
+  nobody documented.
+- Owner: `recon`. Template: `templates/recon.md`. Location: `docs/`.
+- Consumers: model (inferred data model), define-product, design
+  (component and state inventory), verify (parity baseline).
+- Gate: human approves scope, the out-of-scope (cannot-clone) list, and
+  the size estimate; clean-room rules confirmed (public sources and the
+  user's own account only, no source code, assets, or private APIs).
+
+### FEATURES.csv
+- Trigger: a RECON.md exists. One row per feature of the original
+  product, created by `recon` and updated as the build lands each row.
+- Owner: `recon` (creation), `implement` (clone column). Template:
+  `templates/features.csv`. Location: `docs/` beside RECON.md.
+- Consumers: verify (`scripts/parity.py` scores it), tickets (build
+  order follows the missing list).
+- Gate: every row carries a priority (must / should / could); exclusions
+  are `skip` rows with the reason written, never deleted rows.
+
 ### ADR-<nnnn>-<slug>.md
 - Trigger: a decision passes the three-gate test — hard to reverse, surprising
   without context, and the result of a real trade-off.

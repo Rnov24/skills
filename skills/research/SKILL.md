@@ -27,6 +27,33 @@ evaporates.
    implication for the decision: what the evidence supports, what it rules
    out, and what it leaves open.
 
+## Review mining
+
+One research mode deserves its own discipline: mining what a product's
+real users say about it (store reviews, G2/Capterra, Reddit, Hacker
+News, the product's own request board) to find what they hate, what is
+missing, and what is unsolved.
+
+- **Never fabricate.** No invented reviews, quotes, counts, or sources.
+  If a source cannot be reached, say so. If there are 14 reviews, the
+  file says 14, with the sample size stated wherever a claim rests on
+  them.
+- **Every quote is verbatim and linked**, copied exactly with the URL of
+  the review or thread. Reading, not scraping: read pages as a person
+  does and copy rows into a CSV (`source,url,date,rating,text`); only
+  official feeds and APIs within their terms are automated.
+- **Rank with the tool, not by feel.** `python3 scripts/reviews.py
+  reviews.csv` sorts the corpus into themes
+  (`scripts/reviews-themes.json`, editable per category), weights low
+  ratings and recency, and marks any theme under three reviews or from
+  a single source as thin. Thin themes are reported as thin.
+- Reviewers' words are research, never testimonials, and no fake
+  reviews are ever created for or against any product.
+
+The output feeds `define-product` as fix candidates and positioning
+evidence inside the RESEARCH file, each item carrying its counts,
+source spread, and linked quotes.
+
 ## Rules
 
 - Research is delegable: it is fact work, not decision work. The decision

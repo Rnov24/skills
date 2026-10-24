@@ -20,6 +20,12 @@ the target environment (checked, not assumed), monitoring or at least a
 named human watching the first hour, and the rollback path is written down
 before it is needed.
 
+When the shipped product was rebuilt from an existing one, the list gains
+one mechanical check: `python3 scripts/sweep.py . --avoid "<original name>"
+--domains <original domain> --colors "<original brand colours>"` must exit
+clean. Nothing of the original's identity — its name (including inside
+identifiers), domain, or brand colours — ships under your name.
+
 ## Git discipline
 
 - Small, honest commits on save points; messages that say what changed and

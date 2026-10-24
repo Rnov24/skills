@@ -1,0 +1,9 @@
+feature,area,priority,original,clone,notes
+Sign up with email or OAuth,onboarding,must,yes,no,
+Core action a user performs in the main loop,core loop,must,yes,no,replace with the product's own core action
+View a list of own items,core loop,must,yes,no,
+Edit an item's details,core loop,must,yes,no,
+Share or export a result,sharing,should,yes,no,
+Email or push notification on completion,notifications,should,yes,no,
+Team or multi-user support,team,could,yes,no,
+Licensed content catalogue,content,could,yes,skip,the catalogue is theirs; the player and flows are rebuildable

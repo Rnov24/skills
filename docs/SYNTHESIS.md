@@ -151,3 +151,23 @@ boilerplate), but its `with_server.py` lifecycle tool was adapted into
 `docs/audit/absorbed/2026-10-23-anthropic-mcp-and-testing.md`.
 
 
+## v1.14.0 note — replica-skill: recon, parity, review mining (A-009, EXPOSED)
+
+Gluttony run 8 audited Jakeschincariol/replica-skill (MIT © Jake
+Schincariol, commit 77c9436fb3d18c3d58169efb8caf4fe906b0dc51): eleven
+skills for cloning an app clean-room style, with six stdlib Python tools
+(upstream tests: 57, all passing at intake). One unit was absorbed new —
+`replica-recon` became the suite's 23rd skill, `recon` (phase: discover),
+with RECON.md and FEATURES.csv registered as artifacts. Four units merged
+as mechanisms only: replica-architect's confidence carryover and
+invariant-as-database-constraint rule into `model`; replica-diff's parity
+scoring and colour-blind layout diff into `verify`, with `parity.py` and
+`imgdiff.py` vendored to `scripts/`; replica-entrepreneur's
+verbatim-and-linked review mining into `research`, with `reviews.py` and
+its themes vendored; replica-brand's leftover-identity sweep into
+`ship`'s readiness list, with `sweep.py` vendored. Six units were
+rejected as duplicates of existing phases (design, build, backend, test,
+launch, deploy), along with `contrast.py` (duplicates
+`scripts/contrast-check.py`) and `listing.py` (store-listing lint, too
+niche to vendor). Full audit:
+`docs/audit/absorbed/2026-10-24-replica-skill.md`.

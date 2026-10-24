@@ -51,6 +51,8 @@ written in `docs/ARTIFACTS.md`.
 **Discover and define**
 - `brief` — turn a raw request into an approved problem brief.
 - `research` — answer a question from primary sources into a durable file.
+- `recon` — reverse-engineer an existing product into a buildable map:
+  screens, flows, inferred data model, and a weighted feature matrix.
 - `grill` — stress-test a plan one decision at a time; decisions land as ADRs
   and glossary terms the moment they resolve.
 - `define-product` — PRD, personas, and user stories with checkable
