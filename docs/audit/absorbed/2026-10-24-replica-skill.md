@@ -107,4 +107,4 @@ intake (57 tests).
   workflow, not two — the replica pipeline remains expressible as
   recon → brief/define-product → model → design → implement → verify
   → ship inside the suite.
-- Human gate: pending.
+- Human gate: approved by Jal on 2026-10-24 (commit + push + reinstall authorized in chat).

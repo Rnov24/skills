@@ -395,6 +395,7 @@ the wheel's EXPOSED queue is empty.
   existing skills, five vendored stdlib scripts. No rule in force
   changed meaning; contrast.py and listing.py deliberately not taken
   (duplicate of scripts/contrast-check.py; niche store lint).
-- Decision: staged at EXPOSED pending the owner's human gate on the
-  absorb report; promotion requires a proving run — a real recon of an
-  existing product carried through to a parity score.
+- Decision: approved by the owner at the human gate on 2026-10-24 and
+  released as v1.14.0 (commit eb6aaa4) at EXPOSED; promotion requires a
+  proving run — a real recon of an existing product carried through to
+  a parity score.
