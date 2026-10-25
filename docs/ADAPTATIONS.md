@@ -11,10 +11,12 @@ adaptations stay in the log. The wheel remembers.
 | A-002 | 2026-10-21 | Gluttony run on Nutlope/hallmark: suite design layer lacked a pattern library, a copy reference, mechanical slop gates, and any design-extraction verb | Absorbed hallmark's macrostructure + pruned component libraries, slop gates, state/motion canon, OKLCH/responsive foundations, token exports, copy reference, and the study skill (audit: docs/audit/absorbed/2026-10-21-hallmark.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Kopi Pesisir proving run, docs/proving-runs/2026-10-22-a002/) |
 | A-003 | 2026-10-21 | Gluttony run on NTCoding/claude-skillz (data-visualization): the suite had no chart discipline at all while the owner's work is full of dashboards and research figures | Absorbed as new `data-viz` skill, fully rewritten (source repo has no licence, so mechanisms only, no text) with DESIGN.md token rule and accessibility gate added (audit: docs/audit/absorbed/2026-10-21-claude-skillz-dataviz.md) | ADAPTED (v1.8.0, promoted 2026-10-22 by the Iris figure proving run, docs/proving-runs/2026-10-22-a003/) |
 | A-004 | 2026-10-22 | Gluttony run on a pasted 20-law UX instruction set: ux-heuristics.md specified mechanics (targets, states, input geometry) but never the decision laws behind them — no choice budget, convention, grouping, default-safety, or completion-state rules | 16 of 20 laws merged into ux-heuristics.md as checkable rules (new "Choice, grouping, and convention" section plus additions to Forms, Feedback, and Lists); 4 rejected as already covered (Fitts size, Zeigarnik, Prägnanz, Tesler) (audit: docs/audit/absorbed/2026-10-22-ux-laws.md) | ADAPTED (v1.9.0, promoted 2026-10-22 by the two-target audit proving run, docs/proving-runs/2026-10-22-a004/) |
-| A-005 | 2026-10-23 | Gluttony run on VoltAgent/awesome-design-md (84 brand DESIGN.md extractions): design work had no full-depth DESIGN.md examples to consult, and the suite's own DESIGN.md format was prose-only where the reference corpus is machine-readable | Owner's gate ruling: taken as a DESIGN.md reference, not digested — all 84 files vendored verbatim as the `references/brand-systems/` shelf (INDEX + provenance + quality caveats), and templates/design.md adopts the corpus format (frontmatter token registry, lint gate, Known Gaps, Responsive, font substitutes); the prepared rule/archetype merges were withdrawn and stay recorded in the audit for future adapt cycles (audit: docs/audit/absorbed/2026-10-23-awesome-design-md.md) | EXPOSED (v1.10.0) |
-| A-006 | 2026-10-23 | Gluttony run on miqdadbadjuber/anti-slop: a second anti-slop system whose core duplicates the suite's taste core almost entirely, but whose satellites held six mechanisms the suite lacked — dead-control discipline beyond form submits, a recorded click-through as review evidence, a body-of-copy tell set with false-positive discipline, three accessibility specifics (non-text contrast, keyboard occlusion, Escape), a comment-value test for the build phase, and a working contrast calculator for arbitrary pairs | Merged as fragments only: 1 checkbox into taste-core.md + 1 into review-rubric.md + the FAQ/self-audit/body-tells/what-not-to-flag set into copy.md, 3 rules + reference table into ux-heuristics.md, a Comments section into implement, and the contrast checker adapted to scripts/contrast-check.py (selftest repointed at the ux-heuristics table); core, ui, layoutmobile units, the mode/install machinery, the tier taxonomy, the Liveliness dials, and the MCP wrapper rejected (audit: docs/audit/absorbed/2026-10-23-anti-slop.md) | EXPOSED (v1.11.0) |
+| A-005 | 2026-10-23 | Gluttony run on VoltAgent/awesome-design-md (84 brand DESIGN.md extractions): design work had no full-depth DESIGN.md examples to consult, and the suite's own DESIGN.md format was prose-only where the reference corpus is machine-readable | Owner's gate ruling: taken as a DESIGN.md reference, not digested — all 84 files vendored verbatim as the `references/brand-systems/` shelf (INDEX + provenance + quality caveats), and templates/design.md adopts the corpus format (frontmatter token registry, lint gate, Known Gaps, Responsive, font substitutes); the prepared rule/archetype merges were withdrawn and stay recorded in the audit for future adapt cycles (audit: docs/audit/absorbed/2026-10-23-awesome-design-md.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linkstash DESIGN.md proving run, docs/proving-runs/2026-10-24-a005/) |
+| A-006 | 2026-10-23 | Gluttony run on miqdadbadjuber/anti-slop: a second anti-slop system whose core duplicates the suite's taste core almost entirely, but whose satellites held six mechanisms the suite lacked — dead-control discipline beyond form submits, a recorded click-through as review evidence, a body-of-copy tell set with false-positive discipline, three accessibility specifics (non-text contrast, keyboard occlusion, Escape), a comment-value test for the build phase, and a working contrast calculator for arbitrary pairs | Merged as fragments only: 1 checkbox into taste-core.md + 1 into review-rubric.md + the FAQ/self-audit/body-tells/what-not-to-flag set into copy.md, 3 rules + reference table into ux-heuristics.md, a Comments section into implement, and the contrast checker adapted to scripts/contrast-check.py (selftest repointed at the ux-heuristics table); core, ui, layoutmobile units, the mode/install machinery, the tier taxonomy, the Liveliness dials, and the MCP wrapper rejected (audit: docs/audit/absorbed/2026-10-23-anti-slop.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linkstash copy-pass proving run, docs/proving-runs/2026-10-24-a006/) |
 
-| A-009 | 2026-10-24 | Gluttony run on Jakeschincariol/replica-skill (11 clone-building skills): the suite had no product-teardown verb (research answers questions, study extracts design DNA, neither maps an existing product into screens/flows/inferred model/feature matrix), no parity instrument for match-an-existing-product claims, no review-mining protocol, and no leftover-identity check before shipping a rebuild | `replica-recon` absorbed as new `recon` skill (phase: discover) with RECON.md + FEATURES.csv artifacts registered; merges: replica-architect → `model` (confidence carryover, invariant-as-DB-constraint), replica-diff → `verify` (parity section + vendored parity.py/imgdiff.py), replica-entrepreneur → `research` (review-mining section + vendored reviews.py/themes), replica-brand → `ship` (sweep gate + vendored sweep.py); 6 units rejected as duplicates of design/study, implement, verify/debug, ship (audit: docs/audit/absorbed/2026-10-24-replica-skill.md) | EXPOSED (v1.14.0) |
+| A-007 | 2026-10-23 | Gluttony run on anthropics/skills frontend-design: five AI default clusters, a two-pass uniqueness check, and the Chanel restraint principle duplicated design's taste layer as a standalone prompt but held checkable mechanisms the suite lacked | Merged as mechanisms only into design (two-pass review in the preview block, cluster rules in taste-core, default bans in templates/design.md); standalone skill rejected (audit: docs/audit/absorbed/2026-10-23-anthropic-frontend-design.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linkstash landing-page preview proving run, docs/proving-runs/2026-10-24-a007/) |
+| A-008 | 2026-10-23 | Gluttony run on anthropics/skills mcp-builder + webapp-testing: the suite had no MCP authoring/evaluation discipline and no deterministic local-server test runner | mcp-builder absorbed as new skill (phase: build) with vendored references and evaluation harness; webapp-testing rejected as prose, its with_server.py merged into scripts/with-server.py (audit: docs/audit/absorbed/2026-10-23-anthropic-mcp-and-testing.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the MCP server + with-server proving run, docs/proving-runs/2026-10-24-a008/) |
+| A-009 | 2026-10-24 | Gluttony run on Jakeschincariol/replica-skill (11 clone-building skills): the suite had no product-teardown verb (research answers questions, study extracts design DNA, neither maps an existing product into screens/flows/inferred model/feature matrix), no parity instrument for match-an-existing-product claims, no review-mining protocol, and no leftover-identity check before shipping a rebuild | `replica-recon` absorbed as new `recon` skill (phase: discover) with RECON.md + FEATURES.csv artifacts registered; merges: replica-architect → `model` (confidence carryover, invariant-as-DB-constraint), replica-diff → `verify` (parity section + vendored parity.py/imgdiff.py), replica-entrepreneur → `research` (review-mining section + vendored reviews.py/themes), replica-brand → `ship` (sweep gate + vendored sweep.py); 6 units rejected as duplicates of design/study, implement, verify/debug, ship (audit: docs/audit/absorbed/2026-10-24-replica-skill.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linktree recon proving run, docs/proving-runs/2026-10-24-a009/) |
 
 Full candidate records are appended below the table as they are filed.
 
@@ -245,7 +247,8 @@ the wheel's EXPOSED queue is empty.
 
 ## A-005: awesome-design-md as the DESIGN.md reference shelf
 
-- Status: EXPOSED · Filed: 2026-10-23
+- Status: ADAPTED · Promoted: 2026-10-24 (v1.15.0) · Filed: 2026-10-23
+- Promotion evidence: `docs/proving-runs/2026-10-24-a005/report.md`.
 - Source signal: absorption (gluttony run 4, VoltAgent/awesome-design-md,
   MIT, commit 3b605329240ce735b510037cca322f1831fdd7f8).
 - Phenomenon: the suite's design phase writes DESIGN.md constitutions but
@@ -281,7 +284,8 @@ the wheel's EXPOSED queue is empty.
 
 ## A-006: anti-slop absorption — fragments, not the system
 
-- Status: EXPOSED · Filed: 2026-10-23
+- Status: ADAPTED · Promoted: 2026-10-24 (v1.15.0) · Filed: 2026-10-23
+- Promotion evidence: `docs/proving-runs/2026-10-24-a006/report.md`.
 - Source signal: absorption (gluttony run 5, miqdadbadjuber/anti-slop,
   MIT, commit c93d08c7c94ab6f4db9ccc2e0f4f6e6121006d3e).
 - Phenomenon: the upstream core is a rival anti-slop constitution
@@ -322,7 +326,8 @@ the wheel's EXPOSED queue is empty.
 
 ## A-007: Anthropic frontend-design absorption — principles and calibration merged into design
 
-- Status: EXPOSED · Filed: 2026-10-23
+- Status: ADAPTED · Promoted: 2026-10-24 (v1.15.0) · Filed: 2026-10-23
+- Promotion evidence: `docs/proving-runs/2026-10-24-a007/report.md`.
 - Source signal: absorption (gluttony run 6, anthropics/skills target
   `skills/frontend-design`, Apache-2.0, commit dbd4588f9e1033efb41dad4bef2f7947c8993d44).
 - Phenomenon: Anthropic's `frontend-design` provides a concise calibration
@@ -348,7 +353,8 @@ the wheel's EXPOSED queue is empty.
 
 ## A-008: Anthropic mcp-builder and with-server absorption (v1.13.0)
 
-- Status: EXPOSED · Filed: 2026-10-23
+- Status: ADAPTED · Promoted: 2026-10-24 (v1.15.0) · Filed: 2026-10-23
+- Promotion evidence: `docs/proving-runs/2026-10-24-a008/report.md`.
 - Source signal: absorption (gluttony run 7, anthropics/skills targets
   `skills/mcp-builder` and `skills/webapp-testing`, Apache-2.0, commit dbd4588f9e1033efb41dad4bef2f7947c8993d44).
 - Phenomenon: the suite lacked specialized discipline for building and
@@ -371,7 +377,8 @@ the wheel's EXPOSED queue is empty.
 
 ## A-009: replica-skill absorption — recon skill, parity and review-mining instruments (v1.14.0)
 
-- Status: EXPOSED · Filed: 2026-10-24
+- Status: ADAPTED · Promoted: 2026-10-24 (v1.15.0) · Filed: 2026-10-24
+- Promotion evidence: `docs/proving-runs/2026-10-24-a009/report.md`.
 - Source signal: absorption (gluttony run 8, Jakeschincariol/replica-skill,
   MIT, commit 77c9436fb3d18c3d58169efb8caf4fe906b0dc51).
 - Phenomenon: an 11-skill pack for cloning apps end to end. Its pipeline
@@ -399,3 +406,38 @@ the wheel's EXPOSED queue is empty.
   released as v1.14.0 (commit eb6aaa4) at EXPOSED; promotion requires a
   proving run — a real recon of an existing product carried through to
   a parity score.
+
+## Batch promotion, 2026-10-24 (v1.15.0): the EXPOSED queue empties again
+
+At the owner's instruction ("prove semua"), all five EXPOSED
+adaptations were put through real proving runs on the same day. Each
+run's full evidence lives in its folder; the one-line verdicts:
+
+- A-005 (design shelf + registry format): Linkstash's DESIGN.md
+  re-drafted in the new format with the shelf consulted under its
+  load discipline; `npx @google/design.md lint` clean (0 errors,
+  0 warnings) after substantive fixes. `docs/proving-runs/2026-10-24-a005/`
+- A-006 (anti-slop fragments): full-corpus copy audit of Linkstash's
+  21 UI strings against copy.md's tests — zero violations, with the
+  what-not-to-flag discipline documentedly clearing the two
+  near-misses; contrast-check.py pairs all PASS.
+  `docs/proving-runs/2026-10-24-a006/`
+- A-007 (frontend-design calibration): two-pass uniqueness review on
+  a real Linkstash landing-page brief — six default elements cut
+  against named rules before any code. `docs/proving-runs/2026-10-24-a007/`
+- A-008 (mcp-builder + with-server): an MCP server built to the
+  skill's protocol and evaluated 9/9 through the official client;
+  with-server.py ran a real app end to end (201/200, clean
+  teardown). Writeback: the `mcp<2` pin note now lives in the skill.
+  `docs/proving-runs/2026-10-24-a008/`
+- A-009 (recon + parity/review-mining/sweep merges): Linktree
+  reverse-engineered from public sources only into RECON.md +
+  FEATURES.csv, then scored by the vendored parity tool (0.0
+  baseline, 8 must-haves enumerated, 2 skip rows excluded with
+  reasons); source conflicts recorded, not averaged.
+  `docs/proving-runs/2026-10-24-a009/`
+
+All five are ADAPTED as of v1.15.0. The wheel's EXPOSED queue is
+empty. Promotion was executed by the orchestrator on the owner's
+instruction; release (commit, push, reinstall) follows the same
+human gate as every prior promotion.

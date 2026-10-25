@@ -1,0 +1,22 @@
+feature,area,priority,original,clone,notes
+Public profile page at a username URL,public page,must,yes,no,core loop F01
+Unlimited basic links,public page,must,yes,no,Free plan per pricing reads
+Add edit and reorder links in admin,admin,must,yes,no,F02
+Social icon row,public page,must,yes,no,
+Media embeds (video music posts),public page,must,yes,no,
+Email and phone collection form,public page,must,yes,no,contact block on Free
+QR code to the public page,sharing,must,yes,no,S06
+Themes and basic appearance controls,appearance,must,yes,no,extended themes are paid
+Link scheduling,admin,should,yes,no,Starter and up per howsociable read
+Analytics with plan-based history window,analytics,should,yes,no,28d Free / 90d Starter / 365d Pro / lifetime Premium
+Remove platform footer branding,appearance,should,yes,no,Pro and up
+Custom fonts and advanced design controls,appearance,should,yes,no,Pro and up
+Google Analytics Meta Pixel and UTM support,analytics,should,yes,no,Pro and up
+Digital product sales with per-plan platform fee,commerce,should,yes,no,fees 12/9/9/0 percent by plan
+Data export,analytics,should,yes,no,Premium
+Dynamic links and smart routing,public page,could,yes,no,Premium
+Link animations,public page,could,yes,no,Starter and up
+A/B link testing,analytics,could,yes,no,reported by qr-verse only — confidence low
+Team access,admin,could,yes,no,Premium per linklay read
+Instagram auto-reply DMs,integrations,could,yes,skip,depends on Meta partnership terms a rebuild does not inherit
+Platform brand name logo and domain identity,brand,must,yes,skip,their trademark and network — never rebuilt

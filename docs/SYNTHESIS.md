@@ -171,3 +171,17 @@ launch, deploy), along with `contrast.py` (duplicates
 `scripts/contrast-check.py`) and `listing.py` (store-listing lint, too
 niche to vendor). Full audit:
 `docs/audit/absorbed/2026-10-24-replica-skill.md`.
+
+## v1.15.0 note — batch proving runs: A-005 through A-009 promoted
+
+Five proving runs executed 2026-10-24 on the owner's instruction,
+each on real work (the Linkstash project carried four of them;
+Linktree's public surface carried the fifth). All five adaptations
+promoted EXPOSED → ADAPTED; evidence in `docs/proving-runs/2026-10-24-a00{5,6,7,8,9}/`.
+One writeback landed with the promotion: `skills/mcp-builder/SKILL.md`
+now records the `mcp<2` pin (SDK 2.x renamed FastMCP), found when the
+A-008 server failed at import on an unpinned install. Two format
+findings were recorded for a future adapt cycle rather than fixed
+mid-run: the design.md linter expects a `primary` colour where the
+suite template says `accent`, and the template has no elevation
+registry section.

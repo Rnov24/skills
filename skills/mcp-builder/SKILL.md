@@ -43,7 +43,7 @@ Phase 1: Research & Plan --> Phase 2: Implement --> Phase 3: Review & Inspect --
 
 Choose the appropriate language stack:
 - **TypeScript (Recommended)**: Node/TypeScript MCP SDK with `Zod` schemas. Best for rich types and ecosystem compatibility.
-- **Python**: FastMCP or Python MCP SDK with `Pydantic` models. Best for data science, ML, or Python-native backends.
+- **Python**: FastMCP or Python MCP SDK with `Pydantic` models. Best for data science, ML, or Python-native backends. Version note (proving run A-008, 2026-10-24): the Python reference targets SDK v1 — pin `mcp<2`; SDK 2.x renamed FastMCP to `MCPServer` (`mcp.server.mcpserver`), so v1 code fails at import on an unpinned install.
 
 Each tool definition must provide:
 1. **Tool Description**: Exact, concise description of what the tool does, parameter semantics, and return schema.

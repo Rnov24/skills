@@ -1,0 +1,21 @@
+0 tautan aktif
+Aktif
+Arsip
+Batal
+Belum ada tautan tersimpan
+Belum ada tautan yang diarsipkan
+Bersihkan pencarian
+Catatan
+Coba gunakan kata kunci lain atau bersihkan pencarian untuk melihat semua tautan.
+Hapus
+Hapus tautan ini? 
+Judul
+Judul (opsional)
+Linkstash
+Masukkan URL di formulir di atas untuk mulai menyimpan tautan.
+Simpan
+Simpan tautan
+Tag (pisahkan koma)
+Tautan yang sudah selesai dapat diarsipkan dari daftar aktif agar tidak memenuhi tampilan utama.
+URL
+Ubah
