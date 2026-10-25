@@ -185,3 +185,18 @@ findings were recorded for a future adapt cycle rather than fixed
 mid-run: the design.md linter expects a `primary` colour where the
 suite template says `accent`, and the template has no elevation
 registry section.
+
+## v1.15.1 note — fix-first tidy-up (A-010, ADAPTED)
+
+At the owner's "rapihin biar mudah dipake", scoped to the fix-first
+option: the seven runtime tools (`parity.py`, `imgdiff.py`,
+`with-server.py`, `reviews.py`, `sweep.py`, `contrast-check.py`)
+moved from repo-root `scripts/` into their owning skills' `scripts/`
+folders, so installed skills work standalone — the dangling-reference
+problem recorded since A-006. The installer now validates the suite
+before installing (index regeneration, frontmatter, script
+references, compilation), verifies installed copies afterwards,
+validates the staged agy plugin, and offers `--check` for diagnosis
+without installing. `templates/design.md` rules the A-005 findings
+once: `primary` is the linter's alias of `accent`, and the registry
+gains an `elevation` section.

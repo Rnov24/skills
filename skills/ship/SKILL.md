@@ -21,7 +21,7 @@ named human watching the first hour, and the rollback path is written down
 before it is needed.
 
 When the shipped product was rebuilt from an existing one, the list gains
-one mechanical check: `python3 scripts/sweep.py . --avoid "<original name>"
+one mechanical check: `python3 scripts/sweep.py . --avoid "<original name>"` (the tool lives in this skill's `scripts/` folder)
 --domains <original domain> --colors "<original brand colours>"` must exit
 clean. Nothing of the original's identity — its name (including inside
 identifiers), domain, or brand colours — ships under your name.

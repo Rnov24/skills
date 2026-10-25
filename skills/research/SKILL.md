@@ -43,7 +43,8 @@ missing, and what is unsolved.
   does and copy rows into a CSV (`source,url,date,rating,text`); only
   official feeds and APIs within their terms are automated.
 - **Rank with the tool, not by feel.** `python3 scripts/reviews.py
-  reviews.csv` sorts the corpus into themes
+  reviews.csv` (in this skill's `scripts/` folder, so it travels
+  with the installed skill) sorts the corpus into themes
   (`scripts/reviews-themes.json`, editable per category), weights low
   ratings and recency, and marks any theme under three reviews or from
   a single source as thin. Thin themes are reported as thin.

@@ -16,6 +16,7 @@ adaptations stay in the log. The wheel remembers.
 
 | A-007 | 2026-10-23 | Gluttony run on anthropics/skills frontend-design: five AI default clusters, a two-pass uniqueness check, and the Chanel restraint principle duplicated design's taste layer as a standalone prompt but held checkable mechanisms the suite lacked | Merged as mechanisms only into design (two-pass review in the preview block, cluster rules in taste-core, default bans in templates/design.md); standalone skill rejected (audit: docs/audit/absorbed/2026-10-23-anthropic-frontend-design.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linkstash landing-page preview proving run, docs/proving-runs/2026-10-24-a007/) |
 | A-008 | 2026-10-23 | Gluttony run on anthropics/skills mcp-builder + webapp-testing: the suite had no MCP authoring/evaluation discipline and no deterministic local-server test runner | mcp-builder absorbed as new skill (phase: build) with vendored references and evaluation harness; webapp-testing rejected as prose, its with_server.py merged into scripts/with-server.py (audit: docs/audit/absorbed/2026-10-23-anthropic-mcp-and-testing.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the MCP server + with-server proving run, docs/proving-runs/2026-10-24-a008/) |
+| A-010 | 2026-10-25 | Fix-first tidy-up at the owner's instruction: every runtime tool the suite's skills quote lived in repo-root scripts/, which the installer never copies, so all installed copies carried dangling references; no install-time validation existed to catch it | Moved the 7 runtime tools into their owning skills' scripts/ folders (mcp-builder precedent); installer now regenerates the index, validates frontmatter/script refs/compilation pre-install, verifies copies post-install, validates the staged agy plugin, and gains --check; templates/design.md rules primary=accent alias and gains an elevation section | ADAPTED (v1.15.1, promoted 2026-10-25 — repair, proved by --check before/after) |
 | A-009 | 2026-10-24 | Gluttony run on Jakeschincariol/replica-skill (11 clone-building skills): the suite had no product-teardown verb (research answers questions, study extracts design DNA, neither maps an existing product into screens/flows/inferred model/feature matrix), no parity instrument for match-an-existing-product claims, no review-mining protocol, and no leftover-identity check before shipping a rebuild | `replica-recon` absorbed as new `recon` skill (phase: discover) with RECON.md + FEATURES.csv artifacts registered; merges: replica-architect → `model` (confidence carryover, invariant-as-DB-constraint), replica-diff → `verify` (parity section + vendored parity.py/imgdiff.py), replica-entrepreneur → `research` (review-mining section + vendored reviews.py/themes), replica-brand → `ship` (sweep gate + vendored sweep.py); 6 units rejected as duplicates of design/study, implement, verify/debug, ship (audit: docs/audit/absorbed/2026-10-24-replica-skill.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linktree recon proving run, docs/proving-runs/2026-10-24-a009/) |
 
 Full candidate records are appended below the table as they are filed.
@@ -441,3 +442,48 @@ All five are ADAPTED as of v1.15.0. The wheel's EXPOSED queue is
 empty. Promotion was executed by the orchestrator on the owner's
 instruction; release (commit, push, reinstall) follows the same
 human gate as every prior promotion.
+
+## A-010: fix-first tidy-up — scripts travel with their skill, installer validates (v1.15.1)
+
+- Status: ADAPTED · Filed: 2026-10-25 · Promoted: 2026-10-25 (v1.15.1)
+- Source signal: owner instruction ("rapihin biar mudah dipake"),
+  scoped to the fix-first option: repair what is broken before any
+  redesign. A repo audit found the real breakage first: every runtime
+  tool the suite's skills quote (`parity.py`, `imgdiff.py`,
+  `with-server.py`, `reviews.py`, `sweep.py`, `contrast-check.py`)
+  lived in the repo-root `scripts/` folder, which the installer
+  never copies — so every installed copy in Claude Code, Codex, and
+  agy carried dangling references. The A-006 note had recorded this
+  since 2026-10-23 as "not a current problem"; the audit proved it
+  was one: `install.py --check` (new) failed on all 14 script files
+  in the live v1.15.0 installs before the fix.
+- Counter: the seven runtime tools moved into their owning skill's
+  `scripts/` folder (verify: parity/imgdiff/with-server; research:
+  reviews + themes; ship: sweep; design: contrast-check), following
+  the mcp-builder precedent of skill-local scripts. The skill texts
+  already said `scripts/<tool>`; the move makes those words true in
+  an installed copy, so no prose had to change beyond one clarifying
+  line per skill. The installer now regenerates the index, validates
+  frontmatter, script references (suite-owned prose only — the
+  vendored brand-systems shelf is excluded), and compilation before
+  installing, verifies installed copies afterwards, validates the
+  staged agy plugin, and gains a `--check` mode that diagnoses an
+  install without touching it. Two A-005 format findings were also
+  ruled on once, in `templates/design.md`: `primary` is defined as
+  the linter's alias of `accent` (same value, always), and the
+  registry gains an `elevation` section.
+- Expected effect: `python3 scripts/parity.py` and its siblings work
+  from an installed skill the first time a user runs them, and a
+  broken install is a checkable fact instead of a confusing failure.
+- Blast radius: file moves only (git mv, history kept); no skill
+  text, rule, or verdict changed meaning. Repo-root `scripts/` keeps
+  suite tooling only (install/generate_index/find_skill).
+- Decision: executed on the owner's choice of the fix-first option,
+  2026-10-25; promotion is immediate (this is a repair, not an
+  absorption — the proving run is the --check output before/after
+  plus running every moved tool from its new home).
+- Promotion evidence: `install.py --check --all` on v1.15.0 installs
+  failed on 14 missing script files; after the move, the suite
+  validates clean, `--dry-run --all` passes with the staged plugin
+  validated, and parity / contrast-check / with-server / reviews /
+  sweep were each run from their new skill-local paths.

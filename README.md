@@ -103,7 +103,7 @@ model, and uninstall live in `docs/INSTALL.md`.
 skills/<name>/SKILL.md     the skills themselves
 docs/SKILL_INDEX.md        generated index of every skill (name, phase, keywords)
 skills-index.json          the same index, machine-readable, for scripts/find_skill.py
-scripts/                   generate_index.py, find_skill.py, install.py
+scripts/                   generate_index.py, find_skill.py, install.py (suite tooling only; every runtime tool lives in its owning skill's scripts/ folder, so installed skills work standalone)
 templates/                 one template per artifact
 docs/WORKFLOW.md           the phase map, gates, and traceability rules
 docs/ARTIFACTS.md          the artifact registry: triggers, owners, consumers

@@ -37,7 +37,7 @@ and the gate that accepts it.
   product, created by `recon` and updated as the build lands each row.
 - Owner: `recon` (creation), `implement` (clone column). Template:
   `templates/features.csv`. Location: `docs/` beside RECON.md.
-- Consumers: verify (`scripts/parity.py` scores it), tickets (build
+- Consumers: verify (`skills/verify/scripts/parity.py` scores it), tickets (build
   order follows the missing list).
 - Gate: every row carries a priority (must / should / could); exclusions
   are `skip` rows with the reason written, never deleted rows.

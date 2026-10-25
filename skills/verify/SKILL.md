@@ -38,7 +38,8 @@ not a verification footnote.
 ## Parity measurement
 
 When the project rebuilds or must match an existing product, parity is
-a measured claim, not an impression. The instruments live in `scripts/`:
+a measured claim, not an impression. The instruments live in this
+skill's own `scripts/` folder, so they travel with the installed skill:
 
 - `python3 scripts/parity.py FEATURES.csv` scores the feature matrix
   `recon` wrote: must weighs 3, should 2, could 1, partial counts half,
@@ -52,6 +53,12 @@ a measured claim, not an impression. The instruments live in `scripts/`:
   itself, never against the original.
 
 Report the number the tools print. A clone at 62% is at 62%.
+
+For tests that need a local server running, `scripts/with-server.py`
+starts it, waits for the port, runs the test command, and tears the
+server down: `python3 scripts/with-server.py --server "python3
+server.py" --port 3000 -- pytest`. Never leave a test server running
+after the run it served.
 
 ## Design verification
 

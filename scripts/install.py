@@ -17,8 +17,17 @@ Safety: the installer manages only directories it installed, recorded in a
 manifest (.rnov24-skills-manifest.json) inside each target root. An existing
 directory it did not install is never overwritten or removed unless --force
 is given. Uninstall removes exactly what the manifest lists.
+
+Validation: before installing, the installer regenerates the skill index
+and validates the suite — every SKILL.md has frontmatter whose name
+matches its directory and a non-empty description, every `scripts/<file>`
+reference inside a skill resolves to that skill's own scripts/ folder
+(or to the repo's suite-tooling scripts/), and every bundled Python file
+compiles. After installing, it verifies the installed copies carry the
+same skill set and the same scripts. `install.py --check` runs both
+checks without installing anything.
 """
-import argparse, json, os, pathlib, shutil, subprocess, sys, tempfile, time
+import argparse, json, os, pathlib, py_compile, re, shutil, subprocess, sys, tempfile, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 HOME = pathlib.Path.home()
@@ -34,6 +43,96 @@ def skill_names():
 def version():
     v = ROOT / 'VERSION'
     return v.read_text().strip() if v.exists() else '0.0.0'
+
+
+def parse_frontmatter(text):
+    m = re.match(r'^---\n(.*?)\n---\n', text, re.S)
+    if not m:
+        return {}
+    fm = {}
+    for line in m.group(1).splitlines():
+        if ':' in line:
+            k, v = line.split(':', 1)
+            fm[k.strip()] = v.strip()
+    return fm
+
+def validate_suite():
+    """Regenerate the index, then check the suite is installable.
+
+    Returns a list of error strings (empty means valid).
+    """
+    errors = []
+    r = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'generate_index.py')],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        errors.append(f"generate_index.py failed: {(r.stderr or r.stdout).strip()}")
+    for d in sorted((ROOT / 'skills').iterdir()):
+        f = d / 'SKILL.md'
+        if not f.exists():
+            errors.append(f"{d.name}: SKILL.md missing")
+            continue
+        fm = parse_frontmatter(f.read_text(encoding='utf-8'))
+        if not fm:
+            errors.append(f"{d.name}: no frontmatter")
+        elif fm.get('name', '').strip() != d.name:
+            errors.append(f"{d.name}: frontmatter name is {fm.get('name')!r}")
+        if not fm.get('description'):
+            errors.append(f"{d.name}: frontmatter description empty")
+        # every scripts/<file> mention must resolve inside this skill
+        # or in the repo's suite-tooling scripts/. Only the suite's own
+        # prose is scanned: SKILL.md and references/ (the vendored
+        # brand-systems shelf is upstream text, not suite instructions).
+        own_md = [f]
+        refs_dir = d / 'references'
+        if refs_dir.exists():
+            own_md += [m for m in sorted(refs_dir.rglob('*.md'))
+                       if 'brand-systems' not in m.parts]
+        for md in own_md:
+            for ref in sorted(set(re.findall(r'scripts/([A-Za-z0-9_.-]+)', md.read_text(encoding='utf-8')))):
+                if ref in ('find_skill.py', 'generate_index.py', 'install.py'):
+                    if not (ROOT / 'scripts' / ref).exists():
+                        errors.append(f"{d.name}: suite-tooling reference scripts/{ref} missing")
+                elif not (d / 'scripts' / ref).exists():
+                    errors.append(f"{d.name}: scripts/{ref} (mentioned in {md.name}) not bundled in the skill")
+        for py in sorted(d.rglob('*.py')):
+            try:
+                py_compile.compile(str(py), doraise=True)
+            except py_compile.PyCompileError as e:
+                errors.append(f"{d.name}: {py.name} does not compile: {e}")
+    for py in sorted((ROOT / 'scripts').glob('*.py')):
+        try:
+            py_compile.compile(str(py), doraise=True)
+        except py_compile.PyCompileError as e:
+            errors.append(f"scripts/{py.name} does not compile: {e}")
+    return errors
+
+def check_installed(targets):
+    """Compare installed copies against the repo. Returns error strings."""
+    errors = []
+    names = set(skill_names())
+    for t in targets:
+        if t == 'antigravity':
+            continue  # agy state is checked via `agy plugin list` after install
+        root = TARGET_ROOTS[t]
+        if not root.exists():
+            errors.append(f"[{t}] target root {root} does not exist")
+            continue
+        installed = {d.name for d in root.iterdir()
+                     if d.is_dir() and (d / 'SKILL.md').exists()}
+        for n in sorted(names - installed):
+            errors.append(f"[{t}] skill {n} not installed")
+        for n in sorted(names & installed):
+            src = ROOT / 'skills' / n
+            dst = root / n
+            for py in sorted(src.rglob('*.py')):
+                rel = py.relative_to(src)
+                if not (dst / rel).exists():
+                    errors.append(f"[{t}] {n}/{rel} missing in installed copy")
+            for f in sorted(src.rglob('*.json')):
+                rel = f.relative_to(src)
+                if not (dst / rel).exists():
+                    errors.append(f"[{t}] {n}/{rel} missing in installed copy")
+    return errors
 
 def load_manifest(root):
     f = root / MANIFEST
@@ -100,6 +199,13 @@ def install_antigravity(dry):
         shutil.copytree(ROOT / 'skills' / n, staging / 'skills' / n)
     agy = shutil.which('agy') or str(HOME / '.local' / 'bin' / 'agy')
     print(f"[antigravity] plugin staged at {staging} ({len(names)} skills, plugin.json skills=array-of-paths)")
+    if pathlib.Path(agy).exists():
+        v = subprocess.run([agy, 'plugin', 'validate', str(staging)],
+                           capture_output=True, text=True)
+        if v.returncode != 0:
+            print(f"[antigravity] plugin validation FAILED, not installing:\n{(v.stdout or v.stderr).strip()}")
+            raise SystemExit(1)
+        print('[antigravity] staged plugin validated')
     if dry:
         print('[antigravity] dry-run: agy plugin install not executed')
         return
@@ -117,10 +223,24 @@ def main():
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--force', action='store_true')
     ap.add_argument('--uninstall', action='store_true')
+    ap.add_argument('--check', action='store_true',
+                    help='validate the suite and the installed copies, install nothing')
     a = ap.parse_args()
     targets = ['claude-code', 'codex', 'antigravity'] if a.all else (a.target or [])
     if not targets:
         ap.error('choose --target or --all')
+    errors = validate_suite()
+    if a.check:
+        errors += check_installed(targets)
+    if errors:
+        print('validation FAILED:')
+        for e in errors:
+            print(f"  - {e}")
+        return 1
+    print(f"validation passed ({len(skill_names())} skills)")
+    if a.check:
+        print('installed copies match the repo')
+        return 0
     for t in targets:
         if t == 'antigravity':
             if a.uninstall:
@@ -131,6 +251,14 @@ def main():
             uninstall_dir_target(t, a.dry_run)
         else:
             install_dir_target(t, a.mode, a.dry_run, a.force)
+    if not a.dry_run:
+        post = check_installed([t for t in targets if t != 'antigravity'])
+        if post:
+            print('post-install verification FAILED:')
+            for e in post:
+                print(f"  - {e}")
+            return 1
+        print('post-install verification passed: installed copies match the repo')
     return 0
 
 if __name__ == '__main__':

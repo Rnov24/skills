@@ -34,6 +34,19 @@ target root listing exactly what it installed. It never overwrites or
 deletes a skill directory it did not install; conflicts are reported and
 skipped unless `--force` is passed. Uninstall removes manifest entries only.
 
+## Validation
+
+The installer validates before it installs: it regenerates the skill
+index, checks every SKILL.md frontmatter (name matches its directory,
+description present), checks every `scripts/<file>` reference inside a
+skill resolves to that skill's own `scripts/` folder, and compiles
+every bundled Python file. It then verifies the installed copies
+carry the same skills and scripts. Anything failing stops the install.
+
+`python3 scripts/install.py --check --all` runs the same two checks
+without installing, so a user can diagnose a broken install by
+themselves instead of guessing which file is missing.
+
 ## After installing
 
 Restart the target tool so it rescans its skill directories. In Claude Code

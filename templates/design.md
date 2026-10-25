@@ -9,6 +9,10 @@ colors:
   ink-muted: "<hex>"
   border: "<hex>"
   accent: "<hex>"
+  # primary is the linter's alias for accent (the @google/design.md
+  # linter requires a `primary` colour). Rule: primary and accent
+  # always carry the same value; the prose calls the role accent.
+  primary: "<same hex as accent>"
   on-accent: "<hex>"
   danger: "<hex>"
   on-danger: "<hex>"
@@ -35,6 +39,10 @@ rounded:
   md: "<px>"
   lg: "<px>"
   full: "9999px"
+elevation:
+  sm: "0 1px 2px rgba(0,0,0,0.06)"
+  md: "0 4px 12px rgba(0,0,0,0.08)"
+  lg: "0 12px 32px rgba(0,0,0,0.12)"
 spacing:
   xs: "<px>"
   sm: "<px>"
@@ -84,6 +92,9 @@ components:
   open substitute and the adjustment it needs (weight, line-height,
   letter-spacing). A system that names a face nobody can load is unfinished.>
 - Spacing and radius: <the scale's logic; which steps sections may use>
+- Elevation: <the shadow scale's logic; which step each surface may
+  use. Most systems contract to one permitted shadow; if a surface
+  needs more, it names its step here, never an inline shadow.>
 
 ## Layout rules
 < Grid, density. Rules a reviewer can check, not adjectives. >
