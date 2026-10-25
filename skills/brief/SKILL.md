@@ -31,6 +31,12 @@ the most. It states the problem before anyone falls in love with a solution.
 
 - Short is a feature: one page. If the brief needs a second page, the problem
   is probably two problems.
+- **Readiness before review.** Do not hand the brief to parallel reviewers
+  until the problem can be stated in two sentences the requester
+  recognises as their own. A review of an unanchored brief is noise, and
+  a same-context opinion is not a fresh-context review. When the brief is
+  anchored, the grill may run a lens swarm on it; the swarm's key
+  objections land in the brief as open questions, never as settled fact.
 - Divergence before convergence: when the direction is genuinely open, sketch
   two or three framings of the problem and let the human kill the wrong ones
   before any convergence work starts.

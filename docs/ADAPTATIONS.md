@@ -17,6 +17,7 @@ adaptations stay in the log. The wheel remembers.
 | A-007 | 2026-10-23 | Gluttony run on anthropics/skills frontend-design: five AI default clusters, a two-pass uniqueness check, and the Chanel restraint principle duplicated design's taste layer as a standalone prompt but held checkable mechanisms the suite lacked | Merged as mechanisms only into design (two-pass review in the preview block, cluster rules in taste-core, default bans in templates/design.md); standalone skill rejected (audit: docs/audit/absorbed/2026-10-23-anthropic-frontend-design.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linkstash landing-page preview proving run, docs/proving-runs/2026-10-24-a007/) |
 | A-008 | 2026-10-23 | Gluttony run on anthropics/skills mcp-builder + webapp-testing: the suite had no MCP authoring/evaluation discipline and no deterministic local-server test runner | mcp-builder absorbed as new skill (phase: build) with vendored references and evaluation harness; webapp-testing rejected as prose, its with_server.py merged into scripts/with-server.py (audit: docs/audit/absorbed/2026-10-23-anthropic-mcp-and-testing.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the MCP server + with-server proving run, docs/proving-runs/2026-10-24-a008/) |
 | A-010 | 2026-10-25 | Fix-first tidy-up at the owner's instruction: every runtime tool the suite's skills quote lived in repo-root scripts/, which the installer never copies, so all installed copies carried dangling references; no install-time validation existed to catch it | Moved the 7 runtime tools into their owning skills' scripts/ folders (mcp-builder precedent); installer now regenerates the index, validates frontmatter/script refs/compilation pre-install, verifies copies post-install, validates the staged agy plugin, and gains --check; templates/design.md rules primary=accent alias and gains an elevation section | ADAPTED (v1.15.1, promoted 2026-10-25 — repair, proved by --check before/after) |
+| A-011 | 2026-10-26 | Gluttony run on google/elephant-goldfish-model (EGM): brainstorm and draft held mechanisms the suite lacked — mandatory alternatives with rejection reasons, an every-file implementation list, a fresh-session bar for specs, a six-lens parallel swarm, critique-first with counter-arguments, a readiness gate, and a synthesizer step for parallel findings — but as standalone skills they duplicate brief/grill and spec | Batch 1 merges only: alternatives + file list + no-code + fresh-session/Heilmeier bar into spec (template gains Alternatives and Detailed implementation sections), lens swarm + critique-first + readiness gate into grill, synthesizer step into orchestrate, readiness rule into brief; banned-word lists, RFC/SITEMAP steps, per-section approval gates, save-location gate, and silent no-code enforcement rejected (audit: docs/audit/absorbed/2026-10-26-elephant-goldfish-model.md) | EXPOSED (staged for v1.16.0; batches 1+2 adapted, combined diff at human gate) |
 | A-009 | 2026-10-24 | Gluttony run on Jakeschincariol/replica-skill (11 clone-building skills): the suite had no product-teardown verb (research answers questions, study extracts design DNA, neither maps an existing product into screens/flows/inferred model/feature matrix), no parity instrument for match-an-existing-product claims, no review-mining protocol, and no leftover-identity check before shipping a rebuild | `replica-recon` absorbed as new `recon` skill (phase: discover) with RECON.md + FEATURES.csv artifacts registered; merges: replica-architect → `model` (confidence carryover, invariant-as-DB-constraint), replica-diff → `verify` (parity section + vendored parity.py/imgdiff.py), replica-entrepreneur → `research` (review-mining section + vendored reviews.py/themes), replica-brand → `ship` (sweep gate + vendored sweep.py); 6 units rejected as duplicates of design/study, implement, verify/debug, ship (audit: docs/audit/absorbed/2026-10-24-replica-skill.md) | ADAPTED (v1.15.0, promoted 2026-10-24 by the Linktree recon proving run, docs/proving-runs/2026-10-24-a009/) |
 
 Full candidate records are appended below the table as they are filed.
@@ -487,3 +488,50 @@ human gate as every prior promotion.
   validates clean, `--dry-run --all` passes with the staged plugin
   validated, and parity / contrast-check / with-server / reviews /
   sweep were each run from their new skill-local paths.
+
+## A-011: Elephant-Goldfish batches 1+2 — EGM merges (EXPOSED)
+
+- Status: EXPOSED · Filed: 2026-10-26 · Staged for v1.16.0
+- Source signal: gluttony run 9 on google/elephant-goldfish-model
+  (Apache-2.0 © Google LLC, commit
+  3d0b34821ce88ad328b0c9bf0e06d7eb5f1cd669), at the owner's
+  instruction ("serap dulu yang bisa di serap"). Three parallel
+  auditors compared all seven upstream skills against the suite at
+  v1.15.1; batch 1 acts on the brainstorm and draft audits only.
+- Phenomenon: the suite's spec had no mandatory alternatives
+  section, no every-file implementation list, and no check that a
+  stranger could understand it; the grill had no parallel
+  multi-lens pass and no formal readiness gate before reviewers
+  were spawned; parallel reviewers' findings arrived raw, with no
+  dedup step anywhere in the suite.
+- Counter: merges into existing skills, no new skill. `spec` gains
+  the Alternatives rule, the Detailed Implementation file list,
+  the no-code rule, and the fresh-session bar with the Heilmeier
+  eight questions; `templates/spec.md` gains Alternatives
+  considered and Detailed implementation sections. `grill` gains
+  the six-lens swarm (optional, at most two rounds), the
+  critique-first rule, and the readiness gate. `orchestrate`
+  gains the synthesizer step for parallel reviewers. `brief`
+  gains the readiness rule. `docs/WORKFLOW.md` names the
+  Elephant-Goldfish flow; `docs/ARTIFACTS.md` tightens the SPEC.md
+  gate to match.
+- Rejected in batch 1: banned-adjective and banned-apology lists,
+  RFC publish and SITEMAP registration, per-section approval
+  gates, the save-location gate, and the silent no-code
+  enforcement (no meta-talk, no summaries, freeze on
+  contradiction) — the last because it contradicts the suite's
+  evidence-before-claims and ledger discipline; the no-code
+  mechanism itself survives in `spec`.
+- Expected effect: specs that a fresh session can actually execute
+  from, with rejected alternatives on record so the next worker
+  does not re-litigate them, and parallel reviews that arrive as
+  one deduplicated report instead of overlapping raw findings.
+- Decision: pending human gate for the combined batches 1+2.
+  Batch 2 is adapted (review Goldfish protocol + triage, orchestrate
+  range re-derivation, implement receiving triage, recon bootstrap
+  mode, verify drift sweep with registered DRIFT_REPORT.md); its
+  verdicts are in the same audit file. Nothing is committed until
+  the owner approves the combined diff.
+- Promotion evidence: none yet — EXPOSED until a real run uses
+  the new spec sections and the lens swarm and the retro records
+  that they held.

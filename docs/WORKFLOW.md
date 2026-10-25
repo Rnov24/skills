@@ -24,6 +24,21 @@ owns movement between phases; phase skills own the work inside them.
    criterion → spec section → ticket → test → review verdict. If a link is
    missing, the chain — and the claim built on it — is incomplete.
 
+## Elephant-Goldfish flow
+
+The suite's phases already run the Elephant-Goldfish shape, and the
+names are now used for it. The Elephant is the deep-context work:
+grill (with an optional lens swarm) and spec, where every design
+judgment is forced into the document before code exists. The Goldfish
+is the fresh-context check: a reviewer who receives only the spec and
+the files it references, never the conversation that produced them,
+and must be able to understand the feature from that alone. Design is
+the new code — when the code becomes too large for a human to review
+in full, the spec is the artifact a human can still stand behind.
+The Goldfish protocol itself (comprehension, critic, and readiness
+passes over a spec) lives in `review`; this workflow only states the
+shape so the phases are read as one flow instead of separate tricks.
+
 ## Phases and gates
 
 | Phase | Skill | Main artifacts | Gate to exit |
@@ -35,10 +50,10 @@ owns movement between phases; phase skills own the work inside them.
 | Define | `define-product` | PRD.md, PERSONAS.md, STORIES.md | human approves PRD; every story has checkable AC |
 | Design | `design` | DESIGN.md, USERFLOW.md, keyframes | human approves keyframes against DESIGN.md |
 | Model | `model` | DOMAIN.md, ERD.md, API.md | model reviewed against stories; contracts consistent |
-| Spec | `spec` | SPEC.md | spec names its seams; open questions answered or parked |
+| Spec | `spec` | SPEC.md | spec names its seams; alternatives recorded with rejection reasons; every file listed with rationale; open questions answered or parked; passes the fresh-session bar |
 | Tickets | `tickets` | tickets/*.md with blocking edges | every spec section covered; frontier computable |
 | Implement | `implement` (+ `debug` when stuck) | code, PACKET/REPORT files per ticket | per-ticket dual review passes |
-| Review | `review` | REVIEW.md verdicts per AC ID | no unresolved Critical; rework loop within cap |
+| Review | `review` | REVIEW.md verdicts per AC ID | no unresolved Critical; rework loop within cap; specs pass the Goldfish protocol before implementation |
 | Verify | `verify` | fresh command output | all CONSTRAINTS checks green at the raised floor |
 | Ship | `ship` | PR, release notes | human grant for irreversible actions |
 | Retro | `retro` | RETRO.md, suite/workspace changes | lessons filed where the next run will read them |

@@ -200,3 +200,60 @@ validates the staged agy plugin, and offers `--check` for diagnosis
 without installing. `templates/design.md` rules the A-005 findings
 once: `primary` is the linter's alias of `accent`, and the registry
 gains an `elevation` section.
+
+## v1.16.0 note — Elephant-Goldfish, batch 1: brainstorm + draft (A-011, EXPOSED)
+
+Gluttony run 9 audited google/elephant-goldfish-model (Apache-2.0 ©
+Google LLC, commit 3d0b34821ce88ad328b0c9bf0e06d7eb5f1cd669):
+seven skills, nine reviewer personas, five document standards. Batch 1
+covers brainstorm and draft only; the review and bootstrap audits
+landed in the same run and are verdicts for batch 2.
+
+Neither upstream skill survived as a standalone skill: brainstorm
+collides with `brief` in pipeline position and with `grill` in
+interrogation posture, draft collides with `spec` in purpose and
+content. Their mechanisms were merged instead. Into `spec`: the
+mandatory Alternatives section with a rejection reason per
+alternative, the Detailed Implementation list naming every file with
+its rationale, the no-code rule, and the fresh-session bar (a reader
+unfamiliar with the codebase must understand the feature, its
+motivation, its trade-offs and risks, and why the alternatives lost),
+with the Heilmeier eight questions as the check for what "understand"
+means. Into `grill`: the six-lens parallel swarm as an optional
+delegated pass, the critique-first rule with a counter-argument per
+strategy, and the readiness gate before any reviewer is spawned.
+Into `orchestrate`: the synthesizer step that dedups parallel
+findings, groups them by suite severity, and writes the consolidated
+report before notifying. Into `brief`: the readiness rule that no
+reviewer is spawned before the problem is anchored. Rejected from
+batch 1: the banned-adjective and banned-apology lists (style
+policing, no mechanical check), the RFC publish and SITEMAP steps,
+the per-section approval gates (the suite's human gates are the
+brief, the PRD, keyframes, and grants), the save-location gate, and
+the silent no-code enforcement with its no-summary and no-meta-talk
+rules, which contradict the suite's evidence and ledger discipline.
+The no-code mechanism itself survives in `spec`; only its silent
+enforcement was rejected. Full audit:
+`docs/audit/absorbed/2026-10-26-elephant-goldfish-model.md`.
+
+Batch 2 (same run, same commit, at the owner's instruction to
+wait for it before any gate) merges the review side and the
+codebase side. Into `review`: the Goldfish protocol as five
+stages over a semantic split of the document, fresh-context
+reviewers only, one re-audit per stage, consolidated findings
+feeding the suite's per-AC and unit verdicts, plus CONTEST vs
+PROPOSE FIX triage and the three bars (context sufficiency as a
+prerequisite fail, zero-assumption re-implementation, zero-decision
+readiness). Into `orchestrate`: re-derive line ranges from the
+semantic target on every re-audit, and name the
+synthesizer-vs-direct dispatch choice in the packet. Into
+`implement`: the same triage on the receiving side, edits deferred
+until every finding is decided. Into `recon`: bootstrap mode for
+the team's own undocumented tree, with sentinel markers as the
+mechanical preservation rule. Into `verify`: the drift sweep,
+differences-only, with ADR checks and a registered report
+location. Rejected from batch 2: loop-until-zero findings (the
+suite's five-round cap governs), the memory checklist for triage
+decisions, the shortname resolver, the preset modal system, and
+the syntax-tree claim for drift detection, which no mechanism in
+the skill file supports.

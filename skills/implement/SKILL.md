@@ -77,6 +77,14 @@ report. Never fix performatively to end the loop; the loop ends when the
 findings are addressed, and the reviewer verdicts each one ADDRESSED or NOT
 ADDRESSED.
 
+Triage each finding before touching code, into CONTEST or PROPOSE FIX.
+A CONTEST needs exact evidence defending the current text; a PROPOSE FIX
+needs a precise replacement, not a direction. PROPOSE FIX items may be
+applied as one batch once the human has accepted them; CONTEST items are
+never auto-accepted. When the human walks the findings one by one, defer
+all edits until every item is decided, then apply the accepted batch.
+The decisions live in the report and the ledger, never in memory.
+
 ## Anti-patterns
 
 - Writing the implementation first and shopping for a test that passes

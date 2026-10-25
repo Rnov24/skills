@@ -13,6 +13,18 @@
 < Per area. Each section cites the story IDs it realises. Behaviour is
   stated exactly once, here or upstream — never both. >
 
+## Alternatives considered
+< Each alternative weighed, and the specific reason it lost (complexity,
+  cost, performance, scalability, team familiarity, or another named
+  reason). A spec that proposes a single path without this section fails
+  the fresh-session bar. >
+
+## Detailed implementation
+< One unified list. Every file to be created, changed, or deleted, each
+  with what changes and why. Include documentation, schema, config,
+  proto, and test files. No implementation code here; short pseudocode,
+  API shapes, or schemas are allowed. >
+
 ## Test seams
 < The interfaces where tests attach, agreed before code exists, per area. >
 

@@ -60,6 +60,42 @@ server down: `python3 scripts/with-server.py --server "python3
 server.py" --port 3000 -- pytest`. Never leave a test server running
 after the run it served.
 
+## Drift sweep
+
+Verification above checks a unit of work at acceptance time. A drift
+sweep checks the whole tree after the fact: re-read the SPEC.md,
+DESIGN.md, and README contracts in a directory against the current
+code and list only the divergences. Run it on request, or after a
+ship when the documents exist to be checked against.
+
+For each document, read it, identify its intent and the files and
+symbols it names, locate the corresponding source (explicit paths
+first, code search for named classes, functions, or endpoints
+second), read the current source, and compare. Drift is: a feature
+in the doc absent from the code, a model missing specified fields,
+a hardcoded value where dynamic logic was planned, or an
+architectural divergence (different patterns or libraries than
+proposed). Logic in the code that no document references is itself
+drift, reported the same way.
+
+Before flagging a divergence, consult the ADRs: a change approved by
+ADR that supersedes the document is intentional divergence, not
+drift, and is recorded as such with the ADR cited. A wrongly
+reported divergence has the same standing as a real one until it is
+checked, so every item carries its evidence (doc section and code
+location) and a severity from the suite's scale, and the sweep's
+findings are triaged like review findings (CONTEST with evidence, or
+PROPOSE FIX) instead of landing as bare claims.
+
+Report only the differences, one section per document, or "No drift
+detected" for a document that matches. The report is a run artifact
+at `docs/drift/<YYYY-MM-DD>-DRIFT_REPORT.md` (registered in
+`docs/ARTIFACTS.md`); it is not a verdict on its own, and it does
+not replace the floor checks above. There is no syntax-tree scanner
+behind this sweep — it is a read-and-judge comparison, and its
+coverage is bounded by what the agent actually read, which the
+report states plainly.
+
 ## Design verification
 
 For UI work, verification includes the look-and-fix evidence: screenshots in
@@ -79,3 +115,13 @@ claim.
 - "Tests should pass" as a sentence in a final report.
 - Re-running one friendly test file and reporting "tests pass".
 - Treating the worker's green report as your verification.
+- Reporting drift without evidence, without checking the ADRs, or
+  without stating what was actually read; a drift report that does
+  not say its coverage is a rumour with a date on it.
+
+<!-- Credit: drift sweep adapted from google/elephant-goldfish-model
+(Apache-2.0, commit 3d0b34821ce88ad328b0c9bf0e06d7eb5f1cd669), skill
+egm-drift-report. Mechanism rewritten into suite conventions; the
+upstream "syntax tree" wording is not carried over — no such
+mechanism exists in the skill file. See
+docs/audit/absorbed/2026-10-26-elephant-goldfish-model.md (A-011). -->

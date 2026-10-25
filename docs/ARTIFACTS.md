@@ -147,8 +147,12 @@ and the gate that accepts it.
 - Trigger: work is handed to implementers (human or agent) as one unit.
 - Owner: `spec`. Template: `templates/spec.md`.
 - Consumers: tickets.
-- Gate: spec cites story IDs, names its test seams, and lists open questions
-  as answered or parked.
+- Gate: spec cites story IDs, names its test seams, lists open questions
+  as answered or parked, records alternatives with rejection reasons,
+  lists every file to be created, changed, or deleted with its rationale,
+  carries no implementation code, and passes the fresh-session bar (a
+  reader unfamiliar with the codebase can understand the feature, its
+  motivation, its trade-offs and risks, and why the alternatives lost).
 
 ### tickets/*.md
 - Trigger: a spec (or a plan too big for one session) is ready to execute.
@@ -182,6 +186,18 @@ and the gate that accepts it.
 - Owner: `review`. Template: `templates/review.md`.
 - Gate: verdicts recorded per AC ID; Critical findings are fixed or parked
   with a written ruling, never silently dropped.
+
+### DRIFT_REPORT.md
+- Trigger: a drift sweep is requested, or a ship lands while SPEC.md,
+  DESIGN.md, or README contracts exist to be checked against.
+- Owner: `verify`. Template: none — one section per document, only
+  divergences, or "No drift detected" per document.
+  Location: `docs/drift/<YYYY-MM-DD>-DRIFT_REPORT.md`.
+- Consumers: review (findings are triaged like review findings),
+  spec (documents that drifted get corrected or superseded by ADR).
+- Gate: every item carries doc section, code location, and a severity;
+  ADR-approved intentional divergence is recorded as such, not
+  flagged as drift; the report states what was actually read.
 
 ### RETRO.md
 - Trigger: a feature ships, a run fails, or a loop hits its cap.

@@ -72,6 +72,65 @@ These are not negotiable, and they are the gate this skill exits through:
    promises of a perfect replica; parity is a number `verify` will
    report, not a vibe set here.
 
+## Bootstrap mode (own codebase, no design docs)
+
+The process above maps an external product. When the work starts from
+the team's own undocumented codebase instead, run the bootstrap mode:
+document the tree bottom-up into per-directory README contracts, so a
+fresh session can understand any directory without reading all of its
+code. The clean-room rules above do not apply here — this is the
+team's own code, read directly — but the human gate below does.
+
+**Contract per directory.** A leaf directory gets a Component Package
+contract: Overview, Interface (what it exposes), Invariants (rules
+that must hold), Side Effects, and Verification (the test command
+that covers it). A parent directory gets a Blueprint that rolls up
+its children's contracts: system overview, subdirectories with
+relative links, global invariants, global side effects, and system
+verification. No directory is documented from memory; every contract
+is written from reading the code in that directory.
+
+**Discovery.** Walk the tree breadth-first, level by level, never
+with a recursive listing. Ignore hidden and generated directories
+(`.git`, `node_modules`, `venv`, `dist`, `build`, `third_party`) and
+honour `.gitignore`. Then prune: drop test-only directories and
+directories with no source files. The source extensions covered
+include the suite's working languages — add `.astro`, `.vue`, and
+`.svelte` to any upstream allowlist before using it, since the
+suite's own users build in them.
+
+**Scout per directory.** A read-only scout (no writes, no subagents)
+reads each directory with bounded reads (a byte cap per directory, a
+line cap per file), headers and schemas first, then entry points,
+then production files in order, test files ignored. On scout failure
+it logs a warning, inserts a placeholder, and continues; a
+placeholder is recorded as documentation owed, not as a completed
+contract. When documenting a parent, the children's compiled
+summaries are passed as context; traversal is post-order, leaves
+first.
+
+**Preserving human notes.** Never overwrite an existing README
+wholesale. Generated content lives inside sentinel markers
+(`<!-- EGM_BLUEPRINT_START: AUTO-GENERATED -->` to
+`<!-- EGM_BLUEPRINT_END -->`); human notes stay above the marker
+and are kept verbatim on every regeneration. A file with no marker
+keeps its full preamble and gains a sentinel block appended. The
+markers are the mechanism; a prose promise to preserve notes is not.
+
+**Scale and gate.** Five or fewer pruned directories: run it
+directly. More than five: partition the tree and run one worker per
+partition, each returning its contracts, with the root compiling the
+intermediate directories and the root Blueprint; a failed worker
+leaves a placeholder warning link, and partial files are resumable
+progress. If the discovered directory count exceeds fifteen,
+discovery pauses and the human must approve the full run before any
+swarm is spawned. The final pass reads every created or modified
+contract and checks the sections are present and populated, every
+relative link resolves, and verification targets match the project's
+test configuration. It does not check semantic correctness — that
+check is a Goldfish review of the contracts afterwards, not part of
+the generation pass.
+
 ## Gate
 
 The human approves scope, the out-of-scope list, and the size before any
@@ -94,3 +153,9 @@ is worse than none, because everything after it inherits the error.
 *Adapted from `replica-recon` in Jakeschincariol/replica-skill (MIT,
 commit 77c9436fb3d18c3d58169efb8caf4fe906b0dc51) — gluttony run 8,
 A-009. Full audit: `docs/audit/absorbed/2026-10-24-replica-skill.md`.*
+
+*Bootstrap mode adapted from google/elephant-goldfish-model
+(Apache-2.0, commit 3d0b34821ce88ad328b0c9bf0e06d7eb5f1cd669), skill
+egm-bootstrap and docs/designs/bootstrap.md §2.7 (sentinel-block
+upsert). Mechanisms rewritten into suite conventions; see
+docs/audit/absorbed/2026-10-26-elephant-goldfish-model.md (A-011).*

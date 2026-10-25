@@ -75,6 +75,47 @@ Beautiful but off-spec is REWORK.
 For non-code artifacts (PRD, DESIGN, ERD, API docs), the same two verdicts
 apply against the artifact's gate checklist in `docs/ARTIFACTS.md`.
 
+## Synthesizing parallel reviewers
+
+When several reviewers run in parallel (a grill lens swarm, a Goldfish
+review of a spec), their raw findings arrive overlapping, contradictory,
+and in different words. One synthesizer step — the orchestrator itself,
+or a dedicated worker when the volume warrants it — turns them into a
+result before anything reaches the human:
+
+1. Collect every finding; deduplicate overlaps, keeping the sharpest
+   wording and noting which lenses agreed.
+2. Group what remains by the suite's severities (Critical, Required, Nit,
+   Optional, FYI); an upstream Blocker maps to Critical, a Major to
+   Required.
+3. Normalise every file and line reference so each finding points at
+   evidence, not at a paragraph of prose.
+4. Write the consolidated report to its file first, then send one short
+   completion message with the path and the severity breakdown.
+
+**Re-derive ranges on re-audit.** When reviewers target a line range
+inside a document (a Goldfish stage, a re-audit after edits), the
+range is re-derived from its stable semantic target — the section
+header it names — before every iteration, never carried over from
+the previous round. Line numbers shift after edits; a stale range
+reviews the wrong text. Record the semantic target and the derived
+range in the packet, so the re-derivation is checkable.
+
+**Synthesizer or direct.** A parallel reviewer swarm runs either
+through a synthesizer (one intermediary spawns the reviewers,
+dedups, and returns a single summary, keeping the root conversation
+clean) or by direct flat dispatch (each reviewer is spawned
+directly and its findings are collected into one flat list). The
+packet names which mode was chosen and why; hierarchical is the
+default when the finding volume would pollute the root context,
+direct when there are only one or two reviewers.
+
+A list of raw findings with no dedup is not a synthesis, and a
+completion message sent before the report file exists is not a handoff.
+For high-stakes reviews only, run two independent instances of the
+same lens and treat agreement between them as signal, disagreement as
+a finding about the artifact's ambiguity — not as a vote to average.
+
 ## Verdict vocabulary
 
 - **ACCEPT** — both verdicts pass; the unit joins the integration line.
@@ -138,3 +179,12 @@ vibes; escalate decisions.
   orchestrator's hopes.
 - Restarting a stuck worker from scratch instead of resuming it with the
   findings.
+- Handing the human a pile of raw parallel findings with no dedup; the
+  synthesizer step is what makes parallel review cheaper than sequential
+  review instead of more expensive.
+
+<!-- Credit: synthesizer step adapted from
+google/elephant-goldfish-model (Apache-2.0, commit
+3d0b34821ce88ad328b0c9bf0e06d7eb5f1cd669), agents/synthesizer.md.
+Mechanism rewritten into suite conventions; see
+docs/audit/absorbed/2026-10-26-elephant-goldfish-model.md (A-011). -->
