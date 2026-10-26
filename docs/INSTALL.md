@@ -15,16 +15,21 @@ python3 scripts/install.py --uninstall --target codex
 ## Targets
 
 **Claude Code** installs each skill into `~/.claude/skills/<skill>/`, where
-Claude Code loads global skills. The slash-only skill arrives as `/gluttony`.
+Claude Code loads global skills. The slash-only skill arrives as `/gluttony`,
+and the nine commands from `docs/COMMANDS.md` install as user-level slash
+commands in `~/.claude/commands/`.
 
 **Codex** installs each skill into `~/.codex/skills/<skill>/`, the global
-skills directory Codex reads.
+skills directory Codex reads. Codex has no slash-command equivalent, so
+commands do not install there; the skills still do.
 
 **Antigravity (agy)** installs the suite as one plugin named `rnov-skills`.
 The installer stages a plugin directory (a `plugin.json` whose `skills` field
 is an array of path strings, the layout agy's loader requires) and runs
 `agy plugin install` when the CLI is present; otherwise it prints the
-staging path and the exact command to run by hand. Remove it with
+staging path and the exact command to run by hand. The same `plugin.json`
+carries a `commands` array pointing at the nine command files, staged
+beside `skills/`. Remove it with
 `agy plugin uninstall rnov-skills`.
 
 ## Safety model
@@ -37,9 +42,11 @@ skipped unless `--force` is passed. Uninstall removes manifest entries only.
 ## Validation
 
 The installer validates before it installs: it regenerates the skill
-index, checks every SKILL.md frontmatter (name matches its directory,
+index and the command files, checks every SKILL.md frontmatter (name matches its directory,
 description present), checks every `scripts/<file>` reference inside a
-skill resolves to that skill's own `scripts/` folder, and compiles
+skill resolves to that skill's own `scripts/` folder, checks every
+command in `commands/commands.json` names an existing skill and a
+section that exists in that skill, and compiles
 every bundled Python file. It then verifies the installed copies
 carry the same skills and scripts. Anything failing stops the install.
 

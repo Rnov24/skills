@@ -19,10 +19,12 @@ directory it did not install is never overwritten or removed unless --force
 is given. Uninstall removes exactly what the manifest lists.
 
 Validation: before installing, the installer regenerates the skill index
-and validates the suite — every SKILL.md has frontmatter whose name
+and the command files and validates the suite — every SKILL.md has frontmatter whose name
 matches its directory and a non-empty description, every `scripts/<file>`
 reference inside a skill resolves to that skill's own scripts/ folder
-(or to the repo's suite-tooling scripts/), and every bundled Python file
+(or to the repo's suite-tooling scripts/), every command in
+commands/commands.json names an existing skill and a section that exists
+in that skill (with its anchor inside the section), and every bundled Python file
 compiles. After installing, it verifies the installed copies carry the
 same skill set and the same scripts. `install.py --check` runs both
 checks without installing anything.
@@ -36,6 +38,11 @@ TARGET_ROOTS = {
     'claude-code': HOME / '.claude' / 'skills',
     'codex': HOME / '.codex' / 'skills',
 }
+
+def command_names():
+    import json as _json
+    m = _json.loads((ROOT / 'commands' / 'commands.json').read_text(encoding='utf-8'))
+    return sorted(c['name'] for c in m['commands'])
 
 def skill_names():
     return sorted(d.name for d in (ROOT / 'skills').iterdir() if (d / 'SKILL.md').exists())
@@ -66,6 +73,10 @@ def validate_suite():
                        capture_output=True, text=True)
     if r.returncode != 0:
         errors.append(f"generate_index.py failed: {(r.stderr or r.stdout).strip()}")
+    r = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'generate_commands.py')],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        errors.append(f"generate_commands.py failed: {(r.stderr or r.stdout).strip()}")
     for d in sorted((ROOT / 'skills').iterdir()):
         f = d / 'SKILL.md'
         if not f.exists():
@@ -132,13 +143,23 @@ def check_installed(targets):
                 rel = f.relative_to(src)
                 if not (dst / rel).exists():
                     errors.append(f"[{t}] {n}/{rel} missing in installed copy")
+        if t == 'claude-code':
+            # Commands are user-level slash commands, not skills: they
+            # live in ~/.claude/commands/, one .md file per command.
+            cmd_root = HOME / '.claude' / 'commands'
+            for n in command_names():
+                if not (cmd_root / f'{n}.md').exists():
+                    errors.append(f"[{t}] command /{n} not installed")
     return errors
 
 def load_manifest(root):
     f = root / MANIFEST
     if f.exists():
-        return json.loads(f.read_text())
-    return {'skills': {}, 'version': None}
+        m = json.loads(f.read_text())
+        m.setdefault('skills', {})
+        m.setdefault('commands', {})
+        return m
+    return {'skills': {}, 'commands': {}, 'version': None}
 
 def save_manifest(root, m):
     root.mkdir(parents=True, exist_ok=True)
@@ -183,22 +204,70 @@ def uninstall_dir_target(target, dry):
                 shutil.rmtree(dst) if dst.is_dir() and not dst.is_symlink() else dst.unlink()
         man['skills'].pop(n, None)
         print(f"[{target}] removed {n}")
+    if target == 'claude-code':
+        uninstall_commands(dry, man)
     if not dry:
-        if man['skills']:
+        if man['skills'] or man.get('commands'):
             save_manifest(root, man)
         else:
             (root / MANIFEST).unlink(missing_ok=True)
 
+def install_commands(dry, force):
+    """Claude Code user-level slash commands: ~/.claude/commands/<name>.md.
+
+    Tracked in the same manifest as the skills (under 'commands').
+    Codex has no slash-command equivalent, so commands install to
+    Claude Code only; Antigravity gets them through the plugin.
+    """
+    cmd_root = HOME / '.claude' / 'commands'
+    man = load_manifest(TARGET_ROOTS['claude-code'])
+    done, skipped = [], []
+    for n in command_names():
+        src = ROOT / 'commands' / f'{n}.md'
+        dst = cmd_root / f'{n}.md'
+        if dst.exists() or dst.is_symlink():
+            if n in man.get('commands', {}) or force:
+                if not dry:
+                    dst.unlink()
+            else:
+                skipped.append(n); continue
+        if not dry:
+            cmd_root.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            man.setdefault('commands', {})[n] = {'at': int(time.time())}
+        done.append(n)
+    if not dry:
+        man['version'] = version()
+        save_manifest(TARGET_ROOTS['claude-code'], man)
+    print(f"[claude-code] {'would install' if dry else 'installed'} {len(done)} commands -> {cmd_root}")
+    if skipped:
+        print(f"[claude-code] commands skipped (exist, not installed by this tool, use --force): {', '.join(skipped)}")
+
+def uninstall_commands(dry, man):
+    cmd_root = HOME / '.claude' / 'commands'
+    for n in list(man.get('commands', {})):
+        dst = cmd_root / f'{n}.md'
+        if dst.exists() or dst.is_symlink():
+            if not dry:
+                dst.unlink()
+        man['commands'].pop(n, None)
+        print(f"[claude-code] removed command /{n}")
+
 def install_antigravity(dry):
     names = skill_names()
+    cmds = command_names()
     staging = pathlib.Path(tempfile.mkdtemp(prefix='rnov-skills-plugin-'))
     plugin = {'name': 'rnov-skills', 'version': version(),
-              'skills': [f'skills/{n}' for n in names]}
+              'skills': [f'skills/{n}' for n in names],
+              'commands': [f'commands/{n}.md' for n in cmds]}
     (staging / 'plugin.json').write_text(json.dumps(plugin, indent=1) + '\n')
     for n in names:
         shutil.copytree(ROOT / 'skills' / n, staging / 'skills' / n)
+    (staging / 'commands').mkdir()
+    for n in cmds:
+        shutil.copy2(ROOT / 'commands' / f'{n}.md', staging / 'commands' / f'{n}.md')
     agy = shutil.which('agy') or str(HOME / '.local' / 'bin' / 'agy')
-    print(f"[antigravity] plugin staged at {staging} ({len(names)} skills, plugin.json skills=array-of-paths)")
+    print(f"[antigravity] plugin staged at {staging} ({len(names)} skills, {len(cmds)} commands, plugin.json skills=array-of-paths)")
     if pathlib.Path(agy).exists():
         v = subprocess.run([agy, 'plugin', 'validate', str(staging)],
                            capture_output=True, text=True)
@@ -237,7 +306,7 @@ def main():
         for e in errors:
             print(f"  - {e}")
         return 1
-    print(f"validation passed ({len(skill_names())} skills)")
+    print(f"validation passed ({len(skill_names())} skills, {len(command_names())} commands)")
     if a.check:
         print('installed copies match the repo')
         return 0
@@ -251,6 +320,8 @@ def main():
             uninstall_dir_target(t, a.dry_run)
         else:
             install_dir_target(t, a.mode, a.dry_run, a.force)
+            if t == 'claude-code':
+                install_commands(a.dry_run, a.force)
     if not a.dry_run:
         post = check_installed([t for t in targets if t != 'antigravity'])
         if post:

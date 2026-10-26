@@ -65,19 +65,26 @@ This router must keep working when the suite holds hundreds of skills, so it
 never works from memory or from this file's flow lists alone. The lookup
 protocol is:
 
-1. **Index first.** The index is generated, not remembered: read
+1. **Commands first.** Addressable states are declared in
+   `commands/commands.json` — the router's dispatch table. When the
+   task names a state (a Goldfish stage, the lens swarm, bootstrap,
+   a drift sweep, blind doubt), route to its command
+   (`/rnov-goldfish-critic`, `/rnov-lens-swarm`, ...), not just to
+   the owning skill. A command is the state with a name; the skill
+   is the knowledge behind it.
+2. **Index first.** The index is generated, not remembered: read
    `docs/SKILL_INDEX.md` for a human-scale scan, or run
    `python3 scripts/find_skill.py "<the task in a few words>"` and take its
    ranked candidates. The script matches skill names, then keyword phrases,
    then keyword tokens, then descriptions, and prints the terms that matched
    so the choice can be defended.
-2. **Open one skill.** Load only the chosen skill's SKILL.md (progressive
+3. **Open one skill.** Load only the chosen skill's SKILL.md (progressive
    disclosure). Opening five skills "to be safe" burns the context the work
    itself needs and blurs which contract governs.
-3. **Check the phase.** If the candidate's phase is later than the work the
+4. **Check the phase.** If the candidate's phase is later than the work the
    artifacts support (a `tickets` hit with no spec), the real answer is the
    earlier phase. Route to the earliest phase whose inputs exist.
-4. **Regenerate on drift.** If the index disagrees with the `skills/`
+5. **Regenerate on drift.** If the index disagrees with the `skills/`
    folders, trust the folders, run `scripts/generate_index.py`, and note the
    drift in the ledger. A stale index is a bug, not a source.
 
