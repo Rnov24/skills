@@ -13,7 +13,7 @@ this classification exists, even if only as three lines in the run ledger.
 
 ## Classify the task
 
-Answer four questions:
+Answer five questions:
 
 1. **Size.** One sitting, one session, or many sessions? Many sessions means
    the work needs a ticket graph and probably a wayfinder-style map before
@@ -26,17 +26,23 @@ Answer four questions:
 4. **Risk.** Irreversible actions, production data, money, or other people's
    work raise the gate level: human approvals and blind review stop being
    optional.
+5. **Domain.** Software, analysis, media, document, or other? The answer
+   decides which phases apply and which are skipped with a recorded reason
+   (outside software, code phases are skipped and decision and evidence gates
+   still apply).
 
 ## Standard flows
 
-- **New product or major feature:** setup (if absent) → brief → research (if
-  facts are missing) → grill → define-product → design → model → spec →
-  tickets → implement → review → verify → ship → retro.
-- **Feature in an existing product:** brief (short) → grill (only the new
-  decisions) → define-product (delta stories) → design/model deltas → spec →
-  tickets → implement → review → verify → ship.
-- **Bug:** debug (red feedback loop first) → implement the fix as one ticket →
-  review → verify. Escalate to grill only if three fixes fail.
+- **New product or major feature:** `/rnov-new` — setup (if absent) → brief →
+  research (if facts are missing) → grill → define-product → design → model →
+  spec → tickets → implement → review → verify → ship → retro.
+- **Feature in an existing product:** `/rnov-improve` — brief (short) → grill
+  (only the new decisions) → define-product (delta stories) → design/model
+  deltas → spec → tickets → implement → review → verify → ship.
+- **Improve a UI surface:** `/rnov-improve-ui` — design → implement → review →
+  verify.
+- **Bug:** `/rnov-fix` — debug (red feedback loop first) → implement the fix as
+  one ticket → review → verify. Escalate to grill only if three fixes fail.
 - **Refactor or architecture change:** grill → spec → tickets → implement →
   review → verify. Add model if invariants or data change.
 - **Design-only task:** brief → design → keyframe gate. No engineering phases
@@ -65,13 +71,11 @@ This router must keep working when the suite holds hundreds of skills, so it
 never works from memory or from this file's flow lists alone. The lookup
 protocol is:
 
-1. **Commands first.** Addressable states are declared in
-   `commands/commands.json` — the router's dispatch table. When the
-   task names a state (a Goldfish stage, the lens swarm, bootstrap,
-   a drift sweep, blind doubt), route to its command
-   (`/rnov-goldfish-critic`, `/rnov-lens-swarm`, ...), not just to
-   the owning skill. A command is the state with a name; the skill
-   is the knowledge behind it.
+1. **Entry first.** Read the entry map — from the front-door command's
+   Steps when invoked by one, or from `docs/ENTRY.md` in the repo. If the
+   task matches a verb command, the command names the flow — load the
+   command file, not the skill; if it matches a state command, the same;
+   only if nothing matches does the router classify from scratch.
 2. **Index first.** The index is generated, not remembered: read
    `docs/SKILL_INDEX.md` for a human-scale scan, or run
    `python3 scripts/find_skill.py "<the task in a few words>"` and take its

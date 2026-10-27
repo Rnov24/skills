@@ -15,6 +15,16 @@ documentation, a spec, a ticket graph, worker packets and reports, and review
 verdicts. Each artifact has an owner phase, a template, a consumer, and a gate.
 An artifact is created only when its trigger fires — never "just in case".
 
+## Start here
+
+Everyday work enters through five verb commands (for the full map of 8 commands under the cap of 12, see [`docs/ENTRY.md`](docs/ENTRY.md) and [`docs/COMMANDS.md`](docs/COMMANDS.md)):
+
+- `/rnov-start` `[what you want to do]` — Start here. Plain-language front door; the router picks the flow and the first skill.
+- `/rnov-new` `[what you want to build]` — Start something new, from scratch.
+- `/rnov-improve` `[what to improve]` — Improve something that already exists.
+- `/rnov-improve-ui` `[UI surface to improve]` — Improve a UI surface, audit first.
+- `/rnov-fix` `[what is broken]` — Fix a bug.
+
 ## The workflow
 
 ```

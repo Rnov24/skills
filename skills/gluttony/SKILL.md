@@ -27,9 +27,11 @@ one short message and stop. Nothing else in this skill runs without a target.
   adapted with credit. No licence file: mechanisms may be reimplemented in
   the suite's own words, upstream text may not be copied. Copyleft: flag it
   to the human before any adaptation.
+- **Declared-safe source.** When the human declares a source safe — in the run's opening message, in words ("I know this repo, it's safe") — the run records the declaration in the absorb report (who declared, the exact words, when). The declaration is the recording rule for the existing written-ruling promotion path under staging: a ruling promotes only when it records the safe-declaration or cites a proving run. The declaration location is the opening message only; a declaration made anywhere else does not count. The audit, verdicts, and adaptation rewrite still run in full: the declaration covers safety, not quality, and a declared-safe repo full of filler still earns REJECTs.
 - **Vet before trusting.** Read every script, hook, and installer in the repo
   before running any of it. Absorption never requires executing upstream
   code; if a step seems to need it, that step is redesigned, not run.
+  The safe declaration never authorises executing upstream code.
   Anything that reaches for credentials, shells out to the network beyond
   the clone, or writes outside its own folder ends the intake with a report
   to the human.
@@ -61,7 +63,11 @@ no enthusiasm, no verdict hints.
 
 Each unit gets exactly one verdict:
 
-- **ABSORB-NEW** — covers ground the suite lacks; becomes a new skill.
+- **ABSORB-NEW** — covers ground the suite lacks; becomes a new skill. Any
+  ABSORB-NEW verdict must record the concrete need it serves (one sentence:
+  the named project, deliverable, or recurring task that will use it, such
+  as branding or video demo). A unit with no concrete need named gets
+  REJECT with the reason "no concrete need named".
 - **MERGE-INTO <skill>** — its mechanism strengthens an existing skill; the
   mechanism is extracted, the rest is discarded.
 - **ADAPT-EXISTING** — it replaces or substantially rewrites an existing
@@ -69,7 +75,8 @@ Each unit gets exactly one verdict:
 - **REJECT** — with the reason in one sentence. Rejection is a normal,
   expected outcome; a gluttony run that absorbs everything has failed its
   audit, because upstream repos always contain manifesto duplicates and
-  tool-locked filler.
+  tool-locked filler. A unit with no concrete need named gets REJECT with
+  the reason "no concrete need named".
 
 The suite's standing prejudices apply: no second taste manifesto, no skill
 without an artifact or a gate, no prose where a checkable rule exists, no
@@ -121,8 +128,9 @@ An absorbed unit enters the suite at **EXPOSED** in the adaptation log
 (`docs/ADAPTATIONS.md`): audited, rewritten, present, but not yet proven in
 this suite's own work. The `adapt` skill promotes it to **ADAPTED** after a
 real run uses the mechanism and the retro records that it held, or the human
-promotes it by written ruling. Absorption is exposure; the wheel decides
-what the suite actually becomes.
+promotes it by written ruling that records the safe-declaration (who, exact words, when) or cites a proving run.
+A ruling without the safe-declaration record does not promote.
+Absorption is exposure; the wheel decides what the suite actually becomes.
 
 ## Report back
 

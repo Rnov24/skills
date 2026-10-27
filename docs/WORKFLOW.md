@@ -24,6 +24,23 @@ owns movement between phases; phase skills own the work inside them.
    criterion → spec section → ticket → test → review verdict. If a link is
    missing, the chain — and the claim built on it — is incomplete.
 
+## Beyond web
+
+The pipeline is a decision-and-evidence pipeline, not a web pipeline. The
+entry layer is domain-neutral (the two paths, fix, and the audits name no
+technology). The phase skills are software-flavoured by history (`model`
+assumes an ERD and an API, `implement` assumes code); outside software, those
+phases are skipped with a recorded reason, per the router's existing skipping
+rule, and the gates that do not assume software — human approvals, review,
+verify — still apply. For example, a non-software deliverable (an analysis
+report, a video series) enters through `/rnov-new` or `/rnov-improve`, runs
+brief → grill → define → spec → tickets → review → verify → ship, and skips
+design, model, and implement-as-code with reasons recorded. The router's
+Domain question is what makes the skip explicit at classification time
+instead of discovered mid-run. This makes the entry and the routing
+domain-neutral; it does not rewrite the phase skills for other domains. A
+phase skill that cannot serve a domain is skipped, not forced.
+
 ## Elephant-Goldfish flow
 
 The suite's phases already run the Elephant-Goldfish shape, and the
@@ -40,6 +57,8 @@ passes over a spec) lives in `review`; this workflow only states the
 shape so the phases are read as one flow instead of separate tricks.
 
 ## Phases and gates
+
+For entry points and standard flows, see [`docs/ENTRY.md`](ENTRY.md).
 
 | Phase | Skill | Main artifacts | Gate to exit |
 |---|---|---|---|

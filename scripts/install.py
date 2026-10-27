@@ -150,6 +150,11 @@ def check_installed(targets):
             for n in command_names():
                 if not (cmd_root / f'{n}.md').exists():
                     errors.append(f"[{t}] command /{n} not installed")
+            man = load_manifest(TARGET_ROOTS['claude-code'])
+            current = set(command_names())
+            for n in sorted(set(man.get('commands', {}).keys()) - current):
+                if (cmd_root / f'{n}.md').exists():
+                    errors.append(f"[{t}] stale command /{n} still installed")
     return errors
 
 def load_manifest(root):
@@ -222,7 +227,8 @@ def install_commands(dry, force):
     cmd_root = HOME / '.claude' / 'commands'
     man = load_manifest(TARGET_ROOTS['claude-code'])
     done, skipped = [], []
-    for n in command_names():
+    current_names = command_names()
+    for n in current_names:
         src = ROOT / 'commands' / f'{n}.md'
         dst = cmd_root / f'{n}.md'
         if dst.exists() or dst.is_symlink():
@@ -236,10 +242,36 @@ def install_commands(dry, force):
             shutil.copy2(src, dst)
             man.setdefault('commands', {})[n] = {'at': int(time.time())}
         done.append(n)
+
+    # Stale cleanup: remove any .md file recorded in manifest's commands but no longer in commands/commands.json
+    recorded = list(man.get('commands', {}).keys())
+    stale = sorted(n for n in recorded if n not in current_names)
+    removed = []
+    for n in stale:
+        dst = cmd_root / f'{n}.md'
+        if dst.exists() or dst.is_symlink():
+            if not dry:
+                dst.unlink()
+            removed.append(n)
+        if not dry:
+            man.get('commands', {}).pop(n, None)
+
+    # Leave foreign files alone and report them by name
+    if cmd_root.exists():
+        installed_and_recorded = set(current_names) | set(recorded)
+        foreign = []
+        for f in sorted(cmd_root.glob('*.md')):
+            if f.stem not in installed_and_recorded:
+                foreign.append(f.name)
+        if foreign:
+            print(f"[claude-code] foreign command files left alone: {', '.join(foreign)}")
+
     if not dry:
         man['version'] = version()
         save_manifest(TARGET_ROOTS['claude-code'], man)
     print(f"[claude-code] {'would install' if dry else 'installed'} {len(done)} commands -> {cmd_root}")
+    if removed:
+        print(f"[claude-code] {'would remove' if dry else 'removed'} {len(removed)} stale commands: {', '.join('/' + x for x in removed)}")
     if skipped:
         print(f"[claude-code] commands skipped (exist, not installed by this tool, use --force): {', '.join(skipped)}")
 

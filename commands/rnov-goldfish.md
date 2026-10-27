@@ -1,5 +1,5 @@
 ---
-description: Run the full Goldfish protocol on a SPEC.md or design document: five fresh-context stages that test whether a stranger could understand and re-implement it.
+description: Goldfish this spec: five fresh-context stages that test whether a stranger could understand and re-implement it.
 argument-hint: "[path to SPEC.md or design doc]"
 ---
 # /rnov-goldfish

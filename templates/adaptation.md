@@ -3,6 +3,10 @@
 - Status: PROPOSED | TRIAL | ADAPTED | REJECTED · Filed: <YYYY-MM-DD>
 - Source signal: <escape / rework hot spot / finder miss / repeated correction / parked ruling / absorption>
 
+## Need
+< The concrete need the proposed adaptation serves (named project,
+  deliverable, or recurring task). Required for new-skill proposals. >
+
 ## Phenomenon
 < What was observed, with links to the run, review, retro, or log line that
   proves it. >

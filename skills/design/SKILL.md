@@ -112,6 +112,55 @@ create, and delete; deletions need explicit human approval; routes,
 component ownership, copy intent, and information architecture are
 preserved unless the brief says otherwise.
 
+## Audit an existing UI
+
+Before improving or redesigning an existing UI surface, run this audit
+first. It is a sequencer, not new rules: it executes existing machinery in
+a fixed order, and no change is made before the audit lands in REVIEW.md.
+
+The sequence:
+
+1. **Pre-flight scan.** Run the pre-flight scan as defined in "Working on an
+   existing project": scan DESIGN.md at the repo root, the font stack,
+   palette tokens, motion libraries in the manifest, the spacing scale, and
+   the framework. Report file:line citations for what is preserved and what
+   will be introduced, flag conflicts explicitly, and cache findings in
+   `.work/design-preflight.json`.
+2. **Deterministic checks.** Execute the 13 deterministic checks from
+   `references/review-rubric.md` before any axis discussion, because a
+   screen that fails measurement does not earn a taste discussion:
+   - Screenshots of judged screens at smallest and largest supported widths.
+   - Contrast ratios measured for every rendered text/surface pair.
+   - No horizontal scrollbar and no clipped or overflowing text at any judged width.
+   - Touch targets measured against minimums with spacing intact.
+   - Token tracing: every colour and type size traced to a DESIGN.md token or scale step.
+   - All states captured (default, hover, focus, disabled, loading, empty, error).
+   - Click-through recorded: every interactive element exercised and outcome logged.
+   - Keyboard walk recorded: tab order, focus visible, no trap, modal containment.
+   - Reduced-motion pass: animations resolve to readable final states.
+   - Layout-shift observation on load and async updates.
+   - Placeholder scan: no lorem ipsum, grey-box imagery, or invented numbers.
+   - Stamp-lies check: self-claims compared against what was actually built.
+   - DESIGN.md drift check: rendered tokens and treatments diffed against DESIGN.md value by value.
+3. **Six-axis council review.** Run the council review from
+   `references/review-rubric.md` across all six axes: product fit,
+   typography and layout, colour and tokens, interaction and states,
+   accessibility, and craft and anti-slop. Council lenses evaluate in
+   parallel, dissent is recorded rather than averaged, and the review runs
+   for at most two rounds.
+4. **Taste-core slop sweep.** Run the pre-ship slop gates from
+   `references/taste-core.md`: motion mechanics, colour mechanics, layout
+   safety, structure and chrome, and type and token discipline.
+5. **Findings to REVIEW.md.** Audit findings land in REVIEW.md under an Audit heading, with severities from the suite's scale.
+   Findings follow the suite's severity vocabulary (Critical, Required,
+   Nit, Optional, FYI) defined in `review`, with no acceptance-criteria
+   verdicts since criteria do not yet exist for a pre-change audit.
+6. **Verdict line.** Conclude with a single verdict line stating what
+   changes and what does not, and whether the improvement proceeds. Any
+   Critical finding must be resolved or ruled on by the human before ship.
+
+When the change is a single element, the audit runs in component scope as defined in "Working on an existing project" (page machinery stands down; the deterministic checks and the council scope to the component; the slop sweep still runs).
+
 ## Build discipline
 
 - **Search before building.** Components, patterns, and interactions are

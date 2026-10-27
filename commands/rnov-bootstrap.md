@@ -1,5 +1,5 @@
 ---
-description: Document the team's own undocumented codebase bottom-up into per-directory README contracts, leaf first.
+description: Document an undocumented codebase bottom-up into per-directory README contracts, leaf first.
 argument-hint: "[repo root or directory]"
 ---
 # /rnov-bootstrap

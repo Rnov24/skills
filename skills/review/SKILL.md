@@ -132,7 +132,9 @@ Documents get the same treatment as code. A PRD is reviewed against the
 define-product gate, a DESIGN.md against its own rule-checkability, an ERD
 against the domain invariants. The review package for an artifact is the
 artifact plus its upstream contract (brief for a PRD, PRD for a design), and
-the base is the previous accepted version.
+the base is the previous accepted version. Pre-change audit findings (such
+as from a UI audit before an improvement flow) land in REVIEW.md under an
+Audit heading, recorded with suite severities and no acceptance-criteria verdicts.
 
 ## Verdicts
 

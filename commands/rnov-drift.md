@@ -1,5 +1,5 @@
 ---
-description: Sweep a tree's SPEC.md, DESIGN.md, and README contracts against the current code and report only the divergences.
+description: Check whether the code has drifted: sweep a tree's SPEC.md, DESIGN.md, and README contracts against the current code and report only the divergences.
 argument-hint: "[directory to sweep]"
 ---
 # /rnov-drift

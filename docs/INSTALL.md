@@ -16,8 +16,12 @@ python3 scripts/install.py --uninstall --target codex
 
 **Claude Code** installs each skill into `~/.claude/skills/<skill>/`, where
 Claude Code loads global skills. The slash-only skill arrives as `/gluttony`,
-and the nine commands from `docs/COMMANDS.md` install as user-level slash
-commands in `~/.claude/commands/`.
+and the 8 commands from `docs/COMMANDS.md` (under the cap of 12) install as user-level slash
+commands in `~/.claude/commands/` (`/rnov-start`, `/rnov-new`, `/rnov-improve`,
+`/rnov-improve-ui`, `/rnov-fix`, `/rnov-goldfish`, `/rnov-bootstrap`, `/rnov-drift`).
+On re-install, stale-cleanup removes any command recorded in the install manifest
+that is no longer in `commands/commands.json` (such as the retired `/rnov`, renamed
+to `/rnov-start`), while leaving foreign command files alone.
 
 **Codex** installs each skill into `~/.codex/skills/<skill>/`, the global
 skills directory Codex reads. Codex has no slash-command equivalent, so
@@ -28,8 +32,8 @@ The installer stages a plugin directory (a `plugin.json` whose `skills` field
 is an array of path strings, the layout agy's loader requires) and runs
 `agy plugin install` when the CLI is present; otherwise it prints the
 staging path and the exact command to run by hand. The same `plugin.json`
-carries a `commands` array pointing at the nine command files, staged
-beside `skills/`. Remove it with
+carries a `commands` array pointing at the 8 command files (under the cap of 12),
+staged beside `skills/`. Remove it with
 `agy plugin uninstall rnov-skills`.
 
 ## Safety model

@@ -41,8 +41,12 @@ Harvest candidates from these sources, in this order of trust:
 ## The candidate
 
 Each candidate is filed in `docs/ADAPTATIONS.md` from
-`templates/adaptation.md` with five fields, no fewer:
+`templates/adaptation.md` with six fields, no fewer:
 
+- **Need:** the concrete need the proposed adaptation serves (a named
+  project, deliverable, or recurring task; required for new-skill
+  candidates — a proposal without a concrete need named does not become a
+  candidate).
 - **Phenomenon:** what was observed, with links to the run, review, or log
   line that proves it happened.
 - **Counter:** the exact suite change — which skill, template, keyword set,
@@ -85,7 +89,9 @@ Gluttony delivers mechanisms at **EXPOSED**: audited, adapted in form,
 present in the suite, but not yet proven in this suite's own work. Adapt
 promotes a mechanism to **ADAPTED** when a real run has used it and the
 retro records that it held, or when the human promotes it by written
-ruling. A mechanism that sits at EXPOSED through five runs without being
+ruling that records the safe-declaration (who, exact words, when) or cites a proving run.
+A ruling without the safe-declaration record does not promote.
+A mechanism that sits at EXPOSED through five runs without being
 used is a candidate for removal — the suite absorbed it for a need that
 turned out not to exist, and carrying it is not free.
 
@@ -94,7 +100,7 @@ turned out not to exist, and carrying it is not free.
 Design mechanisms are hard to promote on testimony: a run "felt" better
 proves nothing. A design adaptation, and any EXPOSED design absorption
 seeking promotion, is proven by a **brief-to-output pair** filed with the
-candidate in `docs/ADAPTATIONS.md`:
+candidate in `docs/ADAPTATIONS.md`, except where a declared-safe source is recorded under staging:
 
 - **The brief, verbatim**, with the reasoning trace preserved beside it —
   pre-flight findings, the rotation pick and its stated reason, the
